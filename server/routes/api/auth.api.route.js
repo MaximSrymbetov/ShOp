@@ -43,11 +43,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// РЕГИСТРАЦИЯ
-
 router.post('/signin', async (req, res) => {
-  const { name, email, password } = req.body;
-  console.log(req.body, 'JJJJJJJJJ');
+  const { name, phone, email, password } = req.body;
   try {
     // проверка на существующую почту
     const existEmail = await User.findOne({ where: { email } });
@@ -56,17 +53,22 @@ router.post('/signin', async (req, res) => {
         .status(400)
         .json({ message: 'Указанная почта уже используется' });
     }
-
+    // проверка на существующий номер телефона
+    const existPhone = await User.findOne({ where: { phone } });
+    if (existPhone) {
+      return res
+        .status(400)
+        .json({ message: 'Указанная почта уже используется' });
+    }
     // шифрование пароля
     const hashPassword = await bcrypt.hash(password, 10);
-    console.log(hashPassword);
     // занесение юзера в БД
     const userDB = await User.create({
       name,
+      phone,
       email,
       password: hashPassword,
     });
-    console.log(userDB);
     if (userDB) {
       // создание куки
       const { accessToken, refreshToken } = generateTokens({
@@ -102,29 +104,34 @@ router.get('/logout', async (req, res) => {
 
     if (access) {
       res.locals.user = undefined;
-      res
+      return res
         .clearCookie(cookiesConfig.refresh)
         .clearCookie(cookiesConfig.access)
+        .status(200)
         .json({ message: 'success' });
     }
-  } catch ({ message }) {
-    res.json({ message });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error.message });
   }
 });
 
 router.get('/check', async (req, res) => {
-  console.log(res.locals.user);
-  if (res.locals.user) {
-    const { user } = res.locals;
-    const userInDb = await User.findOne({ where: { id: user?.id } });
-    console.log(userInDb);
-    if (user && userInDb) {
-      res.status(200).json({
-        user: userInDb,
-      });
-    } else {
-      res.status(400).json({ user: false });
+  try {
+    if (res.locals.user) {
+      const { user } = res.locals;
+      const userInDb = await User.findOne({ where: { id: user?.id } });
+      if (user && userInDb) {
+        return res.status(200).json({
+          user: userInDb,
+        });
+      } else {
+        return res.status(400).json({ user: false });
+      }
     }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error.message });
   }
 });
 
