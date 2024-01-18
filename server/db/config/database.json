@@ -1,26 +1,8 @@
 {
   "development": {
-    "use_env_variable": "DATABASE_URL"
-  },
-  "production": {
-    "use_env_variable": "DATABASE_URL",
-    "dialectOptions": {
-      "ssl": {
-        "rejectUnauthorized": false
-      }
-    }
-  },
-  "devLocal": {
     "username": "postgres",
     "password": "postgres",
-    "database": "DB_NAME",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
-  },
-  "prodLocal": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "DB_NAME",
+    "database": "ShOp",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
