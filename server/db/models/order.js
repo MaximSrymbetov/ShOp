@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       status: {
         allowNull: false,
-        defaultValue: 'CREATED',
+        defaultValue: 'created',
         type: DataTypes.TEXT,
       },
       total: {

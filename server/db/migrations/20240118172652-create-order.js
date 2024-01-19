@@ -20,7 +20,7 @@ module.exports = {
       },
       status: {
         allowNull: false,
-        defaultValue: 'CREATED',
+        defaultValue: 'created',
         type: Sequelize.TEXT,
       },
       total: {
