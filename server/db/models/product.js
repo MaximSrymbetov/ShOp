@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(Image, { foreignKey: 'product_id' });
       this.belongsTo(Product_Size, { foreignKey: 'product_id' });
       this.hasMany(Gender, { foreignKey: 'gender_id' });
-      this.hasMany(Category, { foreignKey: 'category_id' });
+      this.belongsTo(Category, { foreignKey: 'category_id' });
       // define association here
     }
   }

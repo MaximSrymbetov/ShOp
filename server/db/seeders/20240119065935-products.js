@@ -3,23 +3,33 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+
+      await queryInterface.bulkInsert('Products', [{
+        category_id: 1,
+        gender_id: 1,
+        name:'РУБАШКА-MAN',
+        description:'КРУТАЯ и СТИЛЬНАЯ РУБАШКА-MAN',
+        price:'8200',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        category_id: 2,
+        gender_id: 2,
+        name:'кроссы-вуMAN',
+        description:'кроссы и новые брендовые',
+        price:'88200',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      }], {});
+
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+  
+  
+   
+      await queryInterface.bulkDelete('Products', null, {});
+  
   }
 };

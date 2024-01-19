@@ -32,6 +32,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.TEXT,
       },
+      isAdmin: {
+        type: DataTypes.BOOLEAN,
+      },
     },
     {
       sequelize,
