@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import {
   Navbar,
@@ -48,17 +50,17 @@ export default function NavBar(): JSX.Element {
           </NavbarBrand>
           <NavbarContent className="hidden sm:flex gap-3">
             <NavbarItem>
-              <Link color="foreground" href="#">
+              <Link color="foreground" href="/">
                 Features
               </Link>
             </NavbarItem>
             <NavbarItem isActive>
-              <Link href="#" aria-current="page" color="secondary">
+              <Link href="/" aria-current="page" color="secondary">
                 Customers
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link color="foreground" href="#">
+              <Link color="foreground" href="/">
                 Integrations
               </Link>
             </NavbarItem>
@@ -75,7 +77,7 @@ export default function NavBar(): JSX.Element {
             }}
             placeholder="Type to search..."
             size="sm"
-            startContent={<SearchIcon size={18} />}
+            startContent={<SearchIcon size={18} strokeWidth={1.5} />}
             type="search"
           />
           <Dropdown placement="bottom-end">
@@ -112,10 +114,10 @@ export default function NavBar(): JSX.Element {
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color={
-                  index === 2 ? 'primary' : index === menuItems.length - 1 ? 'danger' : 'foreground'
+                  index === 2 ? 'primary' : (index === menuItems.length - 1) ? 'danger' : 'foreground'
                 }
                 className="w-full"
-                href="#"
+                href="/"
                 size="lg"
               >
                 {item}

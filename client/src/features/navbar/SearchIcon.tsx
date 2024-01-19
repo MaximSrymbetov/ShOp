@@ -1,28 +1,21 @@
 import React from 'react';
 
 export default function SearchIcon({
-  size = 24,
-  strokeWidth = 1.5,
-  width,
-  height,
-  ...props
+  size,
+  strokeWidth,
 }: {
   size: number;
   strokeWidth: number;
-  width: string;
-  height: string;
-  props: object;
 }): JSX.Element {
   return (
     <svg
       aria-hidden="true"
       fill="none"
       focusable="false"
-      height={height || size}
+      height={ size}
       role="presentation"
       viewBox="0 0 24 24"
-      width={width || size}
-      {...props}
+      width={ size}
     >
       <path
         d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
