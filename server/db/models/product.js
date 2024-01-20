@@ -16,12 +16,12 @@ module.exports = (sequelize, DataTypes) => {
       Image,
       Product_Size,
     }) {
-      this.belongsTo(Order_item, { foreignKey: 'product_id' });
-      this.belongsTo(Favorite, { foreignKey: 'product_id' });
-      this.belongsTo(Review, { foreignKey: 'product_id' });
-      this.belongsTo(Image, { foreignKey: 'product_id' });
-      this.belongsTo(Product_Size, { foreignKey: 'product_id' });
-      this.hasMany(Gender, { foreignKey: 'gender_id' });
+      this.hasMany(Order_item, { foreignKey: 'product_id' });
+      this.hasMany(Favorite, { foreignKey: 'product_id' });
+      this.hasMany(Review, { foreignKey: 'product_id' });
+      this.hasMany(Image, { foreignKey: 'product_id' });
+      this.hasMany(Product_Size, { foreignKey: 'product_id' });
+      this.belongsTo(Gender, { foreignKey: 'gender_id' });
       this.belongsTo(Category, { foreignKey: 'category_id' });
       // define association here
     }

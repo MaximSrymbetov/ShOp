@@ -12,7 +12,7 @@ const initialState: StateUser = {
   error: undefined,
 };
 
-export const authentication = createAsyncThunk('auth/authentication', (obj: Authentication) => {
+export const authentication = createAsyncThunk('auth/authentication', (obj: Authxentication) => {
   api.FetchAuthUser(obj);
 });
 
