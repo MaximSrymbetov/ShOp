@@ -35,6 +35,7 @@ export default function NavBar(): JSX.Element {
     'Team Settings',
     'Help & Feedback',
     'Log Out',
+    'It is for ADMIN :)'
   ];
   return (
     <>
@@ -106,6 +107,7 @@ export default function NavBar(): JSX.Element {
               <DropdownItem key="logout" color="danger">
                 Log Out
               </DropdownItem>
+              <DropdownItem key="ADMIN" href='/admin'>ADMIN </DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </NavbarContent>
