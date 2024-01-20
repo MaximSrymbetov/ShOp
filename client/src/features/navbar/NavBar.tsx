@@ -18,8 +18,8 @@ import {
   NavbarMenuItem,
 } from '@nextui-org/react';
 import { Outlet } from 'react-router-dom';
-import AcmeLogo from './AcmeLogo';
-import SearchIcon from './SearchIcon';
+import AcmeLogo from './icons/AcmeLogo';
+import SearchIcon from './icons/SearchIcon';
 
 export default function NavBar(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -114,7 +114,7 @@ export default function NavBar(): JSX.Element {
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color={
-                  index === 2 ? 'primary' : (index === menuItems.length - 1) ? 'danger' : 'foreground'
+                  index === 2 ? 'primary' : index === menuItems.length - 1 ? 'danger' : 'foreground'
                 }
                 className="w-full"
                 href="/"
