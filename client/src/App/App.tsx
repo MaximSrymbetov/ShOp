@@ -6,7 +6,7 @@ import NavBar from '../features/navbar/NavBar';
 import MainPage from '../features/mainpage/MainPage';
 import AuthorizationPage from '../features/Auth/AuthorizationPage';
 import RegistrationPage from '../features/Auth/RegistrationPage';
-
+import AdminPage from '../features/AdminPanel/AdminPage'
 
 function App(): JSX.Element {
   return (
@@ -14,11 +14,13 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<NavBar />}>
           <Route path="/" element={<MainPage />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
         </Route>
           <Route path="*" element={<ErrorPage/>} />
       </Routes>
+      
       {/* <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fugit nemo aut beatae quaerat
         officia voluptas doloremque error quas consequatur distinctio magnam odio, quos, minima
