@@ -1,0 +1,111 @@
+body {
+  font-family: sans-serif;
+  background-color: #9b9797;
+  font-weight: bold;
+}
+
+.text-box {
+  margin-left: 44vw;
+ margin-top: 42vh;
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all .2s;
+  position: absolute;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom 5s ease-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+  0% {
+      opacity: 0;
+      transform: translateY(30px);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translateY(0px);
+  }
+}
+.{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  background: #1e1e24;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  outline: 0;
+  color: #fff;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Open Sans';
+  text-transform: uppercase;
+  opacity: 1;
+      transform: translateY(0) rotateX(0);
+      opacity: 0;
+      transform: translateY(50%) rotateX(90deg);
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      color: #323237;
+      display: block;
+      transition: $speed;
+      position: absolute;
+      background: #adadaf;
+      content: attr(data-back);
+      transform: translateY(-50%) rotateX(90deg);
+  
+}

@@ -9,6 +9,8 @@ import RegistrationPage from '../features/Auth/RegistrationPage';
 import Allroducts from '../features/allproducts/Allroducts';
 import { useAppDispatch } from '../redux/store';
 import { allproducts } from '../features/allproducts/productSlice';
+import AdminPage from '../features/AdminPanel/AdminPage'
+
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -21,12 +23,14 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<NavBar />}>
           <Route path="/" element={<MainPage />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/allproducts" element={<Allroducts />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      
       {/* <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fugit nemo aut beatae quaerat
         officia voluptas doloremque error quas consequatur distinctio magnam odio, quos, minima
