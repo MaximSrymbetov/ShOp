@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import NavBar from './features/navbar/NavBar';
 import MainPage from './features/mainpage/MainPage';
+import ErrorPage from './features/ErrorPage/ErrorPage';
 
 function App(): JSX.Element {
   return (
@@ -11,6 +12,7 @@ function App(): JSX.Element {
         <Route path="/" element={<NavBar />}>
           <Route path="/" element={<MainPage />} />
         </Route>
+          <Route path="*" element={<ErrorPage/>} />
       </Routes>
       {/* <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fugit nemo aut beatae quaerat

@@ -1,0 +1,88 @@
+.buttonReturn {
+  background-image: '\image404.jpeg';
+}
+.Page404{
+  background-image:url('\image404.jpeg')
+  
+}
+.center-both {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid rgb(0, 0, 0);
+  height: 150px;
+  background-color: #301934;
+}
+.textCont{
+  position: absolute;
+  top:10%;
+  left:26%;
+  margin:0 auto;
+  display: block;
+  line-height: 50px;
+  height: 50px;
+  width: 24%;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0 100px 0 #0b0b0b,1px 76px 10px #000;
+  color: #010501;
+  background: #5D8EC7;
+  border-right: 2px solid #e51515;
+  border-left: 2px solid #ea2626;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+.textoverlay{
+  position: absolute;
+  top:40%;
+  left:10%;
+  color: rgb(1, 0, 0); 
+  font-size: 164px;
+  font-weight: bold;
+  
+}
+.textoverlay3{
+  position: absolute;
+  top:11%;
+  left:17%;
+  color: rgb(0, 0, 0); 
+  font-size: 14px;
+  font-weight: bold;
+}
+.textoverlay2{
+  position: absolute;
+  top:25%;
+  left:10%;
+  color: rgb(0, 0, 0); 
+  font-size: 64px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-shadow: 0 2px 1px #747474, 
+      -1px 3px 1px #767676, 
+      -2px 5px 1px #787878, 
+      -3px 7px 1px #7a7a7a,
+      -4px 9px 1px #7f7f7f,
+      -5px 11px 1px #838383,
+      -6px 13px 1px #878787,
+      -7px 15px 1px #8a8a8a, 
+      -8px 17px 1px #8e8e8e,
+      -9px 19px 1px #949494,
+      -10px 21px 1px #989898,
+      -11px 23px 1px #9f9f9f,
+      -12px 25px 1px #a2a2a2, 
+      -13px 27px 1px #a7a7a7,
+      -14px 29px 1px #adadad,
+      -15px 31px 1px #b3b3b3,
+      -16px 33px 1px #b6b6b6,
+      -17px 35px 1px #bcbcbc, 
+      -18px 37px 1px #c2c2c2,
+      -19px 39px 1px #c8c8c8,
+      -20px 41px 1px #cbcbcb,
+      -21px 43px 1px #d2d2d2,
+      -22px 45px 1px #d5d5d5, 
+      -23px 47px 1px #e2e2e2,
+      -24px 49px 1px #e6e6e6,
+      -25px 51px 1px #eaeaea,
+      -26px 53px 1px #efefef;
+}
