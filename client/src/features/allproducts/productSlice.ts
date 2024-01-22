@@ -14,6 +14,17 @@ const initialState: StateProduct = {
 
 export const allproducts = createAsyncThunk('product/load', () => api.FetchProductall());
 
+export const addProducts = createAsyncThunk(
+  'add/products',
+  (product: {
+    categoryid: number;
+    genderid: number;
+    name: string;
+    description: string;
+    price: string;
+  }) => api.fetchAddProducts(product),
+);
+
 const productSlice = createSlice({
   name: 'products',
   initialState,
@@ -25,7 +36,13 @@ const productSlice = createSlice({
       })
       .addCase(allproducts.rejected, (state, action) => {
         state.error = action.error.message;
-      });
+      })
+      .addCase(addProducts.fulfilled, (state, action) => {
+        state.products.push(action.payload.product);
+      })
+      .addCase(addProducts.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
   },
 });
 

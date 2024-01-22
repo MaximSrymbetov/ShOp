@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './admin.css';
+import AddProduct from './AddProduct';
+// import AddProduct from './AddProduct';
 
 // import { useSelector } from 'react-redux';
 // import ProductItem from './ProductItem';
@@ -22,6 +24,7 @@ function AdminPage(): JSX.Element {
         : products.map((product) => <ProductItem product={product} key={product.id} />)} */}
 
 <h2>ПРИВЕТИК АДМИН</h2>
+<AddProduct/>
       <button  className='text-box'type="button" onClick={() => navigate(-1)}>
         Назад
       </button>
