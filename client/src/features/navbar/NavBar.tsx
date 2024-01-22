@@ -35,7 +35,7 @@ export default function NavBar(): JSX.Element {
     'Team Settings',
     'Help & Feedback',
     'Log Out',
-    'It is for ADMIN :)'
+    'It is for ADMIN :)',
   ];
   return (
     <>
@@ -45,10 +45,13 @@ export default function NavBar(): JSX.Element {
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             className="sm:hidden"
           />
-          <NavbarBrand className="mr-4">
-            <AcmeLogo />
-            <p className="hidden sm:block font-bold text-inherit">ACME</p>
-          </NavbarBrand>
+          <Link to="/">
+            <NavbarBrand className="mr-4">
+              <AcmeLogo />
+              <div className="hidden sm:block font-bold text-inherit">ACME</div>
+            </NavbarBrand>
+          </Link>
+
           <NavbarContent className="hidden sm:flex gap-3">
             <NavbarItem>
               <Link color="foreground" href="/">
@@ -107,7 +110,9 @@ export default function NavBar(): JSX.Element {
               <DropdownItem key="logout" color="danger">
                 Log Out
               </DropdownItem>
-              <DropdownItem key="ADMIN" href='/admin'>ADMIN </DropdownItem>
+              <DropdownItem key="ADMIN" href="/admin">
+                ADMIN{' '}
+              </DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </NavbarContent>

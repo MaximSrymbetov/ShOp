@@ -11,7 +11,7 @@ function AddProduct(): JSX.Element {
 
   const dispatch = useAppDispatch();
 
-  const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     // const formData=new FormData()
@@ -21,14 +21,15 @@ function AddProduct(): JSX.Element {
     // formData.append('description', description);
     // formData.append('price', price);
     const data = {
-      categoryid: categoryid,
-      genderid: genderid,
-      name: name,
-      description: description,
-      price: price,
+      category_id: +categoryid,
+      gender_id: +genderid,
+      name,
+      description,
+      price,
     };
+    console.log(data);
 
-    dispatch(addProducts(data));
+    dispatch(addProducts(data)).catch((err) => console.error(err));
     setCategoryid('');
     setGenderid('');
     setName('');
@@ -38,24 +39,23 @@ function AddProduct(): JSX.Element {
 
   return (
     <form onSubmit={onHandleSubmit}>
-      <div class="field">
+      <div className="field">
         <input
-        
           type="text"
           placeholder="categoryid"
           value={categoryid}
           onChange={(e) => setCategoryid(e.target.value)}
-        />{' '}
+        />
       </div>
-      <div class="field">
+      <div className="field">
         <input
           type="text"
           placeholder="genderid"
           value={genderid}
           onChange={(e) => setGenderid(e.target.value)}
-        />{' '}
+        />
       </div>
-      <div class="field">
+      <div className="field">
         <input
           type="text"
           placeholder="name"
@@ -63,16 +63,16 @@ function AddProduct(): JSX.Element {
           onChange={(e) => setName(e.target.value)}
         />
       </div>
-      <div class="field">
+      <div className="field">
         <input
-          type="text" 
+          type="text"
           placeholder="description"
           className="textarea"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
       </div>
-      <div class="field">
+      <div className="field">
         <input
           type="text"
           placeholder="price"

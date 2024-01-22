@@ -6,17 +6,16 @@ import NavBar from '../features/navbar/NavBar';
 import MainPage from '../features/mainpage/MainPage';
 import AuthorizationPage from '../features/Auth/AuthorizationPage';
 import RegistrationPage from '../features/Auth/RegistrationPage';
-import Allroducts from '../features/allproducts/Allroducts';
+import Allroducts from '../features/allproducts/Allproducts';
 import { useAppDispatch } from '../redux/store';
 import { allproducts } from '../features/allproducts/productSlice';
-import AdminPage from '../features/AdminPanel/AdminPage'
-
+import AdminPage from '../features/AdminPanel/AdminPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    void dispatch(allproducts())
-  }, [])
+    void dispatch(allproducts());
+  }, [dispatch]);
 
   return (
     <div className="App">

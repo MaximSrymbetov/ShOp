@@ -9,7 +9,6 @@ export const FetchProductall = async (): Promise<Product[]> => {
   return data;
 };
 
-
 export const fetchAddProducts = async (product: {
   category_id: number;
   gender_id: number;
@@ -22,7 +21,5 @@ export const fetchAddProducts = async (product: {
     product,
   );
 
-  console.log(data,"!!!!!!!!!!!");
   return data;
-  
 };

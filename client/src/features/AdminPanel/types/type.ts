@@ -4,7 +4,4 @@ export type Product = {
   name: string;
   description: string;
   price: string;
-
 };
-
-export type ProductId = Product['id'];

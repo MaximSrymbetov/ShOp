@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './admin.css';
 import AddProduct from './AddProduct';
 // import AddProduct from './AddProduct';
@@ -23,9 +23,9 @@ function AdminPage(): JSX.Element {
             .map((product) => <ProductItem product={product} key={product.id} />)
         : products.map((product) => <ProductItem product={product} key={product.id} />)} */}
 
-<h2>ПРИВЕТИК АДМИН</h2>
-<AddProduct/>
-      <button  className='text-box'type="button" onClick={() => navigate(-1)}>
+      <h2>ПРИВЕТИК АДМИН</h2>
+      <AddProduct />
+      <button className="text-box" type="button" onClick={() => navigate(-1)}>
         Назад
       </button>
     </div>
