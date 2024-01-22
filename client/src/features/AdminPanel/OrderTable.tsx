@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
 import {
   Table,
@@ -9,19 +10,22 @@ import {
   User,
   Chip,
   Tooltip,
-  getKeyValue,
 } from '@nextui-org/react';
+import type { Key } from 'react';
+import { useSelector } from 'react-redux';
 import EditIcon from './icons/EditIcon';
 import DeleteIcon from './icons/DeleteIcon';
 import EyeIcon from './icons/Eyelcon';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import type { RootState } from '../../redux/store';
+import type { Order } from './types/type';
 
-const statusColorMap = {
-  active: 'success',
-  paused: 'danger',
-  vacation: 'warning',
-};
+// const statusColorMap = {
+//   created: 'warning',
+//   confirmed: 'warning',
+//   closed: 'danger',
+//   payed: 'warning',
+//   delivery: 'success',
+// };
 
 const columns = [
   { name: 'КЛИЕНТЫ', uid: 'name' },
@@ -36,9 +40,7 @@ export default function OrderTable(): JSX.Element {
   // const users=orders.map((order)=>order.User)
   // const totals=orders.map((order)=>order.total)
 
-  const renderCell = React.useCallback((order, columnKey) => {
-    const cellValue = order[columnKey];
-
+  const renderCell = React.useCallback((order: Order, columnKey: Key) => {
     switch (columnKey) {
       case 'name':
         return (
@@ -56,11 +58,11 @@ export default function OrderTable(): JSX.Element {
         return (
           <Chip
             className="capitalize"
-            color={statusColorMap[order.status]}
+            // color={statusColorMap[order.status]}
             size="sm"
             variant="flat"
           >
-            {cellValue}
+            {order.status}
           </Chip>
         );
       case 'actions':
@@ -84,7 +86,7 @@ export default function OrderTable(): JSX.Element {
           </div>
         );
       default:
-        return cellValue;
+        return order.status;
     }
   }, []);
 

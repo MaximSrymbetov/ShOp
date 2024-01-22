@@ -1,3 +1,5 @@
+import type { User } from '../../Auth/types/type';
+
 export type Product = {
   category_id: number;
   gender_id: number;
@@ -7,8 +9,10 @@ export type Product = {
 };
 
 export type Order = {
+  id: number;
   user_id: number;
   status: string;
   total: string;
   delivery_status: string;
+  User: User;
 };
