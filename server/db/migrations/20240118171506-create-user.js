@@ -28,6 +28,7 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       isAdmin: {
+        defaultValue: false,
         type: Sequelize.BOOLEAN,
       },
       createdAt: {

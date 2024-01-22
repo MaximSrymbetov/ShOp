@@ -31,7 +31,7 @@ function RegistrationPage(): JSX.Element {
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">FFFF</button>
+        <button type="submit">Зарегистрироваться</button>
       </form>
     </div>
   );

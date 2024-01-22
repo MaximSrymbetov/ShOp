@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/store';
+import type { User } from './types/type';
 
 function AuthorizationPage(): JSX.Element {
   const [email, setEmail] = useState('');
@@ -8,13 +11,14 @@ function AuthorizationPage(): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const onHeandlerSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const onHeandlerSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<User> => {
     e.preventDefault();
     const res = await fetch('/api/auth/login', {
       method: 'post',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
+  
     const data = await res.json();
     console.log(data);
 
@@ -40,7 +44,7 @@ function AuthorizationPage(): JSX.Element {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Auth</button>
+        <button type="submit">Авторизироваться</button>
       </form>
     </div>
   );

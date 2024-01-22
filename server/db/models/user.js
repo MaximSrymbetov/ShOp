@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
       isAdmin: {
+        defaultValue: false,
         type: DataTypes.BOOLEAN,
       },
     },
