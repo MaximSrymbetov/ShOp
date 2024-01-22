@@ -4,15 +4,11 @@ export type Product = {
   name: string;
   description: string;
   price: string;
-
 };
 
-// export type ProductId = Product['id'];
-
-
-export type Order={
+export type Order = {
   user_id: number;
-  status:string;
-  total:string;
-  delivery_status:string;
-}
+  status: string;
+  total: string;
+  delivery_status: string;
+};

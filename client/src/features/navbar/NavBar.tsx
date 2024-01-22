@@ -45,12 +45,15 @@ export default function NavBar(): JSX.Element {
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             className="sm:hidden"
           />
+
           <NavbarBrand className="mr-4">
             <AcmeLogo />
 
-          <NavLink to = '/'>  <p color="black" className="hidden sm:block font-bold text-inherit">
-              ACME
-            </p></NavLink>
+            <NavLink to="/">
+              <p color="black" className="hidden sm:block font-bold text-inherit">
+                ACME
+              </p>
+            </NavLink>
           </NavbarBrand>
           <NavbarContent className="hidden sm:flex gap-3">
             <NavbarItem>
@@ -111,7 +114,7 @@ export default function NavBar(): JSX.Element {
                 Log Out
               </DropdownItem>
               <DropdownItem key="ADMIN" href="/admin">
-                ADMIN{' '}
+                ADMIN
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>

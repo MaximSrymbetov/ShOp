@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default function Footer(): JSX.Element {
   return (
@@ -94,16 +93,24 @@ export default function Footer(): JSX.Element {
               Products
             </h6>
             <p className="mb-4">
-              <a className="text-neutral-600 dark:text-neutral-200">Angular</a>
+              <a className="text-neutral-600 dark:text-neutral-200" href="/">
+                Angular
+              </a>
             </p>
             <p className="mb-4">
-              <a className="text-neutral-600 dark:text-neutral-200">React</a>
+              <a className="text-neutral-600 dark:text-neutral-200" href="/">
+                React
+              </a>
             </p>
             <p className="mb-4">
-              <a className="text-neutral-600 dark:text-neutral-200">Vue</a>
+              <a className="text-neutral-600 dark:text-neutral-200" href="/">
+                Vue
+              </a>
             </p>
             <p>
-              <a className="text-neutral-600 dark:text-neutral-200">Laravel</a>
+              <a className="text-neutral-600 dark:text-neutral-200" href="/">
+                Laravel
+              </a>
             </p>
           </div>
           {/* <!-- Useful links section --> */}
@@ -112,16 +119,24 @@ export default function Footer(): JSX.Element {
               Useful links
             </h6>
             <p className="mb-4">
-              <a className="text-neutral-600 dark:text-neutral-200">Pricing</a>
+              <a className="text-neutral-600 dark:text-neutral-200" href="/">
+                Pricing
+              </a>
             </p>
             <p className="mb-4">
-              <a className="text-neutral-600 dark:text-neutral-200">Settings</a>
+              <a className="text-neutral-600 dark:text-neutral-200" href="/">
+                Settings
+              </a>
             </p>
             <p className="mb-4">
-              <a className="text-neutral-600 dark:text-neutral-200">Orders</a>
+              <a className="text-neutral-600 dark:text-neutral-200" href="/">
+                Orders
+              </a>
             </p>
             <p>
-              <a className="text-neutral-600 dark:text-neutral-200">Help</a>
+              <a className="text-neutral-600 dark:text-neutral-200" href="/">
+                Help
+              </a>
             </p>
           </div>
           {/* <!-- Contact section --> */}

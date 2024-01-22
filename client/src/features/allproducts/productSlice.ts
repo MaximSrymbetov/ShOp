@@ -17,8 +17,8 @@ export const allproducts = createAsyncThunk('product/load', () => api.FetchProdu
 export const addProducts = createAsyncThunk(
   'add/products',
   (product: {
-    categoryid: number;
-    genderid: number;
+    category_id: number;
+    gender_id: number;
     name: string;
     description: string;
     price: string;
@@ -42,7 +42,7 @@ const productSlice = createSlice({
       })
       .addCase(addProducts.rejected, (state, action) => {
         state.error = action.error.message;
-      })
+      });
   },
 });
 

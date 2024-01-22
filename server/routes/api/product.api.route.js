@@ -4,7 +4,7 @@ const { Product, Image } = require('../../db/models');
 router.get('/', async (req, res) => {
   try {
     const products = await Product.findAll({
-      include: { model:  Image  },
+      include: { model: Image },
     });
 
     return res.status(200).json(products);
@@ -15,11 +15,11 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/add', async (req, res) => {
-  const { categoryid, genderid, name, description, price } = req.body;
+  const { category_id, gender_id, name, description, price } = req.body;
   try {
     const product = await Product.create({
-      category_id:categoryid,
-      gender_id:genderid,
+      category_id,
+      gender_id,
       name,
       description,
       price,
