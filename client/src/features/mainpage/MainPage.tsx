@@ -1,12 +1,16 @@
 import React from 'react';
-import ProductsCards from './ProductsCards';
 import Greeting from './Greeting';
+import CategoriesCards from './CategoriesCards';
+import ProductsSwiper from './ProductsSwiper';
+import Footer from '../footer/Footer';
 
 export default function MainPage(): JSX.Element {
   return (
     <div>
       <Greeting />
-      <ProductsCards />
+      <CategoriesCards />
+      <ProductsSwiper />
+      <Footer />
     </div>
   );
 }
