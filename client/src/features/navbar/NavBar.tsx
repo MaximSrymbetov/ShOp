@@ -51,17 +51,17 @@ export default function NavBar(): JSX.Element {
           <NavbarContent className="hidden sm:flex gap-3">
             <NavbarItem>
               <Link color="foreground" href="/">
-                Features
+                Главная
               </Link>
             </NavbarItem>
             <NavbarItem isActive>
-              <Link href="/" aria-current="page" color="secondary">
-                Customers
+              <Link href="/products" aria-current="page" color="secondary">
+                Каталог
               </Link>
             </NavbarItem>
             <NavbarItem>
               <Link color="foreground" href="/">
-                Integrations
+                Категории
               </Link>
             </NavbarItem>
           </NavbarContent>
