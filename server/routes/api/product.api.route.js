@@ -13,16 +13,16 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/add', async (req, res) => {
-  const { name, description, price, category_id, gender_id } = req.body;
+  const { categoryid, genderid, name, description, price } = req.body;
   try {
     const product = await Product.create({
+      category_id:categoryid,
+      gender_id:genderid,
       name,
       description,
       price,
-      category_id,
-      gender_id,
     });
-    return res.status(200).json({ message: 'success' }, product);
+    return res.status(200).json({ message: 'success' });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: error.message });
