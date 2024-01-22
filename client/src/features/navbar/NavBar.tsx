@@ -17,7 +17,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from '@nextui-org/react';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import AcmeLogo from './icons/AcmeLogo';
 import SearchIcon from './icons/SearchIcon';
 
@@ -35,7 +35,7 @@ export default function NavBar(): JSX.Element {
     'Team Settings',
     'Help & Feedback',
     'Log Out',
-    'It is for ADMIN :)'
+    'It is for ADMIN :)',
   ];
   return (
     <>
@@ -47,7 +47,10 @@ export default function NavBar(): JSX.Element {
           />
           <NavbarBrand className="mr-4">
             <AcmeLogo />
-            <p className="hidden sm:block font-bold text-inherit">ACME</p>
+
+          <NavLink to = '/'>  <p color="black" className="hidden sm:block font-bold text-inherit">
+              ACME
+            </p></NavLink>
           </NavbarBrand>
           <NavbarContent className="hidden sm:flex gap-3">
             <NavbarItem>
@@ -107,7 +110,9 @@ export default function NavBar(): JSX.Element {
               <DropdownItem key="logout" color="danger">
                 Log Out
               </DropdownItem>
-              <DropdownItem key="ADMIN" href='/admin'>ADMIN </DropdownItem>
+              <DropdownItem key="ADMIN" href="/admin">
+                ADMIN{' '}
+              </DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </NavbarContent>
