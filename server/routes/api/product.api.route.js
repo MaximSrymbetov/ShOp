@@ -1,10 +1,13 @@
 const router = require('express').Router();
-const { Product } = require('../../db/models');
+const { Product, Image } = require('../../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    const products = await Product.findAll();
-    return res.status(200).json({ message: 'success' }, products);
+    const products = await Product.findAll({
+      include: { model:  Image  },
+    });
+    console.log(products);
+    return res.status(200).json(products);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: error.message });
@@ -12,16 +15,16 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/add', async (req, res) => {
-  const { name, description, price, category_id, gender_id } = req.body;
+  const { categoryid, genderid, name, description, price } = req.body;
   try {
     const product = await Product.create({
+      category_id:categoryid,
+      gender_id:genderid,
       name,
       description,
       price,
-      category_id,
-      gender_id,
     });
-    return res.status(200).json({ message: 'success' }, product);
+    return res.status(200).json({ message: 'success' });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: error.message });

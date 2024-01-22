@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 
 import type { User } from '../features/Auth/types/type';
 
@@ -37,8 +38,8 @@ export const FetchRegistration = async ({
   return data.json();
 };
 
-export const FetchLogout = async () => {
+export const FetchLogout = async (): Promise<void> => {
   const data = await fetch('/api/auth/logout');
-
+ // eslint-disable-next-line @typescript-eslint/return-await
   return await data.json();
 };
