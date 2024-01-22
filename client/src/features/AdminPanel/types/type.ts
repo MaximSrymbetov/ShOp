@@ -5,3 +5,10 @@ export type Product = {
   description: string;
   price: string;
 };
+
+export type Order = {
+  user_id: number;
+  status: string;
+  total: string;
+  delivery_status: string;
+};

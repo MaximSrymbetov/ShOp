@@ -5,7 +5,6 @@ import type { Product } from './types/type';
 
 export const FetchProductall = async (): Promise<Product[]> => {
   const data = (await fetch('/api/product')).json();
-
   return data;
 };
 

@@ -1,8 +1,7 @@
 import React from 'react';
+import { Product } from './types/type';
 
-function ProductItem({ image, product }): JSX.Element {
-  console.log(image);
-
+function ProductItem({ image, product }: { image: string; product: Product }): JSX.Element {
   return (
     <div className="boxItem">
       <div>

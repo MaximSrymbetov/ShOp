@@ -17,7 +17,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from '@nextui-org/react';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import AcmeLogo from './icons/AcmeLogo';
 import SearchIcon from './icons/SearchIcon';
 
@@ -45,13 +45,16 @@ export default function NavBar(): JSX.Element {
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             className="sm:hidden"
           />
-          <Link to="/">
-            <NavbarBrand className="mr-4">
-              <AcmeLogo />
-              <div className="hidden sm:block font-bold text-inherit">ACME</div>
-            </NavbarBrand>
-          </Link>
 
+          <NavbarBrand className="mr-4">
+            <AcmeLogo />
+
+            <NavLink to="/">
+              <p color="black" className="hidden sm:block font-bold text-inherit">
+                ACME
+              </p>
+            </NavLink>
+          </NavbarBrand>
           <NavbarContent className="hidden sm:flex gap-3">
             <NavbarItem>
               <Link color="foreground" href="/">
@@ -111,7 +114,7 @@ export default function NavBar(): JSX.Element {
                 Log Out
               </DropdownItem>
               <DropdownItem key="ADMIN" href="/admin">
-                ADMIN{' '}
+                ADMIN
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
