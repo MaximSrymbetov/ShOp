@@ -3,16 +3,19 @@ import { Card, CardHeader, CardFooter, Image, Button } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 import menImg from '../../public/images/men.webp';
 import womenImg from '../../public/images/women.webp';
+import shoes from '../../public/images/shoe_5.jpg';
+import clothes from '../../public/images/clothes.jpg';
+import accessories from '../../public/images/accessories.gif';
 
-export default function ProductsCards(): JSX.Element {
+export default function CategoriesCards(): JSX.Element {
   return (
-    <div className="container mx-auto pt-5">
-      <div className="mx-auto max-w-[900px] gap-2 grid grid-cols-12 grid-rows-2 px-8">
+    <div className="container mx-auto py-5">
+      <div className="mx-auto max-w-[985px] gap-2 grid grid-cols-12 px-8">
         {/* MEN */}
         <Link to="/men" className="w-full h-[500px] col-span-12 sm:col-span-6">
           <Card className="w-full h-[500px] col-span-12 sm:col-span-6">
             <CardHeader className="absolute z-10 bottom-20 flex-col items-start">
-              <h4 className="text-white font-medium text-7xl">Men</h4>
+              <h4 className="text-white font-medium text-7xl">для него</h4>
             </CardHeader>
             <Image
               removeWrapper
@@ -27,7 +30,7 @@ export default function ProductsCards(): JSX.Element {
         <Link to="/women" className="w-full h-[500px] col-span-12 sm:col-span-6">
           <Card className="w-full h-[500px] col-span-12 sm:col-span-6">
             <CardHeader className="absolute z-10 bottom-20 flex-col items-start">
-              <h4 className="text-white font-medium text-7xl">Women</h4>
+              <h4 className="text-white font-medium text-7xl">для нее</h4>
             </CardHeader>
             <Image
               removeWrapper
@@ -38,43 +41,50 @@ export default function ProductsCards(): JSX.Element {
           </Card>
         </Link>
 
-        <Card className="col-span-12 sm:col-span-4 h-[300px]">
-          <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-            <p className="text-tiny text-white/60 uppercase font-bold">What to watch</p>
-            <h4 className="text-white font-medium text-large">Stream the Acme event</h4>
-          </CardHeader>
-          <Image
-            removeWrapper
-            alt="Card background"
-            className="z-0 w-full h-full object-cover"
-            src="https://www.reebok.eu/BWStaticContent/153000/3563d295-bdb7-493f-9010-ffe4cea6bd17_desk-women.jpg"
-          />
-        </Card>
-        <Card className="col-span-12 sm:col-span-4 h-[300px]">
-          <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-            <p className="text-tiny text-white/60 uppercase font-bold">Plant a tree</p>
-            <h4 className="text-white font-medium text-large">Contribute to the planet</h4>
-          </CardHeader>
-          <Image
-            removeWrapper
-            alt="Card background"
-            className="z-0 w-full h-full object-cover"
-            src="https://www.reebok.eu/BWStaticContent/153000/03759b6f-083b-4d69-8517-e9d89274b2e2_desk-men.jpg"
-          />
-        </Card>
-        <Card className="col-span-12 sm:col-span-4 h-[300px]">
-          <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-            <p className="text-tiny text-white/60 uppercase font-bold">Supercharged</p>
-            <h4 className="text-white font-medium text-large">Creates beauty like a beast</h4>
-          </CardHeader>
-          <Image
-            removeWrapper
-            alt="Card background"
-            className="z-0 w-full h-full object-cover"
-            src="https://www.reebok.eu/BWStaticContent/153000/726eed09-7ebd-470f-858f-5ed3c3fe2a32_desk-kids.jpg"
-          />
-        </Card>
-        <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5">
+        <Link to="/category/shoes" className="col-span-12 sm:col-span-4 h-[300px]">
+          <Card className="col-span-12 sm:col-span-4 h-[300px]">
+            <CardHeader className="absolute z-10 top-1 flex-col !items-start">
+              <p className="text-tiny text-white/60 uppercase font-bold">Что надеть</p>
+              <h4 className="text-white font-medium text-large">Для комфорта твоих ног</h4>
+            </CardHeader>
+            <Image
+              removeWrapper
+              alt="Card background"
+              className="z-0 w-full h-full object-cover"
+              src={shoes}
+            />
+          </Card>
+        </Link>
+        <Link to="/category/clothes" className="col-span-12 sm:col-span-4 h-[300px]">
+          <Card className="col-span-12 sm:col-span-4 h-[300px]">
+            <CardHeader className="absolute z-10 top-1 flex-col !items-start">
+              <p className="text-tiny text-white/60 uppercase font-bold">Измени себя</p>
+              <h4 className="text-white font-medium text-large">С ног до головы</h4>
+            </CardHeader>
+            <Image
+              removeWrapper
+              alt="Card background"
+              className="z-0 w-full h-full object-cover scale-120"
+              src={clothes}
+            />
+          </Card>
+        </Link>
+        <Link to="/category/accessories" className="col-span-12 sm:col-span-4 h-[300px]">
+          <Card className="col-span-12 sm:col-span-4 h-[300px]">
+            <CardHeader className="absolute z-10 top-1 flex-col !items-start">
+              <p className="text-tiny text-white/60 uppercase font-bold">Дополни образ</p>
+              <h4 className="text-white font-medium text-large">Мелкими деталями</h4>
+            </CardHeader>
+            <Image
+              removeWrapper
+              alt="Card background"
+              className="z-0 w-full h-full object-cover"
+              src={accessories}
+            />
+          </Card>
+        </Link>
+
+        {/* <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5">
           <CardHeader className="absolute z-10 top-1 flex-col items-start">
             <p className="text-tiny text-white/60 uppercase font-bold">New</p>
             <h4 className="text-black font-medium text-2xl">Acme camera</h4>
@@ -122,7 +132,7 @@ export default function ProductsCards(): JSX.Element {
               Get App
             </Button>
           </CardFooter>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );
