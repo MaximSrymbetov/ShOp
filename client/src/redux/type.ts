@@ -1,4 +1,4 @@
-import type { User } from "../features/Auth/types/type";
+import type { User } from '../features/Auth/types/type';
 
 export type Action =
   | { type: 'auth/registration'; payload: User }

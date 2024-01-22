@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/store';
-import type { User } from './types/type';
+import * as api from '../../App/api';
 
 function AuthorizationPage(): JSX.Element {
   const [email, setEmail] = useState('');
@@ -11,25 +11,21 @@ function AuthorizationPage(): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const onHeandlerSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<User> => {
+  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const res = await fetch('/api/auth/login', {
-      method: 'post',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-  
-    const data = await res.json();
-    console.log(data);
-
-    if (data.message === 'success') {
-      dispatch({ type: 'auth/authorization', payload: data.user });
-      navigate('/');
-    }
+    api
+      .FetchAuthUser({ email, password })
+      .then((data) => {
+        if (data.message === 'success') {
+          dispatch({ type: 'auth/authorization', payload: data.userDB });
+          navigate('/');
+        }
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div>
-      <form onSubmit={onHeandlerSubmit}>
+      <form onSubmit={onHandleSubmit}>
         <input
           type="email"
           name="email"

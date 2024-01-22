@@ -15,7 +15,7 @@ export type Authentication = {
 };
 
 export type Registration = {
-  name:string;
+  name: string;
   email: string;
   password: string;
   phone: string;

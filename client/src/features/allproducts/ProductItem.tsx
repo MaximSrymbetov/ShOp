@@ -1,7 +1,12 @@
 import React from 'react';
-import { Product } from './types/type';
+import type { Product } from './types/type';
 
-function ProductItem({ image, product }: { image: string; product: Product }): JSX.Element {
+type ProductItemProps = {
+  image: { src: string };
+  product: Product;
+};
+
+function ProductItem({ image, product }: ProductItemProps): JSX.Element {
   return (
     <div className="boxItem">
       <div>

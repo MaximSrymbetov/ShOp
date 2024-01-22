@@ -38,14 +38,3 @@ function RegistrationPage(): JSX.Element {
 }
 
 export default RegistrationPage;
-
-// const res = await fetch('/api/auth/login', {
-//   method: 'post',
-//   headers: { 'Content-type': 'application/json' },
-//   body: JSON.stringify({ email, password }),
-// });
-// const data = res.json();
-// if (data.success === 'success') {
-//   dispatch({ type: 'auth/authorization', payload: data.user });
-//   navigate('/');
-// }

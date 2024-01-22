@@ -9,7 +9,7 @@ export const FetchAuthUser = async ({
 }: {
   email: string;
   password: string;
-}): Promise<User> => {
+}): Promise<{ userDB: User; message: string }> => {
   const data = await fetch('/api/auth/login', {
     method: 'post',
     headers: { 'Content-type': 'application/json' },
@@ -40,6 +40,6 @@ export const FetchRegistration = async ({
 
 export const FetchLogout = async (): Promise<void> => {
   const data = await fetch('/api/auth/logout');
- // eslint-disable-next-line @typescript-eslint/return-await
+  // eslint-disable-next-line @typescript-eslint/return-await
   return await data.json();
 };
