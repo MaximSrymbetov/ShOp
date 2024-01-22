@@ -17,9 +17,9 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from '@nextui-org/react';
-import { Outlet } from 'react-router-dom';
-import AcmeLogo from './AcmeLogo';
-import SearchIcon from './SearchIcon';
+import { NavLink, Outlet } from 'react-router-dom';
+import AcmeLogo from './icons/AcmeLogo';
+import SearchIcon from './icons/SearchIcon';
 
 export default function NavBar(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -35,6 +35,7 @@ export default function NavBar(): JSX.Element {
     'Team Settings',
     'Help & Feedback',
     'Log Out',
+    'It is for ADMIN :)',
   ];
   return (
     <>
@@ -44,24 +45,30 @@ export default function NavBar(): JSX.Element {
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             className="sm:hidden"
           />
+
           <NavbarBrand className="mr-4">
             <AcmeLogo />
-            <p className="hidden sm:block font-bold text-inherit">ACME</p>
+
+            <NavLink to="/">
+              <p color="black" className="hidden sm:block font-bold text-inherit">
+                ACME
+              </p>
+            </NavLink>
           </NavbarBrand>
           <NavbarContent className="hidden sm:flex gap-3">
             <NavbarItem>
               <Link color="foreground" href="/">
-                Features
+                Главная
               </Link>
             </NavbarItem>
             <NavbarItem isActive>
-              <Link href="/" aria-current="page" color="secondary">
-                Customers
+              <Link href="/products" aria-current="page" color="secondary">
+                Каталог
               </Link>
             </NavbarItem>
             <NavbarItem>
               <Link color="foreground" href="/">
-                Integrations
+                Категории
               </Link>
             </NavbarItem>
           </NavbarContent>
@@ -106,6 +113,9 @@ export default function NavBar(): JSX.Element {
               <DropdownItem key="logout" color="danger">
                 Log Out
               </DropdownItem>
+              <DropdownItem key="ADMIN" href="/admin">
+                ADMIN
+              </DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </NavbarContent>
@@ -114,7 +124,7 @@ export default function NavBar(): JSX.Element {
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color={
-                  index === 2 ? 'primary' : (index === menuItems.length - 1) ? 'danger' : 'foreground'
+                  index === 2 ? 'primary' : index === menuItems.length - 1 ? 'danger' : 'foreground'
                 }
                 className="w-full"
                 href="/"
