@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './admin.css';
 import AddProduct from './AddProduct';
+import AllOrders from './AllOrders';
+// import OrderTable from './OrderTable';
 // import AddProduct from './AddProduct';
 
 // import { useSelector } from 'react-redux';
@@ -23,9 +25,13 @@ function AdminPage(): JSX.Element {
             .map((product) => <ProductItem product={product} key={product.id} />)
         : products.map((product) => <ProductItem product={product} key={product.id} />)} */}
 
-<h2>ПРИВЕТИК АДМИН</h2>
-<AddProduct/>
-      <button  className='text-box'type="button" onClick={() => navigate(-1)}>
+      <h2>ПРИВЕТИК АДМИН</h2>
+      <AddProduct />
+      <AllOrders />
+      {/* <OrderTable /> */}
+      
+      <div><a href="/OrderTable">ЗАКАЗЫ</a></div>
+      <button className="text-box" type="button" onClick={() => navigate(-1)}>
         Назад
       </button>
     </div>

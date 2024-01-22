@@ -9,9 +9,9 @@ function Allroducts(): JSX.Element {
   const products = useSelector((store: RootState) => store.products.products);
   const [info, setInfo] = useState('')
   const [value, setValue] = useState('');
-  console.log(info);
+  
   const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
-
+  
   return (
     <div>
       <select value={info} onChange={(e) => setInfo(e.target.value)}>
