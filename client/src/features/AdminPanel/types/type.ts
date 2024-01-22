@@ -7,4 +7,12 @@ export type Product = {
 
 };
 
-export type ProductId = Product['id'];
+// export type ProductId = Product['id'];
+
+
+export type Order={
+  user_id: number;
+  status:string;
+  total:string;
+  delivery_status:string;
+}

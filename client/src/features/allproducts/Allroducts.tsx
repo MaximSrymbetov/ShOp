@@ -13,9 +13,10 @@ function Allroducts(): JSX.Element {
   useEffect(() => {
     setValue(info);
   }, [info]);
-
+  
+  
   const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
-
+  
   return (
     <div>
       <select value={info} onChange={(e) => setInfo(e.target.value)}>
