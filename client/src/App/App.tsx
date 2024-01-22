@@ -28,7 +28,7 @@ function App(): JSX.Element {
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
-          <Route path="/allproducts" element={<Allroducts />} />
+          <Route path="/products" element={<Allroducts />} />
           <Route path="/orderTable" element={<OrderTable />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
