@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     const products = await Product.findAll({
       include: { model:  Image  },
     });
-    console.log(products);
+
     return res.status(200).json(products);
   } catch (error) {
     console.error(error);

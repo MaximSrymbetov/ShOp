@@ -9,6 +9,7 @@ function Allroducts(): JSX.Element {
   const products = useSelector((store: RootState) => store.products.products);
   const [value, setValue] = useState('');
   const filterProducts = products.filter((product) => product.name.toLowerCase().includes(value));
+  console.log(filterProducts[49]);
 
   return (
     <div>
