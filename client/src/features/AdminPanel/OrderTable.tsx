@@ -13,11 +13,12 @@ import {
 } from '@nextui-org/react';
 import type { Key } from 'react';
 import { useSelector } from 'react-redux';
-import EditIcon from './icons/EditIcon';
-import DeleteIcon from './icons/DeleteIcon';
+// import EditIcon from './icons/EditIcon';
+// import DeleteIcon from './icons/DeleteIcon';
 import EyeIcon from './icons/Eyelcon';
 import type { RootState } from '../../redux/store';
 import type { Order } from './types/type';
+import { Link } from 'react-router-dom';
 
 // const statusColorMap = {
 //   created: 'warning',
@@ -30,13 +31,12 @@ import type { Order } from './types/type';
 const columns = [
   { name: 'КЛИЕНТЫ', uid: 'name' },
   { name: 'СУММА', uid: 'total' },
-  { name: 'STATUS', uid: 'status' },
-  { name: 'ИЗМИНЕНИЯ', uid: 'actions' },
+  { name: 'СТАТУС', uid: 'status' },
+  { name: 'ИЗМEНЕНИЯ', uid: 'actions' },
 ];
 
 export default function OrderTable(): JSX.Element {
   const orders = useSelector((store: RootState) => store.orders.orders);
-  console.log(orders);
   // const users=orders.map((order)=>order.User)
   // const totals=orders.map((order)=>order.total)
 
@@ -68,21 +68,25 @@ export default function OrderTable(): JSX.Element {
       case 'actions':
         return (
           <div className="relative flex items-center gap-2">
-            <Tooltip content="Details">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EyeIcon />
-              </span>
-            </Tooltip>
-            <Tooltip content="Edit user">
+            <Link to={`/order/${order.id}/update`}>
+              <Tooltip content="Details">
+                <span className="text-lg text-default-300 cursor-pointer active:opacity-50">
+                  {/* <a href="/OrderTable">👁</a> */}
+
+                  <EyeIcon />
+                </span>
+              </Tooltip>
+            </Link>
+            {/* <Tooltip content="Edit user">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                 <EditIcon />
               </span>
-            </Tooltip>
-            <Tooltip color="danger" content="Delete user">
+            </Tooltip> */}
+            {/* <Tooltip color="danger" content="Delete user">
               <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                <DeleteIcon />
+              <DeleteIcon />
               </span>
-            </Tooltip>
+            </Tooltip> */}
           </div>
         );
       default:
