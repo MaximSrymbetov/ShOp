@@ -5,7 +5,6 @@ import type { Order } from './types/type';
 
 export const FetchOrderall = async (): Promise<Order[]> => {
   const {data} = (await axios('/api/order'))
-console.log(data);
 
   return data.orders;
 };
