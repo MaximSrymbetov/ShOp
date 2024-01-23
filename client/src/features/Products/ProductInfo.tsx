@@ -1,26 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { SwiperSlide, Swiper } from 'swiper/react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import type { RootState } from '../../redux/store';
+
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
+
+import './styles.css';
 
 function ProductInfo(): JSX.Element {
   const { idProduct } = useParams();
-
-  console.log(idProduct);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const products = useSelector((store: RootState) => store.products.products);
-  const product = products.find((product) => product.id === Number(idProduct));
-  // localStorage.setItem('product', JSON.stringify(product));
-
-  // const productInfo((JSON.parse(localStorage.getItem('product'))));
+  const product = products.find((produc) => produc.id === Number(idProduct));
 
   return (
-    <div>
-      {product && product.Images.map((image) => (
-        <img src={image.src} />
-      ))}
+    <div className='boxitem'>
+      <>
+        <Swiper
+          style={{
+            '--swiper-navigation-color': '#fff',
+            '--swiper-pagination-color': '#fff',
+          }}
+          loop={true}
+          spaceBetween={10}
+          navigation={true}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="mySwiper2"
+        >
+          {product &&
+            product.Images.map((image) => (
+              <SwiperSlide className='swiperbox'>
+                <img src={image.src} alt="img" />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          loop={true}
+          spaceBetween={10}
+          slidesPerView={4}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="mySwiper"
+        >
+          {product &&
+            product.Images.map((image) => (
+              <SwiperSlide>
+                <img src={image.src} alt="img" />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </>
     </div>
   );
 }
 
 export default ProductInfo;
+// {product &&
+//   product.Images.map((image) => (
+//     <SwiperSlide>
+//       <img src={image.src} alt="img" />
+//     </SwiperSlide>
+//   ))}

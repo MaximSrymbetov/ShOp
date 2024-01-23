@@ -1,6 +1,6 @@
 import React from 'react';
-import type { Product } from './types/type';
 import { NavLink } from 'react-router-dom';
+import type { Product } from './types/type';
 // import { image } from '@nextui-org/react';
 
 type ProductItemProps = {
@@ -9,6 +9,8 @@ type ProductItemProps = {
 };
 
 function ProductItem({ product }: ProductItemProps): JSX.Element {
+  // console.log(product);
+  
   return (
     <div className="boxItem">
       <NavLink to={`/product/${product.id}`}>
