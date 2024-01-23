@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
-import { addProducts } from '../allproducts/productSlice';
+import { addProducts } from '../Products/productSlice';
 
 function AddProduct(): JSX.Element {
   const [categoryid, setCategoryid] = useState('');

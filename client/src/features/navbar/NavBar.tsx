@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Navbar,
   NavbarBrand,
@@ -37,6 +37,7 @@ export default function NavBar(): JSX.Element {
     'Log Out',
     'It is for ADMIN :)',
   ];
+
   return (
     <>
       <Navbar isBordered shouldHideOnScroll onMenuOpenChange={setIsMenuOpen}>
