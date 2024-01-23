@@ -13,6 +13,11 @@ import AdminPage from '../features/AdminPanel/AdminPage';
 import { allorders } from '../features/AdminPanel/orderSlice';
 import OrderTable from '../features/AdminPanel/OrderTable';
 import ProductInfo from '../features/Products/ProductInfo';
+import ProductsMan from '../features/Products/ProductsMen';
+import ProductsWoman from '../features/Products/ProductsWomen';
+import ProductsShoes from '../features/Products/ProductsShoes';
+import ProductsClothes from '../features/Products/ProductsClothes';
+import ProductsAccessories from '../features/Products/ProductsAccessories';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -32,6 +37,11 @@ function App(): JSX.Element {
           <Route path="/products" element={<Allroducts />} />
           <Route path="/product/:idProduct" element={<ProductInfo />} />
           <Route path="/orderTable" element={<OrderTable />} />
+          <Route path="/men" element={<ProductsMan />} />
+          <Route path="/women" element={<ProductsWoman />} />
+          <Route path="/category/accessories" element={<ProductsAccessories />} />
+          <Route path="/category/clothes" element={<ProductsClothes />} />
+          <Route path="/category/shoes" element={<ProductsShoes />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
