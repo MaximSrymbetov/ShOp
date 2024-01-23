@@ -14,16 +14,13 @@ const initialState: StateOrder = {
 
 export const allorders = createAsyncThunk('order/load', () => api.FetchOrderall());
 
-// export const addProducts = createAsyncThunk(
-//   'add/products',
-//   (product: {
-//     categoryid: number;
-//     genderid: number;
-//     name: string;
-//     description: string;
-//     price: string;
-//   }) => api.fetchAddProducts(product),
+// export const deleteProduct = createAsyncThunk('delete/product', (productId: ProductId) =>
+//   api.fetchDeleteProduct(productId),
 // );
+
+export const updateOrder = createAsyncThunk('update/order', (order: Order) =>
+  api.fetchUpdateOrder(order),
+);
 
 const orderSlice = createSlice({
   name: 'orders',
@@ -36,13 +33,22 @@ const orderSlice = createSlice({
       })
       .addCase(allorders.rejected, (state, action) => {
         state.error = action.error.message;
+      })
+
+      // .addCase(deleteProduct.fulfilled, (state, action) => {
+      //   state.products = state.products.filter((product) => product.id !== +action.payload.id);
+      // })
+      // .addCase(deleteProduct.rejected, (state, action) => {
+      //   state.error = action.error.message;
+      // })
+      .addCase(updateOrder.fulfilled, (state, action) => {
+        state.orders = state.orders.map((order) =>
+          order.id === +action.payload.order.id ? action.payload.order : order,
+        );
+      })
+      .addCase(updateOrder.rejected, (state, action) => {
+        state.error = action.error.message;
       });
-    // .addCase(addProducts.fulfilled, (state, action) => {
-    //   state.products.push(action.payload.product);
-    // })
-    // .addCase(addProducts.rejected, (state, action) => {
-    //   state.error = action.error.message;
-    // })
   },
 });
 
