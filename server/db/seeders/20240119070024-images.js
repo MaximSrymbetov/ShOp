@@ -86,6 +86,12 @@ module.exports = {
         },
         {
           product_id: 5,
+          src: '/img/Yeezy 500.5.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 5,
           src: '/img/Yeezy500.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -207,19 +213,19 @@ module.exports = {
         },
         {
           product_id: 9,
-          src: '//img/Air Jordan 1 low se Mighty swooshers.jpeg',
+          src: '/img/Air Jordan 1 low se Mighty swooshers.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           product_id: 9,
-          src: '/img/Air Jordan 1 low se Mighty swooshers.1.jpeg',
+          src: '/img/Air Jordan 1 low se Mighty swooshers.3.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           product_id: 9,
-          src: '/img/Air Jordan 1 low se Mighty swooshers.2.jpeg',
+          src: '/img/Air Jordan 1 low se Mightyswooshers.2.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -231,7 +237,7 @@ module.exports = {
         },
         {
           product_id: 10,
-          src: '/img/Air Jordan 4 retro se amethystwave.1.jpeg',
+          src: '/img/Air Jordan 4 retro se amethystwave .1.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -315,13 +321,13 @@ module.exports = {
         },
         {
           product_id: 14,
-          src: '/img/New Balance 2002r.jpeg',
+          src: '/img/New Balance 2002r.1.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           product_id: 14,
-          src: '/img/New Balance 2002r.1.jpeg',
+          src: '/img/New Balance 2002r.5.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -339,7 +345,8 @@ module.exports = {
         },
         {
           product_id: 14,
-          src: '/img/New Balance 2002r.5.jpeg',
+          
+          src: '/img/New Balance 2002r.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -351,13 +358,7 @@ module.exports = {
         },
         {
           product_id: 15,
-          src: '/img/New Balance 9060 WorkWear.2.jpeg' ,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          product_id: 15,
-          src: '/img/New Balance 9060 WorkWear.3.jpeg',
+          src: '/img/New Balance 9060 WorkWear.3.jpeg' ,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -370,6 +371,12 @@ module.exports = {
         {
           product_id: 15,
           src: '/img/New Balance 9060 WorkWear.jpeg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 15,
+          src: '/img/New Balance 9060 WorkWear.2.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -779,6 +786,48 @@ module.exports = {
         {
           product_id: 46,
           src: '/img/VANS T-shirt white.1.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 47,
+          src: '/img/DICKIES authomatic.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 47,
+          src: '/img/DICKIES authomatic.1.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 48,
+          src: '/img/LV Pouch bag Monogram.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 48,
+          src: '/img/LV Pouch bag Monogram.1.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 48,
+          src: '/img/LV Pouch bag Monogram.2.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 48,
+          src: '/img/LV Pouch bag Monogram.3.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 48,
+          src: '/img/LV Pouch bag Monogram.4.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
