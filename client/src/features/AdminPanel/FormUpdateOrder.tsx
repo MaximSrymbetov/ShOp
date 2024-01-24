@@ -3,14 +3,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from 'react';
+import {Select, SelectItem} from "@nextui-org/react";
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch, type RootState } from '../../redux/store';
-
+import './Add.css';
 import { updateOrder } from './orderSlice';
 
 import type { Order } from './types/type';
+
 
 function FormUpdateOrder(): JSX.Element {
   const { id } = useParams();
@@ -38,13 +40,20 @@ function FormUpdateOrder(): JSX.Element {
     );
     navigate('/orderTable');
   };
-console.log(order?.Order_info);
+  console.log(order?.Order_info);
+
+  
+  
+
+
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <div className='container mx-auto flex justify-center min-w 1/3'>
+    <form onSubmit={handleSubmit(onSubmit)} className='iii'>
+      
       <select defaultValue={order?.status} {...register('status')}>
-        <option className="checkbox" value="created">
-          Создан
+        <option className="checkbox"  value="created" >
+          Создан 
         </option>
         <option className="checkbox" value="confirmed">
           Ожидает оплаты
@@ -59,11 +68,16 @@ console.log(order?.Order_info);
           Закрыт
         </option>
       </select>
-      <input type="text" defaultValue={order?.total} required {...register('total')} />
+      <div className="text-field">
+      <label className="text-field__label">Сумма</label>
+      <input type="text" className='text-field__input' defaultValue={order?.total} required {...register('total')} />
+      </div>
       <button type="submit">Изменить</button>
-    
-      {order?.Order_info.address}
+
+      <p>{order?.Order_info.address}</p>
+      <p>{order?.Order_info.phone}</p>
     </form>
+    </div>
   );
 }
 
