@@ -16,14 +16,10 @@ export const allproducts = createAsyncThunk('product/load', () => api.FetchProdu
 
 export const addProducts = createAsyncThunk(
   'add/products',
-  (product: {
-    category_id: number;
-    gender_id: number;
-    name: string;
-    description: string;
-    price: string;
-  }) => api.fetchAddProducts(product),
-);
+  (formData:FormData)=>api.fetchAddProducts(formData)
+  
+  
+)
 
 const productSlice = createSlice({
   name: 'products',

@@ -4,6 +4,9 @@ import './admin.css';
 import AddProduct from './AddProduct';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
+import ProductItemAdmin from './ProductItemAdmin';
+import Allroducts from '../Products/ProductsList';
+import ProductsListAdmin from './ProductsListAdmin';
 
 
 function AdminPage(): JSX.Element {
@@ -25,6 +28,7 @@ function AdminPage(): JSX.Element {
         Назад
       </button>
       {/* {newP.name} */}
+      {/* <ProductsListAdmin/> */}
     </div>
   );
 }
