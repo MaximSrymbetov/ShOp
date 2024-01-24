@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
@@ -31,7 +32,7 @@ function AuthorizationPage(): JSX.Element {
     try {
       dispatch(login(data)).catch((err) => console.error(err));
       reset();
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       setError('password', { type: 'manual', message: `${error}` });
     }

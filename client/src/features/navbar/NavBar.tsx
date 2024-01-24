@@ -30,7 +30,7 @@ export default function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleLogout = async (): Promise<void> => {
+  const handleLogout = (): void => {
     dispatch(logout()).catch((err) => console.error(err));
     navigate('/');
   };
