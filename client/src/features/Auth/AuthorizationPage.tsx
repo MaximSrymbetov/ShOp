@@ -34,7 +34,8 @@ function AuthorizationPage(): JSX.Element {
     }
   };
   return (
-    <div className="container mx-auto w-1/5">
+    <div className="container mx-auto my-24 w-4/5 sm:w-1/5">
+      <p className="font-bold text-xl mb-4">Войдите в свой аккаунт</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           className="py-2"
@@ -50,7 +51,7 @@ function AuthorizationPage(): JSX.Element {
           {...register('password', { required: 'Введите ваш пароль!' })}
         />
         {errors.password && <p>{errors.password.message}</p>}
-        <Button className="py-2" type="submit">
+        <Button className="py-2 mt-4" type="submit">
           Войти
         </Button>
       </form>

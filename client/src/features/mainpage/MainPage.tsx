@@ -10,7 +10,6 @@ export default function MainPage(): JSX.Element {
       <Greeting />
       <CategoriesCards />
       <ProductsSwiper />
-      <Footer />
     </div>
   );
 }
