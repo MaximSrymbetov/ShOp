@@ -8,13 +8,61 @@ module.exports = {
       [
         {
           product_id: 1,
-          src: 'https://ae01.alicdn.com/kf/HTB1XWErRFXXXXa8XXXXq6xXFXXXt.jpg',
+          src: '/img/Nike Element 55 SlidePink.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 1,
+          src: '/img/Nike Element 55 SlidePink.1.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 1,
+          src: '/img/Nike Element 55 SlidePink.2.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 1,
+          src: '/img/Nike Element 55 SlidePink.3.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 1,
+          src: '/img/Nike Element 55 SlidePink.4.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           product_id: 2,
-          src: 'https://ae01.alicdn.com/kf/H62675a7cf8d4452984bc38fbb9d9e1827.jpg',
+          src: '/img/Nike Counrt Borough 2.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 2,
+          src: '/img/Nike Counrt Borough 2.1.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 2,
+          src: '/img/Nike Counrt Borough 2.2.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 2,
+          src: '/img/Nike Counrt Borough 2.3.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 2,
+          src: '/img/Nike Counrt Borough 2.4.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -828,6 +876,24 @@ module.exports = {
         {
           product_id: 48,
           src: '/img/LV Pouch bag Monogram.4.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 49,
+          src: '/img/Adidas brick.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 49,
+          src: '/img/Adidas brick.1.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          product_id: 49,
+          src: '/img/Adidas brick.2.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },

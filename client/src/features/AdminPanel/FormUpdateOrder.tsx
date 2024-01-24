@@ -26,7 +26,6 @@ function FormUpdateOrder(): JSX.Element {
   const { register, handleSubmit } = useForm({
     defaultValues: { status: order?.status, total: order?.total },
   });
-  
 
   // const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
   //   e.preventDefault();
