@@ -5,6 +5,7 @@ const {
   User,
   Order_info,
   Product,
+  Image,
 } = require('../../db/models');
 
 // router.delete('/:id/destroy', async (req, res) => {
@@ -30,7 +31,10 @@ router.put('/update/:id', async (req, res) => {
       const order = await Order.findOne({
         where: { id },
         include: [
-          { model: Order_item, include: { model: Product } },
+          {
+            model: Order_item,
+            include: { model: Product, include: { model: Image } },
+          },
           { model: Order_info },
           { model: User },
         ],
@@ -49,7 +53,10 @@ router.get('/', async (req, res) => {
   try {
     const orders = await Order.findAll({
       include: [
-        { model: Order_item, include: { model: Product } },
+        {
+          model: Order_item,
+          include: { model: Product, include: { model: Image } },
+        },
         { model: Order_info },
         { model: User },
       ],
