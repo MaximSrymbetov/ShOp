@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './admin.css';
 import { useSelector } from 'react-redux';
 import AddProduct from './AddProduct';
-import { RootState } from '../../redux/store';
+import type { RootState } from '../../redux/store';
 // import { useSelector } from 'react-redux';
 // import { store, type RootState } from '../../redux/store';
 // import ProductItemAdmin from './ProductItemAdmin';
@@ -19,7 +19,7 @@ function AdminPage(): JSX.Element {
   const user = useSelector((state: RootState) => state.auth.user);
 
   return (
-    <>
+    <div>
       {user ? (
         <div>
           <h2>АДМИН</h2>
@@ -37,7 +37,7 @@ function AdminPage(): JSX.Element {
       ) : (
         <>{navigate('/404')}</>
       )}
-    </>
+    </div>
   );
 }
 export default AdminPage;
