@@ -35,7 +35,7 @@ export default function NavBar(): JSX.Element {
     navigate('/');
   };
 
-  const menuItems = ['Главная', 'Каталог', 'Категории', 'It is for ADMIN :)'];
+  const menuItems = ['Главная', 'Каталог', 'Категории', 'Корзина', 'It is for ADMIN :)'];
 
   return (
     <>
@@ -67,8 +67,13 @@ export default function NavBar(): JSX.Element {
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link color="foreground" href="/">
+              <Link color="foreground" href="/category">
                 Категории
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link color="foreground" href="/cart">
+                Корзина
               </Link>
             </NavbarItem>
           </NavbarContent>
@@ -113,13 +118,17 @@ export default function NavBar(): JSX.Element {
                 <DropdownItem key="logout" color="danger" onClick={handleLogout}>
                   Выйти
                 </DropdownItem>
-                <DropdownItem key="ADMIN" href="/admin">
-                  ADMIN
-                </DropdownItem>
+                {user.isAdmin ? (
+                  <DropdownItem key="ADMIN" href="/admin">
+                    ADMIN
+                  </DropdownItem>
+                ) : (
+                  <DropdownItem className="hidden" />
+                )}
               </DropdownMenu>
             </Dropdown>
           ) : (
-            <NavLink to="/login">Войти</NavLink>
+            <a href="/login">Войти</a>
           )}
         </NavbarContent>
         <NavbarMenu>
