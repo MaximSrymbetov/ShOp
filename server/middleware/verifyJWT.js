@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const cookiesConfig = require('../config/cookiesConfig');
-const { generateTokens } = require('../utils/authUtils');
+const generateTokens = require('../utils/authUtils');
 
 function verifyAccessToken(req, res, next) {
   try {
