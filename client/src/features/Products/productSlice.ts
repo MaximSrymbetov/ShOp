@@ -5,11 +5,13 @@ import * as api from './api';
 export type StateProduct = {
   products: Product[];
   error: undefined | string;
+  loading: false | true;
 };
 
 const initialState: StateProduct = {
   products: [],
   error: undefined,
+  loading: false,
 };
 
 export const allproducts = createAsyncThunk('product/load', () => api.FetchProductall());
@@ -24,7 +26,11 @@ export const addProducts = createAsyncThunk(
 const productSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    stopLoading: (state) => {
+      state.loading = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(allproducts.fulfilled, (state, action) => {
@@ -33,6 +39,10 @@ const productSlice = createSlice({
       .addCase(allproducts.rejected, (state, action) => {
         state.error = action.error.message;
       })
+      .addCase(allproducts.pending, (state) => {
+        state.loading = true;
+      })
+
       .addCase(addProducts.fulfilled, (state, action) => {
         state.products.push(action.payload.product);
       })
@@ -41,5 +51,7 @@ const productSlice = createSlice({
       });
   },
 });
+
+export const { stopLoading } = productSlice.actions;
 
 export default productSlice.reducer;

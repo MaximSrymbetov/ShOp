@@ -12,15 +12,16 @@ import './styles/swiper.css';
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
-import { Card, CardBody, CardFooter, Image } from '@nextui-org/react';
+import { Card, CardBody, CardFooter, Image, Spinner } from '@nextui-org/react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 
 export default function ProductsSwiper(): JSX.Element {
+  const loading = useSelector((store: RootState) => store.products.loading);
   const products = useSelector((store: RootState) => store.products.products);
-  const sneakers = products.filter((product) => product.category_id === 2).slice(1, 9);
+  const sneakers = products.filter((product) => product.category_id === 2).slice(0, 7);
 
-  return (
+  const content = (
     <div className="swiper-container">
       <Swiper
         slidesPerView={3}
@@ -31,7 +32,7 @@ export default function ProductsSwiper(): JSX.Element {
         }}
         navigation
         modules={[Pagination, Navigation]}
-        className="w-screen height-full sm:w-4/5 "
+        className="w-screen height-full pt-5 sm:w-4/5 "
         freeMode
         loop
         preventClicks
@@ -44,7 +45,7 @@ export default function ProductsSwiper(): JSX.Element {
       >
         {sneakers &&
           sneakers.map((prod) => (
-            <SwiperSlide key={prod.id}>
+            <SwiperSlide>
               <Link to={`/product/${prod.id}`}>
                 <Card>
                   <CardBody className="overflow-visible p-0">
@@ -69,4 +70,5 @@ export default function ProductsSwiper(): JSX.Element {
       </Swiper>
     </div>
   );
+  return <div>{loading ? <Spinner /> : <div>{content}</div>}</div>;
 }

@@ -26,16 +26,14 @@ function FormUpdateOrder(): JSX.Element {
   const { register, handleSubmit } = useForm({
     defaultValues: { status: order?.status, total: order?.total },
   });
+  
 
   // const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
   //   e.preventDefault();
   //   dispatch(updateOrder({ ...order, status, total }));s
   //   navigate(-1);
   // };
-  const onSubmit = async (data: {
-    total: string | undefined;
-    status: string | undefined;
-  }): Promise<void> => {
+  const onSubmit = (data: { total: string | undefined; status: string | undefined }): void => {
     dispatch(updateOrder({ ...order, total: data.total, status: data.status })).catch((err) =>
       console.error(err),
     );

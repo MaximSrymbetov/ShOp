@@ -2,7 +2,6 @@ import React from 'react';
 import Greeting from './Greeting';
 import CategoriesCards from './CategoriesCards';
 import ProductsSwiper from './ProductsSwiper';
-import Footer from '../footer/Footer';
 
 export default function MainPage(): JSX.Element {
   return (
@@ -10,7 +9,6 @@ export default function MainPage(): JSX.Element {
       <Greeting />
       <CategoriesCards />
       <ProductsSwiper />
-      <Footer />
     </div>
   );
 }
