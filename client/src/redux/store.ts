@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import productSlice from '../features/allproducts/productSlice';
+import productSlice from '../features/Products/productSlice';
 import orderSlice from '../features/AdminPanel/orderSlice';
 import authSlice from '../features/Auth/types/authSlice';
 

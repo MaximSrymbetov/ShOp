@@ -33,9 +33,9 @@ function Allroducts(): JSX.Element {
         <input type="text" placeholder="ывводи" onChange={(e) => setValue(e.target.value)} />
       </form>
       <div>
-        {searchProducts.map((product) =>
-          product.Images.map((image) => <ProductItem image={image} product={product} />),
-        )}
+        {searchProducts.map((product) => (
+          <ProductItem product={product} key={product.id} />
+        ))}
       </div>
     </div>
   );
