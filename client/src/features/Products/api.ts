@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import axios from 'axios';
 import type { Product } from './types/type';
 
 export const FetchProductall = async (): Promise<Product[]> => {
@@ -8,21 +7,19 @@ export const FetchProductall = async (): Promise<Product[]> => {
   return data;
 };
 
-export const fetchAddProducts = async (formData:FormData):Promise<Product>=>{
+export const fetchAddProducts = async (formData: FormData): Promise<Product> => {
+  const res = await fetch('/api/product/add', {
+    method: 'POST',
+    body: formData,
+  });
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+  }
+  console.log(res);
 
-  
-  const res=(await fetch('/api/product/add',{
-    method:'POST',
-    body:formData
-}))
-if (!res.ok) {
-  const { message } = await res.json();
-  throw message;
-}
-console.log(res);
+  const data: Product = await res.json();
+  console.log(data);
 
-const data:Product = await res.json();
-console.log(data);
-
-return data
+  return data;
 };
