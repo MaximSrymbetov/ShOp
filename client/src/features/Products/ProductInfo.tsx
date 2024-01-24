@@ -10,7 +10,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
-import './styles.css';
+import './styles/styles.css';
 
 function ProductInfo(): JSX.Element {
   const { idProduct } = useParams();
