@@ -48,7 +48,7 @@ export default function ProductsSwiper(): JSX.Element {
         }}
       >
         {productImg.map((prod, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={prod.slice(153, 161)}>
             <Link to={`/products/${index}`}>
               <Card>
                 <CardBody className="overflow-visible p-0">

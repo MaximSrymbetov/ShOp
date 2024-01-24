@@ -9,7 +9,7 @@ function AllOrders(): JSX.Element {
   const orders = useSelector((store: RootState) => store.orders.orders);
   console.log(orders);
 
-  return <div>{orders ? orders.map((el) => <p>{el.status}</p>) : <p>pusto</p>}</div>;
+  return <div>{orders ? orders.map((el) => <p key={el.id}>{el.status}</p>) : <p>pusto</p>}</div>;
 }
 
 export default AllOrders;

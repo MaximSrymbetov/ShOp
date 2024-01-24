@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
   try {
     const orders = await Order.findAll({
       include: [
-        { model: Order_item, include:{model:Product}},
+        { model: Order_item, include: { model: Product } },
         { model: Order_info },
         { model: User },
       ],
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
       // include: { model: User }
       //  include: { model: Order_item },
     });
-    console.log(orders, '!!!!!!!!!');
+
     return res.status(200).json({ message: 'success', orders });
   } catch (error) {
     console.error(error);

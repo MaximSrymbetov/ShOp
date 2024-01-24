@@ -4,8 +4,7 @@ import axios from 'axios';
 import type { Order } from './types/type';
 
 export const FetchOrderall = async (): Promise<Order[]> => {
-  const {data} = (await axios('/api/order'))
-console.log(data);
+  const { data }: { data: { message: string; orders: Order[] } } = await axios('/api/order');
 
   return data.orders;
 };

@@ -7,7 +7,7 @@ import GoIcon from './icons/GoIcon';
 
 export default function Greeting(): JSX.Element {
   return (
-    <div className="container min-w-full">
+    <div className="bg bg-fixed container min-w-full">
       <video className="background-video" autoPlay loop muted>
         <source src={comvideo} type="video/mp4" />
       </video>

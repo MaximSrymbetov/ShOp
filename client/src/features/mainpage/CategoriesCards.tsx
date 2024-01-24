@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardHeader, Image } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import menImg from '../../public/images/men.webp';
 import womenImg from '../../public/images/women.webp';
 import shoes from '../../public/images/shoe_5.jpg';
@@ -8,9 +9,12 @@ import clothes from '../../public/images/clothes.jpg';
 import accessories from '../../public/images/accessories.gif';
 
 export default function CategoriesCards(): JSX.Element {
+  const isLaptop = useMediaQuery({ minWidth: 1024 });
+  const isMobile = useMediaQuery({ maxWidth: 640 });
+
   return (
     <div className="container mx-auto py-5">
-      <div className="mx-auto max-w-[985px] gap-2 grid grid-cols-12 px-8">
+      <div className="mx-auto max-w-[1295px] gap-2 grid grid-cols-12 px-8">
         {/* MEN */}
         <Link to="/men" className="w-full h-[500px] col-span-12 sm:col-span-6">
           <Card className="w-full h-[500px] col-span-12 sm:col-span-6">
@@ -18,9 +22,9 @@ export default function CategoriesCards(): JSX.Element {
               <h4 className="text-white font-medium text-7xl">для него</h4>
             </CardHeader>
             <Image
-              removeWrapper
+              removeWrapper={!isLaptop || isMobile}
               alt="Men background"
-              className="z-0 w-full h-full   object-cover"
+              className="z-0 w-full h-full object-cover"
               src={menImg}
             />
           </Card>
@@ -33,9 +37,9 @@ export default function CategoriesCards(): JSX.Element {
               <h4 className="text-white font-medium text-7xl">для нее</h4>
             </CardHeader>
             <Image
-              removeWrapper
+              removeWrapper={!isLaptop || isMobile}
               alt="Men background"
-              className="z-0 w-full h-full   object-cover"
+              className="z-0 w-full h-full object-cover"
               src={womenImg}
             />
           </Card>

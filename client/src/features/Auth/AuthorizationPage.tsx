@@ -1,46 +1,58 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { Button, Input } from '@nextui-org/react';
 import { useAppDispatch } from '../../redux/store';
-import * as api from '../../App/api';
+import { login } from './types/authSlice';
+import type { Authorization } from './types/type';
 
 function AuthorizationPage(): JSX.Element {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    api
-      .FetchAuthUser({ email, password })
-      .then((data) => {
-        if (data.message === 'success') {
-          dispatch({ type: 'auth/authorization', payload: data.userDB });
-          navigate('/');
-        }
-      })
-      .catch((err) => console.log(err));
+  const onSubmit = (data: Authorization): void => {
+    try {
+      dispatch(login(data)).catch((err) => console.error(err));
+      reset();
+      navigate('/login');
+    } catch (error) {
+      setError('email', { type: 'manual', message: 'ошибка' });
+    }
   };
   return (
-    <div>
-      <form onSubmit={onHandleSubmit}>
-        <input
+    <div className="container mx-auto w-1/5">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          className="py-2"
           type="email"
-          name="email"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Введите вашу эл. почту"
+          {...register('email', { required: 'Введите вашу почту!' })}
         />
-        <input
+        {errors.email && <p>{errors.email.message}</p>}
+        <Input
+          className="py-2"
           type="password"
-          name="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Введите ваш пароль"
+          {...register('password', { required: 'Введите ваш пароль!' })}
         />
-        <button type="submit">Авторизироваться</button>
+        {errors.password && <p>{errors.password.message}</p>}
+        <Button className="py-2" type="submit">
+          Войти
+        </Button>
       </form>
     </div>
   );

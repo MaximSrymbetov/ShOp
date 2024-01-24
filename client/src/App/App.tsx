@@ -12,6 +12,7 @@ import { allproducts } from '../features/allproducts/productSlice';
 import AdminPage from '../features/AdminPanel/AdminPage';
 import { allorders } from '../features/AdminPanel/orderSlice';
 import OrderTable from '../features/AdminPanel/OrderTable';
+import Cart from '../features/cart/Cart';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -26,10 +27,11 @@ function App(): JSX.Element {
         <Route path="/" element={<NavBar />}>
           <Route path="/" element={<MainPage />} />
           <Route path="/admin" element={<AdminPage />} />
-          <Route path="/authorization" element={<AuthorizationPage />} />
-          <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="/login" element={<AuthorizationPage />} />
+          <Route path="/signin" element={<RegistrationPage />} />
           <Route path="/products" element={<Allroducts />} />
           <Route path="/orderTable" element={<OrderTable />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>

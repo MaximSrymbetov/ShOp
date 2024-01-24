@@ -3,7 +3,7 @@
 
 import type { User } from '../features/Auth/types/type';
 
-export const FetchAuthUser = async ({
+export const FetchLogin = async ({
   email,
   password,
 }: {
@@ -18,7 +18,7 @@ export const FetchAuthUser = async ({
   return data.json();
 };
 
-export const FetchRegistration = async ({
+export const FetchSignin = async ({
   name,
   email,
   password,
@@ -30,7 +30,7 @@ export const FetchRegistration = async ({
   phone: string;
 }): Promise<{ userDB: User; message: string }> => {
   const data = await fetch('/api/auth/signin', {
-    method: 'POST',
+    method: 'post',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify({ name, email, password, phone }),
   });
