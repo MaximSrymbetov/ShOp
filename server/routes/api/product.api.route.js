@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Product, Image } = require('../../db/models');
-
+const fileUpload = require('../../fileupload')
 router.get('/', async (req, res) => {
   try {
     const products = await Product.findAll({
@@ -15,19 +15,39 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/add', async (req, res) => {
-  const { category_id, gender_id, name, description, price } = req.body;
   try {
-    const product = await Product.create({
-      category_id,
-      gender_id,
-      name,
-      description,
-      price,
-    });
-    return res.status(200).json({ message: 'success' });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: error.message });
+    const { categoryid, genderid, name, description, price } = req.body;
+    console.log(req.body,'!!!!!!!!!!!!!!!');
+    const file = req.files?.src
+    const arrproductid = await Promise.all(file.map((el) => fileUpload(el)));
+    if (categoryid && genderid && name && description && price) {
+      const product = await Product.create({
+        category_id:categoryid,
+        gender_id:genderid,
+        name,
+        description,
+        price,
+      });
+      await Promise.all(
+        arrproductid.map((el) =>
+          Image.create({
+            src: el,
+            product_id: product.id,
+          })
+        )
+      );
+      const newProduct = await Product.findOne({
+        where: { id: product.id },
+        include: { model: Image },
+      });
+
+      res.status(201).json(newProduct);
+    } else {
+      res.status(400).json({ message: 'Заполните все поля' });
+    }
+  } catch ({ message }) {
+    console.log(message);
+    res.status(500).json({ message });
   }
 });
 
