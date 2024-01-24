@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
@@ -37,6 +38,7 @@ function AuthorizationPage(): JSX.Element {
   const onSubmit = (data: Authorization): void => {
     try {
       dispatch(login(data)).catch((err) => console.error(err));
+
     } catch (error) {
       setError('password', { type: 'manual', message: `${error}` });
     }

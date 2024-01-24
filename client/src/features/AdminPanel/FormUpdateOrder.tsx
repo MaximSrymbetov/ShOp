@@ -26,7 +26,6 @@ function FormUpdateOrder(): JSX.Element {
   const { register, handleSubmit } = useForm({
     defaultValues: { status: order?.status, total: order?.total },
   });
-  
 
   // const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
   //   e.preventDefault();
@@ -39,6 +38,7 @@ function FormUpdateOrder(): JSX.Element {
     );
     navigate('/orderTable');
   };
+console.log(order?.Order_info);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -59,8 +59,10 @@ function FormUpdateOrder(): JSX.Element {
           Закрыт
         </option>
       </select>
-      <input type="text" defaultValue={order?.total} {...register('total')} />
+      <input type="text" defaultValue={order?.total} required {...register('total')} />
       <button type="submit">Изменить</button>
+    
+      {order?.Order_info.address}
     </form>
   );
 }
