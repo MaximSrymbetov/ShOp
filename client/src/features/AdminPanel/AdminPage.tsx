@@ -2,8 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './admin.css';
 import AddProduct from './AddProduct';
-import { useSelector } from 'react-redux';
-import type { RootState } from '../../redux/store';
 
 
 function AdminPage(): JSX.Element {

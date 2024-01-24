@@ -20,45 +20,39 @@ function ProductInfo(): JSX.Element {
   const product = products.find((produc) => produc.id === Number(idProduct));
 
   return (
-    <div className='boxitem'>
-      <>
-        <Swiper
-          style={{
-            '--swiper-navigation-color': '#fff',
-            '--swiper-pagination-color': '#fff',
-          }}
-          loop={true}
-          spaceBetween={10}
-          navigation={true}
-          thumbs={{ swiper: thumbsSwiper }}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiper2"
-        >
-          {product &&
-            product.Images.map((image) => (
-              <SwiperSlide className='swiperbox'>
-                <img src={image.src} alt="img" />
-              </SwiperSlide>
-            ))}
-        </Swiper>
-        <Swiper
-          onSwiper={setThumbsSwiper}
-          loop={true}
-          spaceBetween={10}
-          slidesPerView={4}
-          freeMode={true}
-          watchSlidesProgress={true}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiper"
-        >
-          {product &&
-            product.Images.map((image) => (
-              <SwiperSlide>
-                <img src={image.src} alt="img" />
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </>
+    <div className="boxitem">
+      <Swiper
+        loop
+        spaceBetween={10}
+        navigation
+        thumbs={{ swiper: thumbsSwiper }}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="mySwiper2"
+      >
+        {product &&
+          product.Images.map((image) => (
+            <SwiperSlide className="swiperbox">
+              <img src={image.src} alt="img" />
+            </SwiperSlide>
+          ))}
+      </Swiper>
+      <Swiper
+        onSwiper={setThumbsSwiper}
+        loop
+        spaceBetween={10}
+        slidesPerView={4}
+        freeMode
+        watchSlidesProgress
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="mySwiper"
+      >
+        {product &&
+          product.Images.map((image) => (
+            <SwiperSlide>
+              <img src={image.src} alt="img" />
+            </SwiperSlide>
+          ))}
+      </Swiper>
     </div>
   );
 }
