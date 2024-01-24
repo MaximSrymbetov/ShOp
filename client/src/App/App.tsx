@@ -8,7 +8,7 @@ import AuthorizationPage from '../features/Auth/AuthorizationPage';
 import RegistrationPage from '../features/Auth/RegistrationPage';
 import Allroducts from '../features/Products/ProductsList';
 import { useAppDispatch } from '../redux/store';
-import { allproducts } from '../features/Products/productSlice';
+import { allproducts, stopLoading } from '../features/Products/productSlice';
 import AdminPage from '../features/AdminPanel/AdminPage';
 import { allorders } from '../features/AdminPanel/orderSlice';
 import Cart from '../features/cart/Cart';
@@ -27,6 +27,11 @@ function App(): JSX.Element {
   useEffect(() => {
     void dispatch(allproducts());
     void dispatch(allorders());
+    setTimeout(() => {
+      dispatch(stopLoading());
+    }, 2500);
+
+    return () => {};
   }, [dispatch]);
 
   return (

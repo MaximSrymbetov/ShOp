@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -17,12 +17,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 
 export default function ProductsSwiper(): JSX.Element {
-  const [loadingTime, setLoadingtime] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoadingtime(false);
-    }, 1500);
-  }, []);
+  const loading = useSelector((store: RootState) => store.products.loading);
   const products = useSelector((store: RootState) => store.products.products);
   const FirstimageProduct = products.filter((product) => product.category_id === 2).slice(0, 7);
 
@@ -76,7 +71,7 @@ export default function ProductsSwiper(): JSX.Element {
     </div>
   );
 
-  return <>{loadingTime ? <Spinner /> : <div>{content}</div>}</>;
+  return <div>{loading ? <Spinner /> : <div>{content}</div>}</div>;
 }
 // const spin  = <img src={} alt='spinner'/>
 

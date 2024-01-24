@@ -56,4 +56,6 @@ const productSlice = createSlice({
   },
 });
 
+export const { stopLoading } = productSlice.actions;
+
 export default productSlice.reducer;
