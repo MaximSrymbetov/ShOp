@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './admin.css';
 import { useSelector } from 'react-redux';
+import { Button } from '@nextui-org/react';
 import AddProduct from './AddProduct';
 import type { RootState } from '../../redux/store';
 // import { useSelector } from 'react-redux';
@@ -20,7 +21,7 @@ function AdminPage(): JSX.Element {
 
   return (
     <div>
-      {user ? (
+      {user && user.isAdmin ? (
         <div>
           <h2>АДМИН</h2>
           <AddProduct />
@@ -35,7 +36,9 @@ function AdminPage(): JSX.Element {
           <ProductsListAdmin />
         </div>
       ) : (
-        <>{navigate('/404')}</>
+        <Button className="container mx-auto my-5" onClick={() => navigate('/')}>
+          Вернуться
+        </Button>
       )}
     </div>
   );
