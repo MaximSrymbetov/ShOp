@@ -21,12 +21,15 @@ import ProductsShoes from '../features/Products/ProductsShoes';
 import ProductsClothes from '../features/Products/ProductsClothes';
 import ProductsAccessories from '../features/Products/ProductsAccessories';
 import OrderTable from '../features/AdminPanel/OrderTable';
+import { checkUser } from '../features/Auth/types/authSlice';
+import Footer from '../features/footer/Footer';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     void dispatch(allproducts());
     void dispatch(allorders());
+    dispatch(checkUser()).catch((err) => console.error(err));
   }, [dispatch]);
 
   return (
@@ -48,9 +51,12 @@ function App(): JSX.Element {
           <Route path="/category/accessories" element={<ProductsAccessories />} />
           <Route path="/category/clothes" element={<ProductsClothes />} />
           <Route path="/category/shoes" element={<ProductsShoes />} />
+          {/* <Route path="/user/profile" element={<Profile />} />
+          <Route path="/user/orders" element={<Orders />} /> */}
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

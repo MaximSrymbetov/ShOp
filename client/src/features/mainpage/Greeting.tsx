@@ -7,12 +7,12 @@ import GoIcon from './icons/GoIcon';
 
 export default function Greeting(): JSX.Element {
   return (
-    <div className="bg bg-fixed container min-w-full">
+    <div className="bg bg-fixed container min-w-full p-0">
       <video className="background-video" autoPlay loop muted>
         <source src={comvideo} type="video/mp4" />
       </video>
 
-      <div className="container-text text-white backdrop-blur-3xl rounded-3xl p-3">
+      <div className="hidden container-text text-white backdrop-blur-3xl rounded-3xl p-3 lg:block">
         <h2 className="text-6xl">меняй стиль.</h2>
         <h2 className="text-6xl text-left">сегодня</h2>
         <div className="container pt-3">

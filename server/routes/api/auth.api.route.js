@@ -30,7 +30,7 @@ router.post('/login', async (req, res) => {
             httpOnly: true,
           })
           .status(200)
-          .json({ message: 'success', userDB });
+          .json({ message: 'success', user: userDB });
       }
       return res.status(400).json({ message: 'Неправильно указан пароль' });
     }
@@ -87,7 +87,7 @@ router.post('/signin', async (req, res) => {
           httpOnly: true,
         })
         .status(200)
-        .json({ message: 'success', userDB });
+        .json({ message: 'success', user: userDB });
     }
     return res
       .status(400)
