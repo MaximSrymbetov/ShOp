@@ -3,7 +3,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Input } from '@nextui-org/react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';
@@ -28,7 +28,7 @@ function RegistrationPage(): JSX.Element {
   });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const dbError = useSelector((store: RootState) => store.auth.error);
+  const dbError = useSelector((store: RootState) => store.auth.message);
   // console.log(dbError);
 
   function validateEmail(email: string): boolean {
@@ -44,13 +44,13 @@ function RegistrationPage(): JSX.Element {
   const onSubmit = async (data: Registration & { checkPassword: string }): Promise<void> => {
     try {
       if (validateEmail(data.email)) {
-        // if (!dbError) {
+        if (!dbError) {
           dispatch(signin(data)).catch((err) => console.error(err));
           reset();
           navigate('/login');
-        // } else {
-        //   setError('root', { type: 'manual', message: dbError });
-        // }
+        } else {
+          setError('root', { type: 'manual', message: dbError });
+        }
       } else {
         setError('email', { type: 'manual', message: 'Введите эл. почту типа example@mail.ru' });
       }
@@ -60,7 +60,8 @@ function RegistrationPage(): JSX.Element {
   };
 
   return (
-    <div className="container mx-auto w-1/5">
+    <div className="container mx-auto my-24 w-4/5 sm:w-1/3">
+      <p className="font-bold text-xl mb-4">Создайте новый аккаунт</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           className="py-2"
@@ -71,7 +72,7 @@ function RegistrationPage(): JSX.Element {
         {errors.name && <p>{errors.name.message}</p>}
         <Input
           className="py-2"
-          type="email"
+          type="name"
           placeholder="Введите вашу эл. почту"
           {...register('email', {
             required: 'Введите электронную почту!',
@@ -83,7 +84,13 @@ function RegistrationPage(): JSX.Element {
           className="py-2"
           type="phone"
           placeholder="Введите ваш номер телефона"
-          {...register('phone', { required: 'Введите номер телефона!' })}
+          {...register('phone', {
+            required: 'Введите номер телефона!',
+            minLength: {
+              value: 11,
+              message: 'Номер телефона должен содержать не менее 11 символов!',
+            },
+          })}
         />
         {errors.phone && <p>{errors.phone.message}</p>}
         <Input
@@ -105,9 +112,14 @@ function RegistrationPage(): JSX.Element {
         {errors.checkPassword && <p>{errors.checkPassword.message}</p>}
         {errors.root && <p>{errors.root.message}</p>}
 
-        <Button className="py-2" type="submit">
-          Зарегистрироваться
-        </Button>
+        <div className="flex justify-between">
+          <Button className="py-2 mt-4" type="submit">
+            Зарегистрироваться
+          </Button>
+          <Link className="py-2 mt-4" type="button" to="/login">
+            Войти
+          </Link>
+        </div>
       </form>
     </div>
   );

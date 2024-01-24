@@ -19,9 +19,8 @@ import type { RootState } from '../../redux/store';
 export default function ProductsSwiper(): JSX.Element {
   const loading = useSelector((store: RootState) => store.products.loading);
   const products = useSelector((store: RootState) => store.products.products);
-  const FirstimageProduct = products.filter((product) => product.category_id === 2).slice(0, 7);
+  const sneakers = products.filter((product) => product.category_id === 2).slice(0, 7);
 
-  
   const content = (
     <div className="swiper-container">
       <Swiper
@@ -33,7 +32,7 @@ export default function ProductsSwiper(): JSX.Element {
         }}
         navigation
         modules={[Pagination, Navigation]}
-        className="w-screen height-full sm:w-4/5 "
+        className="w-screen height-full pt-5 sm:w-4/5 "
         freeMode
         loop
         preventClicks
@@ -44,8 +43,8 @@ export default function ProductsSwiper(): JSX.Element {
           },
         }}
       >
-        {FirstimageProduct &&
-          FirstimageProduct.map((prod) => (
+        {sneakers &&
+          sneakers.map((prod) => (
             <SwiperSlide>
               <Link to={`/product/${prod.id}`}>
                 <Card>
@@ -73,4 +72,3 @@ export default function ProductsSwiper(): JSX.Element {
   );
   return <div>{loading ? <Spinner /> : <div>{content}</div>}</div>;
 }
-

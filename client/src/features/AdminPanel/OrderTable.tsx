@@ -15,10 +15,10 @@ import type { Key } from 'react';
 import { useSelector } from 'react-redux';
 // import EditIcon from './icons/EditIcon';
 // import DeleteIcon from './icons/DeleteIcon';
+import { Link } from 'react-router-dom';
 import EyeIcon from './icons/Eyelcon';
 import type { RootState } from '../../redux/store';
 import type { Order } from './types/type';
-import { Link } from 'react-router-dom';
 
 // const statusColorMap = {
 //   created: 'warning',
