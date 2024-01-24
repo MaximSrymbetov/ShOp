@@ -74,7 +74,7 @@ export default function Cart(): JSX.Element {
                                 <p className="h5 mb-0">$900</p>
                               </div>
                               <a href="#!" style={{ color: '#cecece' }}>
-                                <MDBIcon fas icon="trash-alt" />
+                                <MDBIcon fas icon="trash-alt" />a
                               </a>
                             </div>
                           </div>

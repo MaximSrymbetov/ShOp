@@ -18,9 +18,7 @@ import type { RootState } from '../../redux/store';
 
 export default function ProductsSwiper(): JSX.Element {
   const products = useSelector((store: RootState) => store.products.products);
-  const FirstimageProduct = products
-    .filter((product) => product.category_id === 2)
-    .filter((prod, i) => i > 7);
+  const sneakers = products.filter((product) => product.category_id === 2).slice(1, 9);
 
   return (
     <div className="swiper-container">
@@ -44,10 +42,9 @@ export default function ProductsSwiper(): JSX.Element {
           },
         }}
       >
-
-        {FirstimageProduct &&
-          FirstimageProduct.map((prod) => (
-            <SwiperSlide>
+        {sneakers &&
+          sneakers.map((prod) => (
+            <SwiperSlide key={prod.id}>
               <Link to={`/product/${prod.id}`}>
                 <Card>
                   <CardBody className="overflow-visible p-0">
