@@ -1,123 +1,159 @@
 import React from 'react';
-import { MDBCol, MDBIcon, MDBRow } from 'mdb-react-ui-kit';
-import { Button, Card, CardBody, Image } from '@nextui-org/react';
+import { MDBCol, MDBRow } from 'mdb-react-ui-kit';
+import { Button, Card, CardBody, Divider, Image } from '@nextui-org/react';
 import './styles/cart.css';
 import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import GoIcon from '../mainpage/icons/GoIcon';
 import type { RootState } from '../../redux/store';
 
 export default function Cart(): JSX.Element {
-  const user = useSelector((store: RootState) => store);
-  // const order = useSelector((store: RootState) =>
-  //   store.orders.orders.find((ord) => ord.user_id === user?.id),
-  // );
-  console.log(user);
+  const navigate = useNavigate();
+  const user = useSelector((store: RootState) => store.auth.user);
+  const orders = useSelector((store: RootState) => store.orders.orders);
+  const userOrder = orders.find((order) => order.user_id === user?.id);
+  const orderSum = userOrder?.Order_items.reduce((acc, item) => acc + +item.Product.price, 0);
 
   return (
     <div>
-      <section className="h-100 h-custom" style={{ backgroundColor: '#eee' }}>
-        <div className="container py-5 h-100">
-          <div className="justify-center items-center h-100">
-            <div>
-              <Card>
-                <CardBody className="p-4">
-                  <MDBRow>
-                    <MDBCol lg="7">
-                      <p className="h5">
-                        <Button href="/" className="text-body">
-                          <div className="fas long-arrow-alt-left me-2">
-                            <GoIcon />
-                          </div>
-                          Continue shopping
-                        </Button>
-                      </p>
-
-                      <hr />
-                      <div className="flex justify-between items-center mb-4">
-                        <div>
-                          <p className="mb-1">Shopping cart</p>
-                          <p className="mb-0">You have 4 items in your cart</p>
-                        </div>
-                        <div>
-                          <p>
-                            <span className="text-muted">Sort by:</span>
-                            <a href="#!" className="text-body">
-                              price
-                              <MDBIcon fas icon="angle-down mt-1" />
-                            </a>
+      {user ? (
+        <div>
+          <section className="h-100 h-custom" style={{ backgroundColor: '#eee' }}>
+            <div className="container py-5 h-100">
+              <div className="justify-center items-center h-100">
+                <div>
+                  <Card>
+                    <CardBody className="p-4">
+                      <MDBRow>
+                        <MDBCol lg="7">
+                          <p className="h5">
+                            <Button href="/" className="text-body">
+                              <div className="fas long-arrow-alt-left me-2">
+                                <GoIcon />
+                              </div>
+                              Продолжить покупки
+                            </Button>
                           </p>
-                        </div>
-                      </div>
 
-                      <Card className="mb-3">
-                        <CardBody>
-                          <div className="flex justify-between">
-                            <div className="flex flex-row items-center">
-                              <div>
-                                <Image
-                                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                                  className="rounded fluid"
-                                  style={{ width: '65px' }}
-                                  alt="Shopping item"
-                                />
-                              </div>
-                              <div className="ms-3">
-                                <p className="h5">Iphone 11 pro</p>
-                                <p className="text-small mb-0">256GB, Navy Blue</p>
-                              </div>
+                          <hr />
+                          <div className="flex justify-between items-center mb-4">
+                            <div>
+                              <p className="mb-1">Корзина</p>
+                              <p className="mb-0">
+                                У вас {userOrder ? userOrder.Order_items.length : 0} предмета в
+                                корзине
+                              </p>
                             </div>
-                            <div className="flex flex-row items-center">
-                              <div style={{ width: '50px' }}>
-                                <p className="h5 fw-normal mb-0">2</p>
-                              </div>
-                              <div style={{ width: '80px' }}>
-                                <p className="h5 mb-0">$900</p>
-                              </div>
-                              <a href="#!" style={{ color: '#cecece' }}>
-                                <MDBIcon fas icon="trash-alt" />a
-                              </a>
+                            <div>
+                              <p>
+                                <span className="text-muted">Сортировать по:</span>
+                                <a href="#!" className="text-body">
+                                  <Button className="p-3 m-0 min-w-0 h-7">цена</Button>
+                                </a>
+                              </p>
                             </div>
                           </div>
-                        </CardBody>
-                      </Card>
-                    </MDBCol>
 
-                    <MDBCol lg="5">
-                      <Card className="bg-primary text-black rounded-3">
-                        <CardBody>
-                          <div className="flex justify-between">
-                            <p className="mb-2">Subtotal</p>
-                            <p className="mb-2">$4798.00</p>
-                          </div>
+                          <Card className="mb-3">
+                            <CardBody>
+                              {userOrder ? (
+                                userOrder.Order_items.map((item) => (
+                                  <>
+                                    <div className="flex justify-between my-1">
+                                      <div className="flex flex-row items-center">
+                                        <div>
+                                          <Image
+                                            src={item.Product.Images[0].src}
+                                            className="rounded fluid"
+                                            style={{ width: '65px' }}
+                                            alt="Shopping item"
+                                          />
+                                        </div>
+                                        <div className="ms-3">
+                                          <p className="text-md">{item.Product.name}</p>
+                                          <p className="text-small mb-0 text-gray-300">
+                                            {item.Product.description.slice(0, 25)}...
+                                          </p>
+                                        </div>
+                                      </div>
+                                      <div className="flex flex-row items-center">
+                                        <div style={{ width: '50px' }}>
+                                          <p className="fw-normal mb-0">{item.quantity}</p>
+                                        </div>
+                                        <div style={{ width: '80px' }}>
+                                          <p className="mb-0">₽ {item.Product.price}</p>
+                                        </div>
+                                        <Link to="/" style={{ color: '#cecece' }}>
+                                          <img
+                                            width="20"
+                                            height="20"
+                                            src="https://img.icons8.com/external-tal-revivo-regular-tal-revivo/96/external-trash-can-layout-for-a-indication-to-throw-trash-mall-regular-tal-revivo.png"
+                                            alt="external-trash-can-layout-for-a-indication-to-throw-trash-mall-regular-tal-revivo"
+                                          />
+                                        </Link>
+                                      </div>
+                                    </div>
+                                    <Divider />
+                                  </>
+                                ))
+                              ) : (
+                                <p className="py-7">Ваша корзина пустая, добавьте в нее товары</p>
+                              )}
+                            </CardBody>
+                          </Card>
+                        </MDBCol>
 
-                          <div className="flex justify-between">
-                            <p className="mb-2">Shipping</p>
-                            <p className="mb-2">$20.00</p>
-                          </div>
+                        <MDBCol lg="5">
+                          <Card className="bg-primary text-black rounded-3">
+                            <CardBody>
+                              <div className="flex justify-between">
+                                <p className="p-1">Сумма</p>
+                                <p className="p-1">{orderSum && 0} ₽</p>
+                              </div>
 
-                          <div className="flex justify-between">
-                            <p className="mb-2">Total(Incl. taxes)</p>
-                            <p className="mb-2">$4818.00</p>
-                          </div>
+                              <div className="flex justify-between">
+                                <p className="p-1">Доставка</p>
+                                <p className="p-1">+2000 ₽</p>
+                              </div>
 
-                          <Button color="default" size="lg" className="block">
-                            <div className="flex justify-between">
-                              <span>$4818.00</span>
-                              <span>
-                                Checkout <i className="fas fa-long-arrow-alt-right ms-2" />
-                              </span>
-                            </div>
-                          </Button>
-                        </CardBody>
-                      </Card>
-                    </MDBCol>
-                  </MDBRow>
-                </CardBody>
-              </Card>
+                              <div className="flex justify-between bg-zinc-100 rounded my-4">
+                                <b className="p-1">Итого</b>
+                                <b className="p-1">{orderSum ? orderSum + 2000 : 0} ₽</b>
+                              </div>
+
+                              <Button color="default" size="lg" className="block">
+                                <div className="flex justify-between">
+                                  <span>{orderSum && orderSum + 2000} ₽</span>
+                                  <span>Оплатить</span>
+                                </div>
+                              </Button>
+                            </CardBody>
+                          </Card>
+                        </MDBCol>
+                      </MDBRow>
+                    </CardBody>
+                  </Card>
+                </div>
+              </div>
             </div>
+          </section>
+        </div>
+      ) : (
+        <div className="container mx-auto flex flex-col gap-4 my-24 w-4/5 sm:w-1/3">
+          <div>
+            <b>Вы не авторизированы.</b>
+            <p>Зарегистрируйтесь или войдите, чтобы продолжить пользоваться корзиной</p>
+          </div>
+          <div className="flex gap-6 justify-between">
+            <Button onClick={() => navigate('/login')} className="flex-1">
+              Войти
+            </Button>
+            <Button onClick={() => navigate('/signin')} className="flex-1">
+              Создать аккаунт
+            </Button>
           </div>
         </div>
-      </section>
+      )}
     </div>
   );
 }

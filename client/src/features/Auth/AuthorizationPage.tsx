@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Button, Input } from '@nextui-org/react';
@@ -27,11 +27,16 @@ function AuthorizationPage(): JSX.Element {
   const navigate = useNavigate();
   const dbError = useSelector((store: RootState) => store.auth.message);
 
+  useEffect(() => {
+    if (dbError === 'success') {
+      reset();
+      navigate('/');
+    }
+  }, [dbError]);
+
   const onSubmit = (data: Authorization): void => {
     try {
       dispatch(login(data)).catch((err) => console.error(err));
-      reset();
-      navigate('/login');
     } catch (error) {
       setError('password', { type: 'manual', message: `${error}` });
     }
