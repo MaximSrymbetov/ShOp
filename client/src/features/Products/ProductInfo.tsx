@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import type { RootState } from '../../redux/store';
+import '../AdminPanel/Add.css';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';

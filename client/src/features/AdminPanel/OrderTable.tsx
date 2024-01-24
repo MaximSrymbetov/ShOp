@@ -37,6 +37,10 @@ const columns = [
 
 export default function OrderTable(): JSX.Element {
   const orders = useSelector((store: RootState) => store.orders.orders);
+  const arr1=[...orders]
+  const sortOrders=arr1.sort((a,b)=>b.id-a.id)
+
+  // const sortOrders=orders.map((el)=>el)
   // const users=orders.map((order)=>order.User)
   // const totals=orders.map((order)=>order.total)
 
@@ -95,6 +99,7 @@ export default function OrderTable(): JSX.Element {
   }, []);
 
   return (
+      //  const sortOrders=orders.sort((a,b)=>b.id-a.id)
     <Table aria-label="Example table with custom cells">
       <TableHeader columns={columns}>
         {(column) => (
@@ -103,7 +108,7 @@ export default function OrderTable(): JSX.Element {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody items={orders}>
+      <TableBody items={sortOrders}>
         {(item) => (
           <TableRow key={item.id}>
             {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}

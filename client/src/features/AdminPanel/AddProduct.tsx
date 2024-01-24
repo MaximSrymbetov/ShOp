@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
 
+
 function AddProduct(): JSX.Element {
   const categoryidInput = useRef<HTMLInputElement>(null);
   const genderidInput = useRef<HTMLInputElement>(null);
