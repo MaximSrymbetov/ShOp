@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from 'react';
-import { Select, SelectItem } from '@nextui-org/react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -28,7 +27,6 @@ function FormUpdateOrder(): JSX.Element {
     defaultValues: { status: order?.status, total: order?.total },
   });
 
-
   const onSubmit = (data: { total: string | undefined; status: string | undefined }): void => {
     dispatch(updateOrder({ ...order, total: data.total, status: data.status })).catch((err) =>
       console.error(err),
@@ -40,7 +38,7 @@ function FormUpdateOrder(): JSX.Element {
   return (
     <div className="container mx-auto flex justify-center min-w 1/3">
       <form onSubmit={handleSubmit(onSubmit)} className="iii">
-        <label className="text-field__label">ВЫБЕРИТЕ СТАТУС:</label>
+        <p className="textfieldlabel">ВЫБЕРИТЕ СТАТУС:</p>
         <select defaultValue={order?.status} {...register('status')}>
           <option className="checkbox" value="created">
             Создан
@@ -58,8 +56,9 @@ function FormUpdateOrder(): JSX.Element {
             Закрыт
           </option>
         </select>
+
         <div className="container mx-auto flex justify-center min-w 1/3">
-          <label className="text-field__label">СУММА:</label>{' '}
+          <p className="text-field__label">СУММА:</p>
         </div>
         <input
           type="text"
@@ -72,10 +71,65 @@ function FormUpdateOrder(): JSX.Element {
         <button className="button-arounder" type="submit">
           Изменить
         </button>
+        <p>Информация о заказе :</p>
+        <table style={{ border: '2px solid black', padding: '10px' }}>
+          <tbody>
+            <tr>
+              <th style={{ color: 'red', fontWeight: 'bold', padding: '10px' }}>ИМЯ КЛИЕНТА:</th>
+              <td
+                style={{
+                  color: 'black',
+                  fontWeight: 'normal',
+                  padding: '10px',
+                  border: '2px solid black',
+                }}
+              >
+                {order?.User.name}
+              </td>
 
-        <h2 style={{ color: 'red', fontWeight: 'Ultra Bold ' }}>{order?.Order_info.address}</h2>
-        <p>{order?.Order_info.phone}</p>
+              <th style={{ color: 'red', fontWeight: 'bold', padding: '10px' }}>ПОЧТА:</th>
+              <td
+                style={{
+                  color: 'black',
+                  fontWeight: 'normal',
+                  padding: '10px',
+                  border: '2px solid black',
+                }}
+              >
+                {order?.User.email}
+              </td>
+
+              <th style={{ color: 'red', fontWeight: 'bold', padding: '10px' }}>АДРЕС:</th>
+              <td
+                style={{
+                  color: 'black',
+                  fontWeight: 'normal',
+                  padding: '10px',
+                  border: '2px solid black',
+                }}
+              >
+                {order?.Order_info.address}
+              </td>
+              <th style={{ color: 'red', fontWeight: 'bold', padding: '10px' }}>ТЕЛЕФОН:</th>
+              <td
+                style={{
+                  color: 'black',
+                  fontWeight: 'normal',
+                  padding: '10px',
+                  border: '2px solid black',
+                }}
+              >
+                {order?.Order_info.phone}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </form>
+      <div className="buttons-container">
+        <button className="button-arounder" type="button" onClick={() => navigate(-1)}>
+          Назад
+        </button>
+      </div>
     </div>
   );
 }

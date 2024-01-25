@@ -23,6 +23,7 @@ import ProductsAccessories from '../features/Products/ProductsAccessories';
 import OrderTable from '../features/AdminPanel/OrderTable';
 import { checkUser } from '../features/Auth/types/authSlice';
 import Footer from '../features/footer/Footer';
+import FormUpdateProduct from '../features/AdminPanel/Udete';
 
 
 function App(): JSX.Element {
@@ -51,6 +52,7 @@ function App(): JSX.Element {
           <Route path="/OneOrderInfo/:idOrder" element={<OneOrderInfo />} />
           <Route path="/order/:id/update" element={<FormUpdateOrder />} />
           <Route path="/products" element={<Allroducts />} />
+          <Route path="/product/:id/update" element={<FormUpdateProduct />} />
           <Route path="/product/:idProduct" element={<ProductInfo />} />
           <Route path="/orderTable" element={<OrderTable />} />
           <Route path="/cart" element={<Cart />} />

@@ -13,6 +13,7 @@ function ProductsListAdmin(): JSX.Element {
   useEffect(() => {
     setValue(info);
   }, [info,products]);
+console.log(products,'++++++++++++++++++++++++++++++++');
 
   const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
 

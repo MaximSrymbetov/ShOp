@@ -23,9 +23,7 @@ const ErrorPage: React.FC = () => {
     if (counter === 0) { // Сброс счетчика, если он равен 0
       const increment = setInterval(() => {
         setCounter((prevCounter) => prevCounter + 1);
-        
         if (counter >= 404) {
-
           clearInterval(increment); // Остановить счетчик, когда он достигнет значения 404
         }
       }, 10);

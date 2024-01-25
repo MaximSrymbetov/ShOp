@@ -2,6 +2,7 @@ import React from 'react';
 import { useAppDispatch } from '../../redux/store';
 import type { Product, ProductId } from '../Products/types/type';
 import { deleteProduct } from '../Products/productSlice';
+import FormUpdateProduct from './Udete';
 
 type ProductItemProps = {
   product: Product;
@@ -10,7 +11,7 @@ type ProductItemProps = {
 function ProductItemAdmin({ product }: ProductItemProps): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const onHandleDeleteProduct = async (id: ProductId): Promise<void> => {
+  const onHandleDeleteProduct =  (id: ProductId): void=> {
     dispatch(deleteProduct(id));
   };
 
@@ -32,10 +33,12 @@ function ProductItemAdmin({ product }: ProductItemProps): JSX.Element {
               >
                 УДАЛИТЬ
               </button>
+             
             </td>
           </tr>
         </tbody>
       </table>
+       <FormUpdateProduct product={product}/>
     </div>
   );
 }
