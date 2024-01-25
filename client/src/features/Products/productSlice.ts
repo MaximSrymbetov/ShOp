@@ -57,16 +57,18 @@ const productSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(deleteProduct.fulfilled, (state, action) => {
-        state.products = state.products.filter((product) => product.id !== Number(action.payload.id))
+        state.products = state.products.filter(
+          (product) => product.id !== Number(action.payload.id),
+        );
       })
       .addCase(deleteProduct.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
         console.log(action.payload);
-        
+
         state.products = state.products.map((product) =>
-          product.id === action.payload.id? action.payload : product,
+          product.id === action.payload.id ? action.payload : product,
         );
       })
       .addCase(updateProduct.rejected, (state, action) => {
