@@ -1,8 +1,9 @@
 .boxitem {
-  width: 500px;
+  width: 80%;
   border: gray solid 2px;
   border-radius: 8px;
 }
 .swiperbox {
   border: black solid 1px;
 }
+

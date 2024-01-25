@@ -16,22 +16,21 @@ const textAnimation = {
   }),
 };
 
-const ErrorPage: React.FC = () => {
+export default function ErrorPage(): JSX.Element {
   const [counter, setCounter] = useState(0);
 
-  const handleClick = () => {
-    if (counter === 0) { // Сброс счетчика, если он равен 0
+  const handleClick = (): void => {
+    if (counter === 0) {
+      // Сброс счетчика, если он равен 0
       const increment = setInterval(() => {
         setCounter((prevCounter) => prevCounter + 1);
-        
-        if (counter >= 404) {
 
+        if (counter >= 404) {
           clearInterval(increment); // Остановить счетчик, когда он достигнет значения 404
         }
       }, 10);
     }
   };
-  
 
   return (
     <div className="container mx-auto flex justify-center min-w 1/3">
@@ -62,6 +61,4 @@ const ErrorPage: React.FC = () => {
       </motion.section>
     </div>
   );
-};
-
-export default ErrorPage;
+}
