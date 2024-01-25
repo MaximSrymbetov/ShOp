@@ -14,10 +14,12 @@ function ProductsListAdmin(): JSX.Element {
     setValue(info);
   }, [info,products]);
 
+
   const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
 
   return (
     <div>
+
       <select value={info} onChange={(e) => setInfo(e.target.value)}>
         <option className="checkbox"  value="t-shirt">
           Футболки
