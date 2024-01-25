@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 // import { Checkbox, CheckboxGroup } from '@nextui-org/react';
 import type { RootState } from '../../redux/store';
@@ -12,10 +12,10 @@ function Allroducts(): JSX.Element {
   const products = useSelector((store: RootState) => store.products.products);
   const [value, setValue] = useState('');
   
-  const [info, setInfo] = useState('');
-  useEffect(() => {
-    setValue(info);
-  }, [info]);
+  // const [info, setInfo] = useState('');
+  // useEffect(() => {
+  //   setValue(info);
+  // }, [info]);
 
   const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
 
@@ -36,10 +36,10 @@ function Allroducts(): JSX.Element {
         <option className="checkbox" value="Jacket">
           Куртки
         </option>
-      </select> */}
-      <form>
+   </select> */}
+      {/* <form>
           <input type="text" placeholder="ывводи" onChange={(e) => setValue(e.target.value)} />
-        </form>
+        </form> */}
 
       <div className="contain gap- grid grid-cols-1 sm:grid-cols-3">
         {searchProducts.map((product) => (

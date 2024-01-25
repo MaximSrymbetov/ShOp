@@ -51,7 +51,6 @@ const productSlice = createSlice({
       .addCase(addProducts.rejected, (state, action) => {
         state.error = action.error.message;
       })
-
       .addCase(deleteProduct.fulfilled, (state, action) => {
         state.products = state.products.filter((product) => product.id !== +action.payload.id);
       })

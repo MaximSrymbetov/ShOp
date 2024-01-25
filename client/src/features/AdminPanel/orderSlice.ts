@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { Order } from './types/type';
 import * as api from './api';
