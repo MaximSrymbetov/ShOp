@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { Product, ProductId } from './types/type';
 import * as api from './api';
@@ -50,7 +53,7 @@ const productSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(deleteProduct.fulfilled, (state, action) => {
-        state.products = state.products.filter((product) => product.id !== +action.payload.id);
+        state.products = state.products.filter((product) => product.id !== Number(action.payload.id))
       })
       .addCase(deleteProduct.rejected, (state, action) => {
         state.error = action.error.message;
