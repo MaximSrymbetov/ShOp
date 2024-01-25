@@ -3,7 +3,6 @@
 import React, { useRef, useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
-
 import './Add.css';
 import { Button, Input, Select, SelectItem } from '@nextui-org/react';
 

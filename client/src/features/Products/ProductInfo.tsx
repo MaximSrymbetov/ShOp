@@ -124,11 +124,10 @@ function ProductInfo(): JSX.Element {
             </div>
           </div>
           <div className="mt-4 lg:row-span-3 lg:mt-0">
-            <h2 className="sr-only">Product information</h2>
+            {/* <h2 className="sr-only">Информация о товаре</h2> */}
             <p className="text-3xl tracking-tight text-gray-900">{`${productPrice} ₽`}</p>
-            Reviews
             <div className="mt-6">
-              <h3 className="sr-only">Reviews</h3>
+              {/* <h3 className="sr-only">Reviews</h3>
               <div className="flex items-center">
                 <div className="flex items-center">
                   <svg
@@ -199,14 +198,13 @@ function ProductInfo(): JSX.Element {
                 >
                   117 reviews
                 </a>
-              </div>
+              </div> */}
             </div>
             <form className="mt-10">
-              
               <div>
                 <h3 className="text-sm font-medium text-gray-900"></h3>
               </div>
-              
+
               <div className="mt-10">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-medium text-gray-900"></h3>
@@ -214,12 +212,12 @@ function ProductInfo(): JSX.Element {
                     href="/size/nike"
                     className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
                   >
-                    Size guide
+                    Таблица размеров
                   </a>
                 </div>
 
                 <fieldset className="mt-4">
-                  <legend className="sr-only">Choose a size</legend>
+                  <legend className="sr-only">Выберите размер</legend>
                   <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
                     <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-not-allowed bg-gray-50 text-gray-200">
                       <input
@@ -380,7 +378,7 @@ function ProductInfo(): JSX.Element {
             </form>
           </div>
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
-            Description and details
+            <p className="font-bold text-md">Описание товара</p>
             <div>
               <h2 className="sr-only">Description</h2>
 
@@ -389,7 +387,7 @@ function ProductInfo(): JSX.Element {
               </div>
             </div>
             <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Details</h2>
+              <h2 className="text-sm font-medium text-gray-900">Детали</h2>
 
               {user ? (
                 <div className="mt-4 space-y-6">
@@ -401,7 +399,7 @@ function ProductInfo(): JSX.Element {
               ) : (
                 <div className="mt-4 space-y-6">
                   <p className="text-sm text-gray-600">
-                    Чтобы купить товар вам необходимо зарегестрироваться
+                    Чтобы купить товар вам необходимо зарегистрироваться
                   </p>
                 </div>
               )}
