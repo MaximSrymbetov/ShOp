@@ -16,7 +16,6 @@ router.get('/', async (req, res) => {
 router.post('/add', async (req, res) => {
   try {
     const { categoryid, genderid, name, description, price } = req.body;
-    console.log(req.body, '!!!!!!!!!!!!!!!');
     const file = req.files?.src;
     const arrproductid = await Promise.all(file.map((el) => fileUpload(el)));
     if (categoryid && genderid && name && description && price) {

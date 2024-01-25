@@ -23,7 +23,6 @@ import ProductsAccessories from '../features/Products/ProductsAccessories';
 import OrderTable from '../features/AdminPanel/OrderTable';
 import { checkUser } from '../features/Auth/types/authSlice';
 import Footer from '../features/footer/Footer';
-import FormUpdateProduct from '../features/AdminPanel/Udete';
 import SizeЕable from '../features/Size/SizeЕable';
 
 function App(): JSX.Element {

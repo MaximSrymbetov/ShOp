@@ -116,9 +116,14 @@ function RegistrationPage(): JSX.Element {
           <Button className="py-2 mt-4" type="submit">
             Зарегистрироваться
           </Button>
-          <Link className="py-2 mt-4" type="button" to="/login">
-            Войти
-          </Link>
+        </div>
+        <div>
+          <p>
+            У вас есть аккаунт?
+            <Link className="py-2 mt-4 underline decoration-sky-600 hover:decoration-blue-400" type="button" to="/login">
+              Войти
+            </Link>
+          </p>
         </div>
       </form>
     </div>

@@ -1,10 +1,13 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable no-restricted-syntax */
+
 import React, { useRef, useState } from 'react';
+
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
-
 import './Add.css';
 import { Button, Input, Select, SelectItem } from '@nextui-org/react';
+
 
 function AddProduct(): JSX.Element {
   // void dispatch(addProducts(formData));
@@ -88,6 +91,47 @@ function AddProduct(): JSX.Element {
               </Button>
             </div>
           </form>
+
+    <div className="container mx-auto flex justify-center w-2/3">
+      <form onSubmit={productAdd}>
+        <Select
+          name="categoryid"
+          placeholder="categoryid"
+          type="Name"
+          required
+          ref={categoryidInput}
+        >
+          <SelectItem className="checkbox" value="created" key={''}>
+            Создан
+          </SelectItem>
+          <SelectItem className="checkbox" value="confirmed" key={''}>
+            Ожидает оплаты
+          </SelectItem>
+          <SelectItem className="checkbox" value="payed" key={''}>
+            Оплачен
+          </SelectItem>
+          <SelectItem className="checkbox" value="delivery" key={''}>
+            Доставка
+          </SelectItem>
+          <SelectItem className="checkbox" value="closed" key={''}>
+            Закрыт
+          </SelectItem>
+        </Select>
+        <Select name="genderid" placeholder="genderid" type="Name" required ref={genderidInput} />
+        <Input name="name" placeholder="name" type="Name" required ref={nameInput} />
+        <Input
+          name="description"
+          placeholder="description"
+          type="Name"
+          required
+          ref={descriptionInput}
+        />
+        <Input name="price" placeholder="price" type="Name" required ref={priceInput} />
+        <Input name="src" type="file" required multiple ref={srcInput} />
+        <div className="buttons-container">
+          <button type="submit" className="button-arounder">
+            ДОБАВИТЬ
+          </button>
         </div>
       )}
     </>
