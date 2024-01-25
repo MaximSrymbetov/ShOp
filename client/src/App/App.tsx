@@ -26,8 +26,6 @@ import Footer from '../features/footer/Footer';
 import FormUpdateProduct from '../features/AdminPanel/Udete';
 import SizeЕable from '../features/Size/SizeЕable';
 
-
-
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
@@ -49,7 +47,6 @@ function App(): JSX.Element {
           <Route path="/OneOrderInfo/:idOrder" element={<OneOrderInfo />} />
           <Route path="/order/:id/update" element={<FormUpdateOrder />} />
           <Route path="/products" element={<Allroducts />} />
-          <Route path="/product/:id/update" element={<FormUpdateProduct />} />
           <Route path="/product/:idProduct" element={<ProductInfo />} />
           <Route path="/orderTable" element={<OrderTable />} />
           <Route path="/cart" element={<Cart />} />
@@ -57,7 +54,6 @@ function App(): JSX.Element {
           <Route path="/women" element={<ProductsWoman />} />
           <Route path="/category/accessories" element={<ProductsAccessories />} />
           <Route path="/category/clothes" element={<ProductsClothes />} />
-          <Route path="/category/shoes" element={<ProductsShoes />} />
           <Route path="/category/shoes" element={<ProductsShoes />} />
           <Route path="/size/nike" element={<SizeЕable />} />
           {/* <Route path="/user/profile" element={<Profile />} />

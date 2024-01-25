@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/heading-has-content */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable react/self-closing-comp */
@@ -83,7 +84,7 @@ function ProductInfo(): JSX.Element {
             <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
               {product?.name}
             </h1>
-            <div>scsca</div>
+            <div>________</div>
             <div>
               <div className="boxitem mx-auto sm:mx-0">
                 <Swiper
@@ -201,14 +202,14 @@ function ProductInfo(): JSX.Element {
               </div>
             </div>
             <form className="mt-10">
-              Colors
+              
               <div>
-                <h3 className="text-sm font-medium text-gray-900">Color</h3>
+                <h3 className="text-sm font-medium text-gray-900"></h3>
               </div>
-              Sizes
+              
               <div className="mt-10">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium text-gray-900">Size</h3>
+                  <h3 className="text-sm font-medium text-gray-900"></h3>
                   <a
                     href="/size/nike"
                     className="text-sm font-medium text-indigo-600 hover:text-indigo-500"

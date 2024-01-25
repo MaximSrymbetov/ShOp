@@ -37,7 +37,7 @@ export default function NavBar(): JSX.Element {
 
   const [searchValue, setSearchValue] = useState('');
 
-  const menuItems = ['Главная', 'Каталог', 'Категории', 'Корзина', 'It is for ADMIN :)'];
+  const menuItems = ['Главная', 'Каталог', 'Корзина', 'It is for ADMIN :)'];
 
   return (
     <>
@@ -68,11 +68,11 @@ export default function NavBar(): JSX.Element {
                 Каталог
               </Link>
             </NavbarItem>
-            <NavbarItem>
+            {/* <NavbarItem>
               <Link color="foreground" to="/category">
                 Категории
               </Link>
-            </NavbarItem>
+            </NavbarItem> */}
             <NavbarItem>
               <Link color="foreground" to="/cart">
                 Корзина
