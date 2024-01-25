@@ -10,6 +10,7 @@ import { Button, Input, Select, SelectItem } from '@nextui-org/react';
 
 
 function AddProduct(): JSX.Element {
+  // void dispatch(addProducts(formData));
   const [isOpen, setIsOpen] = useState(false);
   const formRef = useRef(null);
   const categoryidInput = useRef<HTMLSelectElement>(null);
@@ -74,7 +75,7 @@ function AddProduct(): JSX.Element {
                 Женщина
               </SelectItem>
             </Select>
-            <Input className='py-1' name="name" placeholder="Название" type="Name" required ref={nameInput} />
+            <Input className='py-2' name="name" placeholder="Название" type="Name" required ref={nameInput} />
             <Input
               name="description"
               placeholder="Описание"
@@ -137,83 +138,3 @@ function AddProduct(): JSX.Element {
   );
 }
 export default AddProduct;
-
-// function AddProduct(): JSX.Element {
-//   const [categoryid, setCategoryid] = useState('');
-//   const [genderid, setGenderid] = useState('');
-//   const [name, setName] = useState('');
-//   const [description, setDescription] = useState('');
-//   const [price, setPrice] = useState('');
-
-//   const dispatch = useAppDispatch();
-
-//   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-//     e.preventDefault();
-
-//     const data = {
-//       category_id: +categoryid,
-//       gender_id: +genderid,
-//       name,
-//       description,
-//       price,
-//     };
-//     console.log(data);
-
-//     dispatch(addProducts(data)).catch((err) => console.error(err));
-//     setCategoryid('');
-//     setGenderid('');
-//     setName('');
-//     setDescription('');
-//     setPrice('');
-//   };
-
-//   return (
-//     <form onSubmit={onHandleSubmit}>
-//       <div className="field">
-//         <input
-//           type="Name"
-//           placeholder="categoryid"
-//           value={categoryid}
-//           onChange={(e) => setCategoryid(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="genderid"
-//           value={genderid}
-//           onChange={(e) => setGenderid(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="name"
-//           value={name}
-//           onChange={(e) => setName(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="description"
-//           className="textarea"
-//           value={description}
-//           onChange={(e) => setDescription(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="price"
-//           value={price}
-//           onChange={(e) => setPrice(e.target.value)}
-//         />
-//       </div>
-
-//       <button type="submit">Отправить</button>
-//     </form>
-//   );
-// }
-
-// export default AddProduct;
