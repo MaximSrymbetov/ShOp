@@ -1,13 +1,11 @@
-/* eslint-disable react/jsx-curly-brace-presence */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable no-restricted-syntax */
-
 import React, { useRef, useState } from 'react';
-
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
+
 import './Add.css';
 import { Button, Input, Select, SelectItem } from '@nextui-org/react';
-
 
 function AddProduct(): JSX.Element {
   // void dispatch(addProducts(formData));
@@ -46,7 +44,7 @@ function AddProduct(): JSX.Element {
       formData.append('src', src[i]);
     }
     void dispatch(addProducts(formData));
-    formRef.current?.reset();
+    formRef.current?reset();
   };
 
   return (
@@ -56,7 +54,7 @@ function AddProduct(): JSX.Element {
       {isOpen && (
         <div className="container mx-auto flex justify-center w-2/3">
           <form onSubmit={productAdd} ref={formRef}>
-            <Select className='py-1' name="categoryid" placeholder="Категория" required ref={categoryidInput}>
+            <Select className='py-2' name="categoryid" placeholder="Категория" required ref={categoryidInput}>
               <SelectItem key={1} value="1">
                 Одежда
               </SelectItem>
@@ -67,7 +65,7 @@ function AddProduct(): JSX.Element {
                 Акссесуары
               </SelectItem>
             </Select>
-            <Select  className='py-1' name="genderid" placeholder="Пол" required ref={genderidInput}>
+            <Select name="genderid" placeholder="Пол" required ref={genderidInput}>
               <SelectItem key={1} value="1">
                 Мужчина
               </SelectItem>
@@ -75,7 +73,9 @@ function AddProduct(): JSX.Element {
                 Женщина
               </SelectItem>
             </Select>
+
             <Input className='py-2' name="name" placeholder="Название" type="Name" required ref={nameInput} />
+
             <Input
               name="description"
               placeholder="Описание"
@@ -83,58 +83,19 @@ function AddProduct(): JSX.Element {
               required
               ref={descriptionInput}
             />
-            <Input className='py-1' name="price" placeholder="Цена" type="Name" required ref={priceInput} />
-            <Input className='py-1' name="src" type="file" required multiple ref={srcInput} />
+            <Input name="price" placeholder="Цена" type="Name" required ref={priceInput} />
+            <Input name="src" type="file" required multiple ref={srcInput} />
             <div className="buttons-container">
               <Button type="submit" className="button-arounder">
                 ДОБАВИТЬ
               </Button>
             </div>
           </form>
-
-    <div className="container mx-auto flex justify-center w-2/3">
-      <form onSubmit={productAdd}>
-        <Select
-          name="categoryid"
-          placeholder="categoryid"
-          type="Name"
-          required
-          ref={categoryidInput}
-        >
-          <SelectItem className="checkbox" value="created" key={''}>
-            Создан
-          </SelectItem>
-          <SelectItem className="checkbox" value="confirmed" key={''}>
-            Ожидает оплаты
-          </SelectItem>
-          <SelectItem className="checkbox" value="payed" key={''}>
-            Оплачен
-          </SelectItem>
-          <SelectItem className="checkbox" value="delivery" key={''}>
-            Доставка
-          </SelectItem>
-          <SelectItem className="checkbox" value="closed" key={''}>
-            Закрыт
-          </SelectItem>
-        </Select>
-        <Select name="genderid" placeholder="genderid" type="Name" required ref={genderidInput} />
-        <Input name="name" placeholder="name" type="Name" required ref={nameInput} />
-        <Input
-          name="description"
-          placeholder="description"
-          type="Name"
-          required
-          ref={descriptionInput}
-        />
-        <Input name="price" placeholder="price" type="Name" required ref={priceInput} />
-        <Input name="src" type="file" required multiple ref={srcInput} />
-        <div className="buttons-container">
-          <button type="submit" className="button-arounder">
-            ДОБАВИТЬ
-          </button>
         </div>
       )}
     </>
   );
 }
+
 export default AddProduct;
+
