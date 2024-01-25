@@ -14,3 +14,6 @@ export type Product = {
   Images: Image[];
 };
 export type ProductId = Product['id'];
+
+
+export type ProductWithoutOwnerPhoto  = Omit <Product , ('ownerId' | 'Photos') >

@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { Product, ProductId } from './types/type';
+import type { Product, ProductId, ProductWithoutOwnerPhoto } from './types/type';
 import * as api from './api';
 
 export type StateProduct = {
@@ -27,6 +28,9 @@ export const deleteProduct = createAsyncThunk('delete/product', (productId: Prod
   api.fetchDeleteProduct(productId),
 );
 
+export const updateProduct = createAsyncThunk('update/product', (obj: ProductWithoutOwnerPhoto) =>
+  api.fetchUpdateProducts(obj),
+);
 
 const productSlice = createSlice({
   name: 'products',
@@ -56,6 +60,16 @@ const productSlice = createSlice({
         state.products = state.products.filter((product) => product.id !== Number(action.payload.id))
       })
       .addCase(deleteProduct.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        console.log(action.payload);
+        
+        state.products = state.products.map((product) =>
+          product.id === action.payload.id? action.payload : product,
+        );
+      })
+      .addCase(updateProduct.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

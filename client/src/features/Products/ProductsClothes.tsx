@@ -7,7 +7,7 @@ function ProductsClothes(): JSX.Element {
   const products = useSelector((store: RootState) => store.products.products);
   const clothesProducts = products.filter((product) => product.category_id === 1);
   return (
-    <div>
+    <div className="contain gap- grid grid-cols-1 sm:grid-cols-3">
       {clothesProducts && clothesProducts.map((product) => <ProductItem product={product} />)}
     </div>
   );

@@ -2,7 +2,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import axios from 'axios';
-import type { Product, ProductId } from './types/type';
+import type { Product, ProductId, ProductWithoutOwnerPhoto } from './types/type';
 
 
 export const FetchProductall = async (): Promise<Product[]> => {
@@ -36,4 +36,23 @@ export const fetchDeleteProduct = async (
   return data;
 };
 
+// export const fetchUpdateProducts = async (
+//   product: Product,
+// ): Promise<{ message: string; product: Product }> => {
+//   const { data }: { data: { message: string; product: Product } } = await axios.put(
+//     `/api/product/${product.id}/update`,
+//     product,
+//   );
+//   return data;
+// };
 
+export const fetchUpdateProducts = async ({id,name,description,price}:ProductWithoutOwnerPhoto): Promise<Product> => {
+  const data:Product = await (await  fetch(`/api/product/update/${id}`,{
+    method:'PUT',
+    headers: { 'Content-Type': 'Application/json' },
+    body:JSON.stringify({
+        name,description,price
+    })
+})).json();
+return data
+};
