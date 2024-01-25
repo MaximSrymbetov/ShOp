@@ -45,7 +45,7 @@ const productSlice = createSlice({
       })
       .addCase(addProducts.rejected, (state, action) => {
         state.error = action.error.message;
-      });
+      })
   },
 });
 
