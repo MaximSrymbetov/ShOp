@@ -22,7 +22,7 @@ function Allroducts(): JSX.Element {
   // const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
 
   const content = (
-    <div>
+    <div className='py-16 px-10'>
       {/* <CheckboxGroup label="Filter" value={info} onValueChange={setInfo}>
         <Checkbox value="buenos-aires">Buenos Aires</Checkbox>
         <Checkbox value="sydney">Sydney</Checkbox>
@@ -43,7 +43,7 @@ function Allroducts(): JSX.Element {
           <input type="text" placeholder="ывводи" onChange={(e) => setValue(e.target.value)} />
         </form> */}
 
-      <div className="contain gap- grid grid-cols-1 sm:grid-cols-3">
+      <div className="container mx-auto gap-4 grid grid-cols-1 sm:grid-cols-3 flex justify-center p-0 m-0">
         {products.map((product) => (
           <ProductItem product={product} key={product.id} />
         ))}

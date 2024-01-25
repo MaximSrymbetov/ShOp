@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable no-restricted-syntax */
+import { Input, Select, SelectItem } from '@nextui-org/react';
 import React, { useRef } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
 
 import './Add.css';
-import { Input, Select, SelectItem } from '@nextui-org/react';
 
 function AddProduct(): JSX.Element {
   const categoryidInput = useRef<HTMLInputElement>(null);
@@ -56,20 +57,20 @@ function AddProduct(): JSX.Element {
           required
           ref={categoryidInput}
         >
-          {' '}
-          <SelectItem className="checkbox" value="created">
+
+          <SelectItem className="checkbox" value="created" key={''}>
             Создан
           </SelectItem>
-          <SelectItem className="checkbox" value="confirmed">
+          <SelectItem className="checkbox" value="confirmed" key={''}>
             Ожидает оплаты
           </SelectItem>
-          <SelectItem className="checkbox" value="payed">
+          <SelectItem className="checkbox" value="payed" key={''}>
             Оплачен
           </SelectItem>
-          <SelectItem className="checkbox" value="delivery">
+          <SelectItem className="checkbox" value="delivery" key={''}>
             Доставка
           </SelectItem>
-          <SelectItem className="checkbox" value="closed">
+          <SelectItem className="checkbox" value="closed" key={''}>
             Закрыт
           </SelectItem>
         </Select>
