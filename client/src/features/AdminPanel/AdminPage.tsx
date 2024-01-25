@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './admin.css';
@@ -12,22 +13,22 @@ function AdminPage(): JSX.Element {
   const user = useSelector((state: RootState) => state.auth.user);
 
   return (
-    <div >
+    <div>
       {user && user.isAdmin ? (
-        <div className='container flex flex-col mx-auto '>     
-          <h2 className='mx-auto flex justify-center py-8' style={{ fontSize: '200%', fontWeight: 'bold'}}>панель администрирования:</h2>
+        <div className="container flex flex-col mx-auto ">
+          <h2
+            className="mx-auto flex justify-center py-8"
+            style={{ fontSize: '200%', fontWeight: 'bold' }}
+          >
+            панель администрирования:
+          </h2>
           <AddProduct />
-          
 
           <div className=" mx-auto flex justify-center py-8">
-          <Button onClick={()=>navigate('/OrderTable')}> ЗАКАЗЫ</Button>
-        
+            <Button onClick={() => navigate('/OrderTable')}> ЗАКАЗЫ</Button>
           </div>
           <div className="container mx-auto flex justify-center">
-            {' '}
-            <div className="mx-auto flex justify-center ">
-       
-            </div>
+            <div className="mx-auto flex justify-center "></div>
           </div>
 
           {/* {newP.name} */}
