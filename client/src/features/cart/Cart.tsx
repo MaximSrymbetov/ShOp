@@ -17,14 +17,17 @@ export default function Cart(): JSX.Element {
   const loading = useSelector((store: RootState) => store.orders.loading);
   const orders = useSelector((store: RootState) => store.orders.orders);
   const user = useSelector((store: RootState) => store.auth.user);
-  // console.log(orders);
+
+
   const userItems = orders.find(
     (order) => order.user_id === user?.id && order.status === 'created',
   )?.Order_items;
-  console.log(userItems);
+
+  
   const orderSum = userItems?.reduce((acc, item) => acc + +item.Product.price, 0);
 
   const handleDelete = (id: string): void => {
+ 
     if (id) {
       dispatch(deleteOrderItem(id)).catch((err) => console.error(err));
     }
@@ -71,7 +74,7 @@ export default function Cart(): JSX.Element {
 
                           <Card className="mb-3">
                             <CardBody>
-                              {userItems?.length > 0 ? (
+                              {userItems && userItems.length > 0 ? (
                                 userItems?.map((item) => (
                                   <div key={item.id}>
                                     <div className="flex justify-between my-1">

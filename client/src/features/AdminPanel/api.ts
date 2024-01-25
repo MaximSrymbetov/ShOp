@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import axios from 'axios';
-import type { Order, OrderItem } from './types/type';
+import type { Order } from './types/type';
 
 export const FetchOrderall = async (): Promise<Order[]> => {
   const { data }: { data: { message: string; orders: Order[] } } = await axios('/api/order');

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-// import { Checkbox, CheckboxGroup } from '@nextui-org/react';
 import { Spinner } from '@nextui-org/react';
 import type { RootState } from '../../redux/store';
 
@@ -12,15 +11,15 @@ import './styles/ProductsList.css';
 function Allroducts(): JSX.Element {
   const loading = useSelector((store: RootState) => store.products.loading);
   const products = useSelector((store: RootState) => store.products.products);
-  const [info, setInfo] = useState('');
-  const [value, setValue] = useState('');
+  // const [info, setInfo] = useState('');
+  // const [value, setValue] = useState('');
 
   // const [info, setInfo] = useState('');
   // useEffect(() => {
   //   setValue(info);
   // }, [info]);
 
-  const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
+  // const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
 
   const content = (
     <div>
@@ -45,7 +44,7 @@ function Allroducts(): JSX.Element {
         </form> */}
 
       <div className="contain gap- grid grid-cols-1 sm:grid-cols-3">
-        {searchProducts.map((product) => (
+        {products.map((product) => (
           <ProductItem product={product} key={product.id} />
         ))}
       </div>
