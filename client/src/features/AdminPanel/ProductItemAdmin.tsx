@@ -10,8 +10,8 @@ type ProductItemProps = {
 function ProductItemAdmin({ product }: ProductItemProps): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const onHandleDeleteProduct = async (id: ProductId): Promise<void> => {
-    dispatch(deleteProduct(id));
+  const onHandleDeleteProduct = (id: ProductId): void => {
+    dispatch(deleteProduct(id)).catch((err) => console.log(err));
   };
 
   return (
