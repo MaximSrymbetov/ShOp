@@ -117,4 +117,5 @@ function AddProduct(): JSX.Element {
     </>
   );
 }
+
 export default AddProduct;

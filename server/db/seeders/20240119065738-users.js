@@ -70,6 +70,15 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: 'Юрий',
+          phone: '89136281841',
+          email: 'yayura@mail.ru',
+          password: await bcrypt.hash('123456789', 10),
+          isAdmin: false,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

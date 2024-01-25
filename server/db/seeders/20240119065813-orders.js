@@ -54,6 +54,14 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          user_id: 2,
+          status: 'closed',
+          total: '34700',
+          delivery_status: false,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

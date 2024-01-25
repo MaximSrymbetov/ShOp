@@ -35,6 +35,13 @@ const columns = [
   { name: 'ИЗМEНЕНИЯ', uid: 'actions' },
 ];
 
+const statuses = {
+  confirmed: 'Ожидает оплаты',
+  payed: 'Оплачен',
+  delivery: 'На доставке',
+  closed: 'Закрыт',
+};
+
 export default function OrderTable(): JSX.Element {
   const orders = useSelector((store: RootState) => store.orders.orders).filter(
     (ord) => ord.status !== 'created',
@@ -68,7 +75,7 @@ export default function OrderTable(): JSX.Element {
             size="sm"
             variant="flat"
           >
-            {order.status}
+            {order && statuses[order.status]}
           </Chip>
         );
       case 'actions':
