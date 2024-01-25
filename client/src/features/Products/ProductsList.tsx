@@ -22,7 +22,7 @@ function Allroducts(): JSX.Element {
   // const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
 
   const content = (
-    <div>
+    <div style={{ backgroundColor: '#eee' }}>
       {/* <CheckboxGroup label="Filter" value={info} onValueChange={setInfo}>
         <Checkbox value="buenos-aires">Buenos Aires</Checkbox>
         <Checkbox value="sydney">Sydney</Checkbox>

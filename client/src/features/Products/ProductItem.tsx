@@ -17,7 +17,7 @@ function ProductItem({ product }: ProductItemProps): JSX.Element {
           <img className="w-full h-auto rounded-t-xl" src={product.Images[0].src} alt="img" />
           <div className="lineSt p-4 md:p-5">
             <h3 className="text-lg font-bold text-gray-800 dark:text-white">
-              {nameProduct.length > 20 ? (nameProduct.substring(0, 20) + '...' ): nameProduct}
+              {nameProduct.length > 20 ? nameProduct.substring(0, 20) + '...' : nameProduct}
             </h3>
             <p className="mt-1 text-gray-500 dark:text-gray-400">{`${product.price} ₽`}</p>
           </div>
@@ -28,6 +28,3 @@ function ProductItem({ product }: ProductItemProps): JSX.Element {
 }
 
 export default ProductItem;
-
-
-

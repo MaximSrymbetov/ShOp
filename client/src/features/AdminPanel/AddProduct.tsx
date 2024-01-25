@@ -2,10 +2,7 @@
 import React, { useRef } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
-
-import './Add.css'
-
-
+import './Add.css';
 
 function AddProduct(): JSX.Element {
   const categoryidInput = useRef<HTMLInputElement>(null);
@@ -48,16 +45,30 @@ function AddProduct(): JSX.Element {
     }
   };
   return (
-    <div className='container mx-auto flex justify-center min-w 1/3'>
+    <div className="container mx-auto flex justify-center min-w 1/3">
       <form onSubmit={productAdd}>
-        <input name="categoryid" placeholder='categoryid' type="text" required  ref={categoryidInput} />
-        <input name="genderid" placeholder='genderid' type="text" required ref={genderidInput} />
-        <input name="name" placeholder='name' type="text" required ref={nameInput} />
-        <input name="description" placeholder='description' type="text" required ref={descriptionInput} />
-        <input name="price" placeholder='price' type="text" required  ref={priceInput} />
+        <input
+          name="categoryid"
+          placeholder="categoryid"
+          type="text"
+          required
+          ref={categoryidInput}
+        />
+        <input name="genderid" placeholder="genderid" type="text" required ref={genderidInput} />
+        <input name="name" placeholder="name" type="text" required ref={nameInput} />
+        <input
+          name="description"
+          placeholder="description"
+          type="text"
+          required
+          ref={descriptionInput}
+        />
+        <input name="price" placeholder="price" type="text" required ref={priceInput} />
         <input name="src" type="file" required multiple ref={srcInput} />
         <div className="buttons-container">
-        <button type="submit" className='button-arounder'>ДОБАВИТЬ</button>
+          <button type="submit" className="button-arounder">
+            ДОБАВИТЬ
+          </button>
         </div>
       </form>
     </div>
