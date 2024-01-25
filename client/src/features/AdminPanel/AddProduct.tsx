@@ -4,7 +4,6 @@ import React, { useRef, useState } from 'react';
 import { Button, Input, Select, SelectItem } from '@nextui-org/react';
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
-
 import './Add.css';
 
 function AddProduct(): JSX.Element {
