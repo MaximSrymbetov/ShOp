@@ -52,7 +52,7 @@ function AddProduct(): JSX.Element {
       {isOpen && (
         <div className="container mx-auto flex justify-center w-2/3">
           <form onSubmit={productAdd} ref={formRef}>
-            <Select className='py-1' name="categoryid" placeholder="Категория" required ref={categoryidInput}>
+            <Select className='py-2' name="categoryid" placeholder="Категория" required ref={categoryidInput}>
               <SelectItem key={1} value="1">
                 Одежда
               </SelectItem>
@@ -63,7 +63,7 @@ function AddProduct(): JSX.Element {
                 Акссесуары
               </SelectItem>
             </Select>
-            <Select  className='py-1' name="genderid" placeholder="Пол" required ref={genderidInput}>
+            <Select name="genderid" placeholder="Пол" required ref={genderidInput}>
               <SelectItem key={1} value="1">
                 Мужчина
               </SelectItem>
@@ -71,7 +71,7 @@ function AddProduct(): JSX.Element {
                 Женщина
               </SelectItem>
             </Select>
-            <Input className='py-1' name="name" placeholder="Название" type="Name" required ref={nameInput} />
+            <Input name="name" placeholder="Название" type="Name" required ref={nameInput} />
             <Input
               name="description"
               placeholder="Описание"
@@ -79,8 +79,8 @@ function AddProduct(): JSX.Element {
               required
               ref={descriptionInput}
             />
-            <Input className='py-1' name="price" placeholder="Цена" type="Name" required ref={priceInput} />
-            <Input className='py-1' name="src" type="file" required multiple ref={srcInput} />
+            <Input name="price" placeholder="Цена" type="Name" required ref={priceInput} />
+            <Input name="src" type="file" required multiple ref={srcInput} />
             <div className="buttons-container">
               <Button type="submit" className="button-arounder">
                 ДОБАВИТЬ

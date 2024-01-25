@@ -31,7 +31,7 @@ console.log(products,'++++++++++++++++++++++++++++++++');
         </option>
       </select>
       <form>
-        <nput type="text" placeholder="Поиск по товарам" onChange={(e) => setValue(e.target.value)} />
+        <input type="text" placeholder="Поиск по товару" onChange={(e) => setValue(e.target.value)} />
       </form>
       <div>
         {searchProducts.map((product) => (
