@@ -1,46 +1,79 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { Button, Input } from '@nextui-org/react';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';
-import * as api from '../../App/api';
+import { login } from './types/authSlice';
+import type { Authorization } from './types/type';
 
 function AuthorizationPage(): JSX.Element {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const dbError = useSelector((store: RootState) => store.auth.message);
 
-  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    api
-      .FetchAuthUser({ email, password })
-      .then((data) => {
-        if (data.message === 'success') {
-          dispatch({ type: 'auth/authorization', payload: data.userDB });
-          navigate('/');
-        }
-      })
-      .catch((err) => console.log(err));
+  useEffect(() => {
+    if (dbError === 'success') {
+      reset();
+      navigate('/');
+    }
+
+  }, [dbError]);
+
+  const onSubmit = (data: Authorization): void => {
+    try {
+      dispatch(login(data)).catch((err) => console.error(err));
+
+    } catch (error) {
+      setError('password', { type: 'manual', message: `${error}` });
+    }
   };
+
   return (
-    <div>
-      <form onSubmit={onHandleSubmit}>
-        <input
+    <div className="container mx-auto my-24 w-4/5 sm:w-1/3">
+      <p className="font-bold text-xl mb-4">Войдите в свой аккаунт</p>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          className="py-2"
           type="email"
-          name="email"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Введите вашу эл. почту"
+          {...register('email', { required: 'Введите вашу почту!' })}
         />
-        <input
+        {errors.email && <p>{errors.email.message}</p>}
+        <Input
+          className="py-2"
           type="password"
-          name="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Введите ваш пароль"
+          {...register('password', { required: 'Введите ваш пароль!' })}
         />
-        <button type="submit">Авторизироваться</button>
+        {errors.password && <p>{errors.password.message}</p>}
+        {dbError}
+
+        <div className="flex justify-between">
+          <Button className="py-2 mt-4" type="submit">
+            Войти
+          </Button>
+          <Link className="py-2 mt-4" type="button" to="/signin">
+            Зарегистрироваться
+          </Link>
+        </div>
       </form>
     </div>
   );

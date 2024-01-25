@@ -16,6 +16,11 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: 'АКССЕСУАРЫ',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

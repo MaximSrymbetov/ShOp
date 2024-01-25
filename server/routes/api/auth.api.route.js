@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const generateTokens = require('../../utils/authUtils');
 const cookiesConfig = require('../../config/cookiesConfig');
-const { User } = require('../../db/models');
+const { User, Favorite } = require('../../db/models');
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -30,7 +30,7 @@ router.post('/login', async (req, res) => {
             httpOnly: true,
           })
           .status(200)
-          .json({ message: 'success', userDB });
+          .json({ message: 'success', user: userDB });
       }
       return res.status(400).json({ message: 'Неправильно указан пароль' });
     }
@@ -87,7 +87,7 @@ router.post('/signin', async (req, res) => {
           httpOnly: true,
         })
         .status(200)
-        .json({ message: 'success', userDB });
+        .json({ message: 'success', user: userDB });
     }
     return res
       .status(400)
@@ -130,9 +130,10 @@ router.get('/check', async (req, res) => {
       }
     }
   } catch (error) {
-    console.error(error);
     return res.status(500).json({ message: error.message });
   }
 });
+
+
 
 module.exports = router;

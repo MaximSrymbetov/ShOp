@@ -1,3 +1,9 @@
+export type Image = {
+  id: number;
+  product_id: number;
+  src: string;
+};
+
 export type Product = {
   id: number;
   category_id: number;
@@ -5,5 +11,6 @@ export type Product = {
   name: string;
   description: string;
   price: string;
-  Images: [];
+  Images: Image[];
 };
+export type ProductId = Product['id'];
