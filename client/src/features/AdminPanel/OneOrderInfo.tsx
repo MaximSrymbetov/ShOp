@@ -17,7 +17,7 @@ function AllOrders(): JSX.Element {
       <p>{order?.total}-Общая сумма </p>
 
       <Link to={`/order/${orderId}/update`}>
-        <button type="button">Изменить</button>
+        <button  type="button">Изменить</button>
       </Link>
     </div>
   );

@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Navbar,
   NavbarBrand,
@@ -34,6 +34,8 @@ export default function NavBar(): JSX.Element {
     dispatch(logout()).catch((err) => console.error(err));
     navigate('/');
   };
+
+  const [searchValue, setSearchValue] = useState('');
 
   const menuItems = ['Главная', 'Каталог', 'Категории', 'Корзина', 'It is for ADMIN :)'];
 
@@ -91,6 +93,8 @@ export default function NavBar(): JSX.Element {
             size="sm"
             startContent={<SearchIcon size={18} strokeWidth={1.5} />}
             type="search"
+            value={searchValue}
+            onChange={(e)=> setSearchValue(e.target.value)}
           />
           {user ? (
             <Dropdown placement="bottom-end">

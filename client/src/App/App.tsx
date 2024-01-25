@@ -23,6 +23,8 @@ import ProductsAccessories from '../features/Products/ProductsAccessories';
 import OrderTable from '../features/AdminPanel/OrderTable';
 import { checkUser } from '../features/Auth/types/authSlice';
 import Footer from '../features/footer/Footer';
+import SizeЕable from '../features/Size/SizeЕable';
+
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -53,6 +55,8 @@ function App(): JSX.Element {
           <Route path="/category/accessories" element={<ProductsAccessories />} />
           <Route path="/category/clothes" element={<ProductsClothes />} />
           <Route path="/category/shoes" element={<ProductsShoes />} />
+          <Route path="/category/shoes" element={<ProductsShoes />} />
+          <Route path="/size/nike" element={<SizeЕable />} />
           {/* <Route path="/user/profile" element={<Profile />} />
           <Route path="/user/orders" element={<Orders />} /> */}
         </Route>

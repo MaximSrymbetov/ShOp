@@ -1,6 +1,10 @@
+/* eslint-disable no-restricted-syntax */
 import React, { useRef } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
+
+import './Add.css'
+
 
 
 function AddProduct(): JSX.Element {
@@ -14,12 +18,17 @@ function AddProduct(): JSX.Element {
 
   const productAdd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+
     const categoryid = categoryidInput.current?.value;
     const genderid = genderidInput.current?.value;
     const name = nameInput.current?.value;
     const description = descriptionInput.current?.value;
     const price = priceInput.current?.value;
     const src = srcInput.current?.files;
+
+    if (!categoryid || !genderid || !name || !description || !price || !src) {
+      return;
+    }
 
     const formData = new FormData();
 
@@ -33,22 +42,23 @@ function AddProduct(): JSX.Element {
       formData.append('src', src[i]);
     }
     void dispatch(addProducts(formData));
-    console.log(formData, '!!!!!!!!!!!!!!!!!!');
 
     for (const pair of formData.entries()) {
       console.log(pair[0], pair[1]);
     }
   };
   return (
-    <div>
+    <div className='container mx-auto flex justify-center min-w 1/3'>
       <form onSubmit={productAdd}>
-        <input name="categoryid" type="text" ref={categoryidInput} />
-        <input name="genderid" type="text" ref={genderidInput} />
-        <input name="name" type="text" ref={nameInput} />
-        <input name="description" type="text" ref={descriptionInput} />
-        <input name="price" type="text"  ref={priceInput} />
-        <input name="src" type="file" multiple ref={srcInput} />
-        <button type="submit">add</button>
+        <input name="categoryid" placeholder='categoryid' type="text" required  ref={categoryidInput} />
+        <input name="genderid" placeholder='genderid' type="text" required ref={genderidInput} />
+        <input name="name" placeholder='name' type="text" required ref={nameInput} />
+        <input name="description" placeholder='description' type="text" required ref={descriptionInput} />
+        <input name="price" placeholder='price' type="text" required  ref={priceInput} />
+        <input name="src" type="file" required multiple ref={srcInput} />
+        <div className="buttons-container">
+        <button type="submit" className='button-arounder'>ДОБАВИТЬ</button>
+        </div>
       </form>
     </div>
   );

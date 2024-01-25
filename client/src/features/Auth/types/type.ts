@@ -1,3 +1,5 @@
+import type { Favorite } from '../../Favorite/types/type';
+
 export type User = {
   id: number;
   name: string;
@@ -5,6 +7,7 @@ export type User = {
   email: string;
   password: string;
   isAdmin: boolean;
+  Favorite: Favorite;
 };
 
 export type StateAuth = {

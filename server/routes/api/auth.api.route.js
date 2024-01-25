@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const generateTokens = require('../../utils/authUtils');
 const cookiesConfig = require('../../config/cookiesConfig');
-const { User } = require('../../db/models');
+const { User, Favorite } = require('../../db/models');
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -130,9 +130,10 @@ router.get('/check', async (req, res) => {
       }
     }
   } catch (error) {
-    console.error(error);
     return res.status(500).json({ message: error.message });
   }
 });
+
+
 
 module.exports = router;

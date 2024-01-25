@@ -1,24 +1,24 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 // import { Checkbox, CheckboxGroup } from '@nextui-org/react';
+import { Spinner } from '@nextui-org/react';
 import type { RootState } from '../../redux/store';
 
 import ProductItem from './ProductItem';
 
 import './styles/ProductsList.css';
-import { Spinner } from '@nextui-org/react';
 
 function Allroducts(): JSX.Element {
   const loading = useSelector((store: RootState) => store.products.loading);
   const products = useSelector((store: RootState) => store.products.products);
-
   const [info, setInfo] = useState('');
   const [value, setValue] = useState('');
 
-  useEffect(() => {
-    setValue(info);
-  }, [info]);
+  // const [info, setInfo] = useState('');
+  // useEffect(() => {
+  //   setValue(info);
+  // }, [info]);
 
   const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
 
@@ -39,7 +39,7 @@ function Allroducts(): JSX.Element {
         <option className="checkbox" value="Jacket">
           Куртки
         </option>
-      </select> */}
+   </select> */}
       {/* <form>
           <input type="text" placeholder="ывводи" onChange={(e) => setValue(e.target.value)} />
         </form> */}
@@ -57,26 +57,3 @@ function Allroducts(): JSX.Element {
 }
 
 export default Allroducts;
-
-// return (
-//   <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
-//     {searchProducts.map((product, index) => (
-//       <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}>
-//         <CardBody className="overflow-visible p-0">
-//           <Image
-//             shadow="sm"
-//             radius="lg"
-//             width="100%"
-//             alt={item.title}
-//             className="w-full object-cover h-[140px]"
-//             src={item.img}
-//           />
-//         </CardBody>
-//         <CardFooter className="text-small justify-between">
-//           <b>{item.title}</b>
-//           <p className="text-default-500">{item.price}</p>
-//         </CardFooter>
-//       </Card>
-//     ))}
-//   </div>
-// );

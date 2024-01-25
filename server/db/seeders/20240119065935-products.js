@@ -9,7 +9,7 @@ module.exports = {
         {
           category_id: 2,
           gender_id: 2,
-          name: '',
+          name: 'Nike react element 55',
           description: 'Nike react element 55 одни из лучших для тренировок',
           price: '7500',
           createdAt: new Date(),
@@ -425,7 +425,7 @@ module.exports = {
         {
           category_id: 3,
           gender_id: 2,
-          name: 'DICKIES authomatic.jpg',
+          name: 'DICKIES authomatic',
           description: 'для зумеров',
           price: '4400',
           createdAt: new Date(),

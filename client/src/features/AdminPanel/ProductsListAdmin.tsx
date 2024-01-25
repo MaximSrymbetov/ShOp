@@ -12,14 +12,14 @@ function ProductsListAdmin(): JSX.Element {
 
   useEffect(() => {
     setValue(info);
-  }, [info]);
+  }, [info,products]);
 
   const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
 
   return (
     <div>
       <select value={info} onChange={(e) => setInfo(e.target.value)}>
-        <option className="checkbox" value="t-shirt">
+        <option className="checkbox"  value="t-shirt">
           Футболки
         </option>
         <option className="checkbox" value="air">
@@ -30,7 +30,7 @@ function ProductsListAdmin(): JSX.Element {
         </option>
       </select>
       <form>
-        <input type="text" placeholder="ывводи" onChange={(e) => setValue(e.target.value)} />
+        <input type="text" placeholder="Вводи" onChange={(e) => setValue(e.target.value)} />
       </form>
       <div>
         {searchProducts.map((product) => (
