@@ -3,9 +3,8 @@ import React, { useRef } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
 
-import './Add.css'
-
-
+import './Add.css';
+import { Input, Select, SelectItem } from '@nextui-org/react';
 
 function AddProduct(): JSX.Element {
   const categoryidInput = useRef<HTMLInputElement>(null);
@@ -48,16 +47,47 @@ function AddProduct(): JSX.Element {
     }
   };
   return (
-    <div className='container mx-auto flex justify-center min-w 1/3'>
+    <div className="container mx-auto flex justify-center w-2/3">
       <form onSubmit={productAdd}>
-        <input name="categoryid" placeholder='categoryid' type="text" required  ref={categoryidInput} />
-        <input name="genderid" placeholder='genderid' type="text" required ref={genderidInput} />
-        <input name="name" placeholder='name' type="text" required ref={nameInput} />
-        <input name="description" placeholder='description' type="text" required ref={descriptionInput} />
-        <input name="price" placeholder='price' type="text" required  ref={priceInput} />
-        <input name="src" type="file" required multiple ref={srcInput} />
+        <Select
+          name="categoryid"
+          placeholder="categoryid"
+          type="Name"
+          required
+          ref={categoryidInput}
+        >
+          {' '}
+          <SelectItem className="checkbox" value="created">
+            Создан
+          </SelectItem>
+          <SelectItem className="checkbox" value="confirmed">
+            Ожидает оплаты
+          </SelectItem>
+          <SelectItem className="checkbox" value="payed">
+            Оплачен
+          </SelectItem>
+          <SelectItem className="checkbox" value="delivery">
+            Доставка
+          </SelectItem>
+          <SelectItem className="checkbox" value="closed">
+            Закрыт
+          </SelectItem>
+        </Select>
+        <Select name="genderid" placeholder="genderid" type="Name" required ref={genderidInput} />
+        <Input name="name" placeholder="name" type="Name" required ref={nameInput} />
+        <Input
+          name="description"
+          placeholder="description"
+          type="Name"
+          required
+          ref={descriptionInput}
+        />
+        <Input name="price" placeholder="price" type="Name" required ref={priceInput} />
+        <Input name="src" type="file" required multiple ref={srcInput} />
         <div className="buttons-container">
-        <button type="submit" className='button-arounder'>ДОБАВИТЬ</button>
+          <button type="submit" className="button-arounder">
+            ДОБАВИТЬ
+          </button>
         </div>
       </form>
     </div>
@@ -98,7 +128,7 @@ export default AddProduct;
 //     <form onSubmit={onHandleSubmit}>
 //       <div className="field">
 //         <input
-//           type="text"
+//           type="Name"
 //           placeholder="categoryid"
 //           value={categoryid}
 //           onChange={(e) => setCategoryid(e.target.value)}
