@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Product, Image } = require('../../db/models');
-const fileUpload = require('../../fileupload')
+const fileUpload = require('../../fileupload');
 router.get('/', async (req, res) => {
   try {
     const products = await Product.findAll({
@@ -16,13 +16,13 @@ router.get('/', async (req, res) => {
 router.post('/add', async (req, res) => {
   try {
     const { categoryid, genderid, name, description, price } = req.body;
-    console.log(req.body,'!!!!!!!!!!!!!!!');
-    const file = req.files?.src
+    console.log(req.body, '!!!!!!!!!!!!!!!');
+    const file = req.files?.src;
     const arrproductid = await Promise.all(file.map((el) => fileUpload(el)));
     if (categoryid && genderid && name && description && price) {
       const product = await Product.create({
-        category_id:categoryid,
-        gender_id:genderid,
+        category_id: categoryid,
+        gender_id: genderid,
         name,
         description,
         price,
@@ -50,31 +50,29 @@ router.post('/add', async (req, res) => {
   }
 });
 
-router.put('/:id/update', async (req, res) => {
-  const { id } = req.params;
-  const { name, description, price, category_id, gender_id } = req.body;
+router.put('/update/:idProduct', async (req, res) => {
   try {
-    const result = await Product.update(
-      {
-        name,
-        description,
-        price,
-        category_id,
-        gender_id,
-      },
-      { where: { id } }
-    );
-    if (result.length > 0) {
-      const product = await Product.findOne({ where: { id } });
-      return res.status(200).json({ message: 'success' }, product);
-    } else {
-      return res.status(500).json({
-        message: 'Не удалось обновить продукт из-за серверной ошибки',
+    const { idProduct } = req.params;
+    const { description, name, price } = req.body;
+    if (description && name && price) {
+      const product = await Product.findOne({
+        where: { id: idProduct },
+        include: { model: Image },
       });
+      if (product) {
+        product.description = description;
+        product.name = name;
+        product.price = price;
+        await product.save();
+        res.status(200).json(product);
+      } else {
+        res.status(400).json({ message: 'Это не Ваше' });
+      }
+    } else {
+      res.status(400).json({ message: 'Заполните все поля' });
     }
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: error.message });
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 });
 
