@@ -3,6 +3,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from 'react';
+import { Select, SelectItem } from '@nextui-org/react';
+
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -22,22 +24,28 @@ function FormUpdateOrder(): JSX.Element {
   if (id) {
     order = orders.find((oreder) => oreder.id === +id);
   }
+  console.log(order);
 
   const { register, handleSubmit } = useForm({
     defaultValues: { status: order?.status, total: order?.total },
   });
 
   const onSubmit = (data: { total: string | undefined; status: string | undefined }): void => {
-    dispatch(updateOrder({ ...order, total: data.total, status: data.status })).catch((err) =>
-      console.error(err),
-    );
+    const newOrder = { ...order, id: Number(order?.id), total: data.total, status: data.status };
+    console.log(newOrder);
+    if(!newOrder){
+      return
+    }
+    dispatch(updateOrder(newOrder)).catch((err) => console.error(err));
     navigate('/orderTable');
   };
+
   console.log(order?.Order_info);
 
   return (
     <div className="container mx-auto flex justify-center min-w 1/3">
       <form onSubmit={handleSubmit(onSubmit)} className="iii">
+
         <p className="textfieldlabel">ВЫБЕРИТЕ СТАТУС:</p>
         <select defaultValue={order?.status} {...register('status')}>
           <option className="checkbox" value="created">
@@ -67,7 +75,6 @@ function FormUpdateOrder(): JSX.Element {
           required
           {...register('total')}
         />
-
         <button className="button-arounder" type="submit">
           Изменить
         </button>
@@ -86,6 +93,7 @@ function FormUpdateOrder(): JSX.Element {
               >
                 {order?.User.name}
               </td>
+
 
               <th style={{ color: 'red', fontWeight: 'bold', padding: '10px' }}>ПОЧТА:</th>
               <td

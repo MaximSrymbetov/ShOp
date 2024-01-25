@@ -2,7 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 import ProductItem from './ProductItem';
-import './styles/ProductsList.css'
+
+import './styles/ProductsList.css';
+
 
 function ProductsAccessories(): JSX.Element {
   const products = useSelector((store: RootState) => store.products.products);

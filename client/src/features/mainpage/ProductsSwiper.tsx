@@ -22,7 +22,7 @@ export default function ProductsSwiper(): JSX.Element {
   const sneakers = products.filter((product) => product.category_id === 2).slice(1, 8);
 
   const content = (
-    <div className="swiper-container">
+    <div className="swiper-container pb-12">
       <Swiper
         slidesPerView={3}
         centeredSlides

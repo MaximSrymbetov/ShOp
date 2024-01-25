@@ -1,20 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MDBCol, MDBRow } from 'mdb-react-ui-kit';
-import { Button, Card, CardBody, Divider, Image } from '@nextui-org/react';
+import { Button, Card, CardBody, Divider, Image, Spinner } from '@nextui-org/react';
 import './styles/cart.css';
 import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import GoIcon from '../mainpage/icons/GoIcon';
-import type { RootState } from '../../redux/store';
+import { useAppDispatch, type RootState } from '../../redux/store';
+import { deleteOrderItem } from '../AdminPanel/orderSlice';
 
 export default function Cart(): JSX.Element {
   const navigate = useNavigate();
-  const user = useSelector((store: RootState) => store.auth.user);
-  const orders = useSelector((store: RootState) => store.orders.orders);
-  const userOrder = orders.find((order) => order.user_id === user?.id);
-  const orderSum = userOrder?.Order_items.reduce((acc, item) => acc + +item.Product.price, 0);
+  const dispatch = useAppDispatch();
 
-  return (
+  const [sumErr, setSumErr] = useState('');
+
+  const loading = useSelector((store: RootState) => store.orders.loading);
+  const orders = useSelector((store: RootState) => store.orders.orders);
+  const user = useSelector((store: RootState) => store.auth.user);
+
+
+  const userItems = orders.find(
+    (order) => order.user_id === user?.id && order.status === 'created',
+  )?.Order_items;
+
+  
+  const orderSum = userItems?.reduce((acc, item) => acc + +item.Product.price, 0);
+
+  const handleDelete = (id: string): void => {
+ 
+    if (id) {
+      dispatch(deleteOrderItem(id)).catch((err) => console.error(err));
+    }
+  };
+
+  const content = (
     <div>
       {user ? (
         <div>
@@ -27,7 +46,7 @@ export default function Cart(): JSX.Element {
                       <MDBRow>
                         <MDBCol lg="7">
                           <p className="h5">
-                            <Button href="/" className="text-body">
+                            <Button onClick={() => navigate('/products')} className="text-body">
                               <div className="fas long-arrow-alt-left me-2">
                                 <GoIcon />
                               </div>
@@ -40,8 +59,7 @@ export default function Cart(): JSX.Element {
                             <div>
                               <p className="mb-1">Корзина</p>
                               <p className="mb-0">
-                                У вас {userOrder ? userOrder.Order_items.length : 0} предмета в
-                                корзине
+                                У вас {userItems ? userItems.length : 0} предмета в корзине
                               </p>
                             </div>
                             <div>
@@ -56,9 +74,9 @@ export default function Cart(): JSX.Element {
 
                           <Card className="mb-3">
                             <CardBody>
-                              {userOrder ? (
-                                userOrder.Order_items.map((item) => (
-                                  <>
+                              {userItems && userItems.length > 0 ? (
+                                userItems?.map((item) => (
+                                  <div key={item.id}>
                                     <div className="flex justify-between my-1">
                                       <div className="flex flex-row items-center">
                                         <div>
@@ -83,18 +101,22 @@ export default function Cart(): JSX.Element {
                                         <div style={{ width: '80px' }}>
                                           <p className="mb-0">₽ {item.Product.price}</p>
                                         </div>
-                                        <Link to="/" style={{ color: '#cecece' }}>
+                                        <Button
+                                          type="button"
+                                          onClick={() => handleDelete(String(item.product_id))}
+                                          style={{ color: '#cecece' }}
+                                        >
                                           <img
                                             width="20"
                                             height="20"
                                             src="https://img.icons8.com/external-tal-revivo-regular-tal-revivo/96/external-trash-can-layout-for-a-indication-to-throw-trash-mall-regular-tal-revivo.png"
                                             alt="external-trash-can-layout-for-a-indication-to-throw-trash-mall-regular-tal-revivo"
                                           />
-                                        </Link>
+                                        </Button>
                                       </div>
                                     </div>
                                     <Divider />
-                                  </>
+                                  </div>
                                 ))
                               ) : (
                                 <p className="py-7">Ваша корзина пустая, добавьте в нее товары</p>
@@ -108,7 +130,7 @@ export default function Cart(): JSX.Element {
                             <CardBody>
                               <div className="flex justify-between">
                                 <p className="p-1">Сумма</p>
-                                <p className="p-1">{orderSum && 0} ₽</p>
+                                <p className="p-1">{orderSum} ₽</p>
                               </div>
 
                               <div className="flex justify-between">
@@ -121,12 +143,22 @@ export default function Cart(): JSX.Element {
                                 <b className="p-1">{orderSum ? orderSum + 2000 : 0} ₽</b>
                               </div>
 
-                              <Button color="default" size="lg" className="block">
+                              <Button
+                                color="default"
+                                size="lg"
+                                className="block"
+                                onClick={() =>
+                                  orderSum && orderSum > 0
+                                    ? navigate('/order/pay')
+                                    : setSumErr('Сначала добавьте заказы в корзину!')
+                                }
+                              >
                                 <div className="flex justify-between">
-                                  <span>{orderSum && orderSum + 2000} ₽</span>
+                                  <span>{orderSum ? orderSum + 2000 : 0} ₽</span>
                                   <span>Оплатить</span>
                                 </div>
                               </Button>
+                              <p className="pt-4">{sumErr}</p>
                             </CardBody>
                           </Card>
                         </MDBCol>
@@ -155,5 +187,8 @@ export default function Cart(): JSX.Element {
         </div>
       )}
     </div>
+  );
+  return (
+    <div>{loading ? <Spinner className="container mx-auto my-10" /> : <div>{content}</div>}</div>
   );
 }

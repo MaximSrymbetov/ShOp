@@ -8,7 +8,7 @@ import AuthorizationPage from '../features/Auth/AuthorizationPage';
 import RegistrationPage from '../features/Auth/RegistrationPage';
 import Allroducts from '../features/Products/ProductsList';
 import { useAppDispatch } from '../redux/store';
-import { allproducts, stopLoading } from '../features/Products/productSlice';
+import { allproducts } from '../features/Products/productSlice';
 import AdminPage from '../features/AdminPanel/AdminPage';
 import { allorders } from '../features/AdminPanel/orderSlice';
 import Cart from '../features/cart/Cart';
@@ -24,20 +24,17 @@ import OrderTable from '../features/AdminPanel/OrderTable';
 import { checkUser } from '../features/Auth/types/authSlice';
 import Footer from '../features/footer/Footer';
 import FormUpdateProduct from '../features/AdminPanel/Udete';
+import SizeЕable from '../features/Size/SizeЕable';
+
 
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-  
+
   useEffect(() => {
     void dispatch(allproducts());
     void dispatch(allorders());
     dispatch(checkUser()).catch((err) => console.error(err));
-
-    setTimeout(() => {
-      dispatch(stopLoading());
-    }, 2500);
-
     return () => {};
   }, [dispatch]);
 
@@ -61,6 +58,8 @@ function App(): JSX.Element {
           <Route path="/category/accessories" element={<ProductsAccessories />} />
           <Route path="/category/clothes" element={<ProductsClothes />} />
           <Route path="/category/shoes" element={<ProductsShoes />} />
+          <Route path="/category/shoes" element={<ProductsShoes />} />
+          <Route path="/size/nike" element={<SizeЕable />} />
           {/* <Route path="/user/profile" element={<Profile />} />
           <Route path="/user/orders" element={<Orders />} /> */}
         </Route>
