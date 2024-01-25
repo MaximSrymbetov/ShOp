@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable no-restricted-syntax */
 import React, { useRef, useState } from 'react';
+import { Button, Input, Select, SelectItem } from '@nextui-org/react';
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
 import './Add.css';
-import { Button, Input, Select, SelectItem } from '@nextui-org/react';
 
 function AddProduct(): JSX.Element {
   // void dispatch(addProducts(formData));
@@ -43,7 +43,7 @@ function AddProduct(): JSX.Element {
       formData.append('src', src[i]);
     }
     void dispatch(addProducts(formData));
-    formRef.current?reset();
+    formRef.current?.reset();
   };
 
   return (
@@ -119,4 +119,3 @@ function AddProduct(): JSX.Element {
 }
 
 export default AddProduct;
-
