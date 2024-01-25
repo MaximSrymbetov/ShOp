@@ -32,8 +32,8 @@ function FormUpdateOrder(): JSX.Element {
   const onSubmit = (data: { total: string | undefined; status: string | undefined }): void => {
     const newOrder = { ...order, id: Number(order?.id), total: data.total, status: data.status };
     console.log(newOrder);
-    if(!newOrder){
-      return
+    if (!newOrder) {
+      return;
     }
     dispatch(updateOrder(newOrder)).catch((err) => console.error(err));
     navigate('/orderTable');
@@ -44,7 +44,6 @@ function FormUpdateOrder(): JSX.Element {
   return (
     <div className="container mx-auto flex justify-center min-w 1/3">
       <form onSubmit={handleSubmit(onSubmit)} className="iii">
-
         <p className="textfieldlabel">ВЫБЕРИТЕ СТАТУС:</p>
         <select defaultValue={order?.status} {...register('status')}>
           <option className="checkbox" value="created">
@@ -93,7 +92,6 @@ function FormUpdateOrder(): JSX.Element {
                 {order?.User.name}
               </td>
 
-
               <th style={{ color: 'red', fontWeight: 'bold', padding: '10px' }}>ПОЧТА:</th>
               <td
                 style={{
@@ -115,7 +113,7 @@ function FormUpdateOrder(): JSX.Element {
                   border: '2px solid black',
                 }}
               >
-                {order?.Order_info.address}
+                {order?.Order_info && order?.Order_info.address}
               </td>
               <th style={{ color: 'red', fontWeight: 'bold', padding: '10px' }}>ТЕЛЕФОН:</th>
               <td
@@ -126,7 +124,7 @@ function FormUpdateOrder(): JSX.Element {
                   border: '2px solid black',
                 }}
               >
-                {order?.Order_info.phone}
+                {order?.Order_info && order?.Order_info.phone}
               </td>
             </tr>
           </tbody>
