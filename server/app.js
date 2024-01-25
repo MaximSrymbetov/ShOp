@@ -9,7 +9,7 @@ const PORT = 4000;
 const indexRouter = require('./routes/index.route');
 
 config(app);
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, './dist')));
 
 app.use('/', indexRouter);
 

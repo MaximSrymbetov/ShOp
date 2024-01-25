@@ -1,12 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable no-restricted-syntax */
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
 import './Add.css';
+import { Button, Input, Select, SelectItem } from '@nextui-org/react';
 
 function AddProduct(): JSX.Element {
-  const categoryidInput = useRef<HTMLInputElement>(null);
-  const genderidInput = useRef<HTMLInputElement>(null);
+  // void dispatch(addProducts(formData));
+  const [isOpen, setIsOpen] = useState(false);
+  const formRef = useRef(null);
+  const categoryidInput = useRef<HTMLSelectElement>(null);
+  const genderidInput = useRef<HTMLSelectElement>(null);
   const nameInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLInputElement>(null);
   const priceInput = useRef<HTMLInputElement>(null);
@@ -15,7 +20,6 @@ function AddProduct(): JSX.Element {
 
   const productAdd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-
     const categoryid = categoryidInput.current?.value;
     const genderid = genderidInput.current?.value;
     const name = nameInput.current?.value;
@@ -39,119 +43,80 @@ function AddProduct(): JSX.Element {
       formData.append('src', src[i]);
     }
     void dispatch(addProducts(formData));
-
-    for (const pair of formData.entries()) {
-      console.log(pair[0], pair[1]);
-    }
+    formRef.current?reset();
   };
+
   return (
-    <div className="container mx-auto flex justify-center min-w 1/3">
-      <form onSubmit={productAdd}>
-        <input
-          name="categoryid"
-          placeholder="categoryid"
-          type="text"
-          required
-          ref={categoryidInput}
-        />
-        <input name="genderid" placeholder="genderid" type="text" required ref={genderidInput} />
-        <input name="name" placeholder="name" type="text" required ref={nameInput} />
-        <input
-          name="description"
-          placeholder="description"
-          type="text"
-          required
-          ref={descriptionInput}
-        />
-        <input name="price" placeholder="price" type="text" required ref={priceInput} />
-        <input name="src" type="file" required multiple ref={srcInput} />
-        <div className="buttons-container">
-          <button type="submit" className="button-arounder">
-            ДОБАВИТЬ
-          </button>
+    <>
+      <Button
+        className=" mx-auto flex justify-center w-1/3"
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        Добавить новый товар
+      </Button>
+      {isOpen && (
+        <div className="container mx-auto flex justify-center w-2/3">
+          <form onSubmit={productAdd} ref={formRef}>
+            <Select
+              className="py-1"
+              name="categoryid"
+              placeholder="Категория"
+              required
+              ref={categoryidInput}
+            >
+              <SelectItem key={1} value="1">
+                Одежда
+              </SelectItem>
+              <SelectItem key={2} value="2">
+                Кроссовки
+              </SelectItem>
+              <SelectItem key={3} value="3">
+                Акссесуары
+              </SelectItem>
+            </Select>
+            <Select className="py-1" name="genderid" placeholder="Пол" required ref={genderidInput}>
+              <SelectItem key={1} value="1">
+                Мужчина
+              </SelectItem>
+              <SelectItem key={2} value="2">
+                Женщина
+              </SelectItem>
+            </Select>
+            <Input
+              className="py-2"
+              name="name"
+              placeholder="Название"
+              type="Name"
+              required
+              ref={nameInput}
+            />
+            <Input
+              name="description"
+              placeholder="Описание"
+              type="Name"
+              required
+              ref={descriptionInput}
+            />
+            <Input
+              className="py-1"
+              name="price"
+              placeholder="Цена"
+              type="Name"
+              required
+              ref={priceInput}
+            />
+            <Input className="py-1" name="src" type="file" required multiple ref={srcInput} />
+            <div className="buttons-container">
+              <Button type="submit" className="button-arounder">
+                ДОБАВИТЬ
+              </Button>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
+      )}
+    </>
   );
 }
+
 export default AddProduct;
 
-// function AddProduct(): JSX.Element {
-//   const [categoryid, setCategoryid] = useState('');
-//   const [genderid, setGenderid] = useState('');
-//   const [name, setName] = useState('');
-//   const [description, setDescription] = useState('');
-//   const [price, setPrice] = useState('');
-
-//   const dispatch = useAppDispatch();
-
-//   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-//     e.preventDefault();
-
-//     const data = {
-//       category_id: +categoryid,
-//       gender_id: +genderid,
-//       name,
-//       description,
-//       price,
-//     };
-//     console.log(data);
-
-//     dispatch(addProducts(data)).catch((err) => console.error(err));
-//     setCategoryid('');
-//     setGenderid('');
-//     setName('');
-//     setDescription('');
-//     setPrice('');
-//   };
-
-//   return (
-//     <form onSubmit={onHandleSubmit}>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="categoryid"
-//           value={categoryid}
-//           onChange={(e) => setCategoryid(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="genderid"
-//           value={genderid}
-//           onChange={(e) => setGenderid(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="name"
-//           value={name}
-//           onChange={(e) => setName(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="description"
-//           className="textarea"
-//           value={description}
-//           onChange={(e) => setDescription(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="price"
-//           value={price}
-//           onChange={(e) => setPrice(e.target.value)}
-//         />
-//       </div>
-
-//       <button type="submit">Отправить</button>
-//     </form>
-//   );
-// }
-
-// export default AddProduct;
