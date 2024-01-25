@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { Product } from './types/type';
+import type { Product, ProductId } from './types/type';
 import * as api from './api';
 
 export type StateProduct = {
@@ -19,6 +19,11 @@ export const allproducts = createAsyncThunk('product/load', () => api.FetchProdu
 export const addProducts = createAsyncThunk('add/products', (formData: FormData) =>
   api.fetchAddProducts(formData),
 );
+
+export const deleteProduct = createAsyncThunk('delete/product', (productId: ProductId) =>
+  api.fetchDeleteProduct(productId),
+);
+
 
 const productSlice = createSlice({
   name: 'products',
@@ -46,6 +51,12 @@ const productSlice = createSlice({
       .addCase(addProducts.rejected, (state, action) => {
         state.error = action.error.message;
       })
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        state.products = state.products.filter((product) => product.id !== +action.payload.id);
+      })
+      .addCase(deleteProduct.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
   },
 });
 

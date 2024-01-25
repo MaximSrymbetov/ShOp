@@ -83,15 +83,12 @@ router.delete('/:id/delete', async (req, res) => {
   try {
     const result = await Product.destroy({ where: { id } });
     if (result > 0) {
-      return res.status(200).json({ message: 'success' }, id);
-    } else {
-      return res.status(500).json({
-        message: 'Не удалось удалить продукт из-за серверной ошибки',
-      });
+      res.status(200).json({ message: 'success', id });
+      return;
     }
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: error.message });
+    res.status(400).json({ message: 'Что-то пошло не так' });
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 });
 module.exports = router;
