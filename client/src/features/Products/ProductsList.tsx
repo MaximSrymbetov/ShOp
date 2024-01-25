@@ -6,7 +6,7 @@ import type { RootState } from '../../redux/store';
 
 import ProductItem from './ProductItem';
 
-import './ProductsList.css';
+import './styles/ProductsList.css';
 
 function Allroducts(): JSX.Element {
   const products = useSelector((store: RootState) => store.products.products);

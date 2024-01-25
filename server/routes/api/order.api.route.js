@@ -68,4 +68,30 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:productid/add', async (req, res) => {
+  const prod_id = req.params.productid;
+  const user_id = res.locals.user.id;
+  try {
+    let order;
+    order = await Order.findOne({
+      where: { user_id, status: 'created' },
+    });
+    if (!order) {
+      order = await Order.create({ user_id, delivery_status: false });
+    }
+    const order_item = await Order_item.create({
+      product_id: Number(prod_id),
+      order_id: Number(order.id),
+      quantity: Number(1),
+    });
+    console.log(order_item, '------------------');
+    if (order_item) {
+      return res.status(200).json({ message: 'success', order_item });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = router;

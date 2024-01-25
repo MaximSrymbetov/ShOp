@@ -19,7 +19,7 @@ import type { RootState } from '../../redux/store';
 export default function ProductsSwiper(): JSX.Element {
   const loading = useSelector((store: RootState) => store.products.loading);
   const products = useSelector((store: RootState) => store.products.products);
-  const sneakers = products.filter((product) => product.category_id === 2).slice(0, 7);
+  const sneakers = products.filter((product) => product.category_id === 2).slice(1, 8);
 
   const content = (
     <div className="swiper-container">
@@ -70,5 +70,5 @@ export default function ProductsSwiper(): JSX.Element {
       </Swiper>
     </div>
   );
-  return <div>{loading ? <Spinner /> : <div>{content}</div>}</div>;
+  return <div>{loading ? <Spinner className="container mx-auto" /> : <div>{content}</div>}</div>;
 }

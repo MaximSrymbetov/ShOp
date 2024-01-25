@@ -16,12 +16,9 @@ const initialState: StateProduct = {
 
 export const allproducts = createAsyncThunk('product/load', () => api.FetchProductall());
 
-export const addProducts = createAsyncThunk(
-  'add/products',
-  (formData:FormData)=>api.fetchAddProducts(formData)
-  
-  
-)
+export const addProducts = createAsyncThunk('add/products', (formData: FormData) =>
+  api.fetchAddProducts(formData),
+);
 
 const productSlice = createSlice({
   name: 'products',

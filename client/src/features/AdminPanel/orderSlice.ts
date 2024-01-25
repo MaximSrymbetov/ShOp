@@ -22,6 +22,10 @@ export const updateOrder = createAsyncThunk('update/order', (order: Order) =>
   api.fetchUpdateOrder(order),
 );
 
+export const addOrderItem = createAsyncThunk('add/orderItem', (idProduct: string) =>
+  api.fetchAddOrderItem(idProduct),
+);
+
 const orderSlice = createSlice({
   name: 'orders',
   initialState,
@@ -47,6 +51,14 @@ const orderSlice = createSlice({
         );
       })
       .addCase(updateOrder.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addOrderItem.fulfilled, (state, action) => {
+        state.orders
+          .find((order) => order.id === +action.payload.order_item.order_id)
+          ?.Order_items.push(action.payload.order_item);
+      })
+      .addCase(addOrderItem.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
