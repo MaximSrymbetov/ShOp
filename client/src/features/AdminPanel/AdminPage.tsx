@@ -15,7 +15,7 @@ function AdminPage(): JSX.Element {
     <div className="container mx-auto flex justify-center min-w 1/3">
       {user && user.isAdmin ? (
         <div>
-          <h2 style={{ fontSize: '1000%', fontWeight: 'bold'}}>АДМИН</h2>
+          <h2 style={{ fontSize: '500%', fontWeight: 'bold'}}>АДМИН</h2>
           <AddProduct />
           
 

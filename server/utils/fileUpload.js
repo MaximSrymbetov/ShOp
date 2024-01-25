@@ -1,7 +1,7 @@
 const path = require('path');
 const util = require('util');
 
-const storage = async (file) => {
+const fileUpload = async (file) => {
   const fileName = file.name;
   const size = file.data.length;
   const extension = path.extname(fileName);
@@ -15,8 +15,10 @@ const storage = async (file) => {
   const { md5 } = file;
 
   const URL = `/img/${md5}${extension}`;
-  await util.promisify(file.mv)(`./public${URL}`);
+  await util.promisify(file.mv)(
+    path.resolve(path.join(__dirname, '../public', URL))
+  );
   return URL;
 };
 
-module.exports = storage;
+module.exports = fileUpload;

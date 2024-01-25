@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Product, Image } = require('../../db/models');
-const fileUpload = require('../../fileupload');
+const fileUpload = require('../../utils/fileUpload');
 router.get('/', async (req, res) => {
   try {
     const products = await Product.findAll({
