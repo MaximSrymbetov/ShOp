@@ -7,6 +7,7 @@ import './Add.css';
 import { Button, Input, Select, SelectItem } from '@nextui-org/react';
 
 function AddProduct(): JSX.Element {
+  // void dispatch(addProducts(formData));
   const [isOpen, setIsOpen] = useState(false);
   const formRef = useRef(null);
   const categoryidInput = useRef<HTMLSelectElement>(null);
@@ -52,7 +53,7 @@ function AddProduct(): JSX.Element {
       {isOpen && (
         <div className="container mx-auto flex justify-center w-2/3">
           <form onSubmit={productAdd} ref={formRef}>
-            <Select className='py-2' name="categoryid" placeholder="Категория" required ref={categoryidInput}>
+            <Select className='py-1' name="categoryid" placeholder="Категория" required ref={categoryidInput}>
               <SelectItem key={1} value="1">
                 Одежда
               </SelectItem>
@@ -63,7 +64,7 @@ function AddProduct(): JSX.Element {
                 Акссесуары
               </SelectItem>
             </Select>
-            <Select name="genderid" placeholder="Пол" required ref={genderidInput}>
+            <Select  className='py-1' name="genderid" placeholder="Пол" required ref={genderidInput}>
               <SelectItem key={1} value="1">
                 Мужчина
               </SelectItem>
@@ -71,7 +72,7 @@ function AddProduct(): JSX.Element {
                 Женщина
               </SelectItem>
             </Select>
-            <Input name="name" placeholder="Название" type="Name" required ref={nameInput} />
+            <Input className='py-2' name="name" placeholder="Название" type="Name" required ref={nameInput} />
             <Input
               name="description"
               placeholder="Описание"
@@ -79,8 +80,8 @@ function AddProduct(): JSX.Element {
               required
               ref={descriptionInput}
             />
-            <Input name="price" placeholder="Цена" type="Name" required ref={priceInput} />
-            <Input name="src" type="file" required multiple ref={srcInput} />
+            <Input className='py-1' name="price" placeholder="Цена" type="Name" required ref={priceInput} />
+            <Input className='py-1' name="src" type="file" required multiple ref={srcInput} />
             <div className="buttons-container">
               <Button type="submit" className="button-arounder">
                 ДОБАВИТЬ
@@ -93,83 +94,3 @@ function AddProduct(): JSX.Element {
   );
 }
 export default AddProduct;
-
-// function AddProduct(): JSX.Element {
-//   const [categoryid, setCategoryid] = useState('');
-//   const [genderid, setGenderid] = useState('');
-//   const [name, setName] = useState('');
-//   const [description, setDescription] = useState('');
-//   const [price, setPrice] = useState('');
-
-//   const dispatch = useAppDispatch();
-
-//   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-//     e.preventDefault();
-
-//     const data = {
-//       category_id: +categoryid,
-//       gender_id: +genderid,
-//       name,
-//       description,
-//       price,
-//     };
-//     console.log(data);
-
-//     dispatch(addProducts(data)).catch((err) => console.error(err));
-//     setCategoryid('');
-//     setGenderid('');
-//     setName('');
-//     setDescription('');
-//     setPrice('');
-//   };
-
-//   return (
-//     <form onSubmit={onHandleSubmit}>
-//       <div className="field">
-//         <input
-//           type="Name"
-//           placeholder="categoryid"
-//           value={categoryid}
-//           onChange={(e) => setCategoryid(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="genderid"
-//           value={genderid}
-//           onChange={(e) => setGenderid(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="name"
-//           value={name}
-//           onChange={(e) => setName(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="description"
-//           className="textarea"
-//           value={description}
-//           onChange={(e) => setDescription(e.target.value)}
-//         />
-//       </div>
-//       <div className="field">
-//         <input
-//           type="text"
-//           placeholder="price"
-//           value={price}
-//           onChange={(e) => setPrice(e.target.value)}
-//         />
-//       </div>
-
-//       <button type="submit">Отправить</button>
-//     </form>
-//   );
-// }
-
-// export default AddProduct;

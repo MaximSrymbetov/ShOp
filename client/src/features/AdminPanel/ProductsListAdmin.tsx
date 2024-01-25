@@ -13,23 +13,13 @@ function ProductsListAdmin(): JSX.Element {
   useEffect(() => {
     setValue(info);
   }, [info,products]);
-console.log(products,'++++++++++++++++++++++++++++++++');
+
 
   const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
 
   return (
     <div>
-      <select value={info} onChange={(e) => setInfo(e.target.value)}>
-        <option className="checkbox"  value="t-shirt">
-          Футболки
-        </option>
-        <option className="checkbox" value="air">
-          Кроссовки
-        </option>
-        <option className="checkbox" value="Jacket">
-          Куртки
-        </option>
-      </select>
+
       <form>
         <input type="text" placeholder="Поиск по товару" onChange={(e) => setValue(e.target.value)} />
       </form>
