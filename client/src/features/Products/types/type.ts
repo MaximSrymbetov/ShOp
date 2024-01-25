@@ -15,5 +15,7 @@ export type Product = {
 };
 export type ProductId = Product['id'];
 
-
-export type ProductWithoutOwnerPhoto  = Omit <Product , ('ownerId' | 'Photos') >
+export type ProductWithoutOwnerPhoto = Omit<
+  Product,
+  'category_id' | 'Images' | 'category_id' | 'gender_id'
+>;

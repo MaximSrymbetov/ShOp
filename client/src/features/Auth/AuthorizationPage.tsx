@@ -34,13 +34,11 @@ function AuthorizationPage(): JSX.Element {
       reset();
       navigate('/');
     }
-
   }, [dbError]);
 
   const onSubmit = (data: Authorization): void => {
     try {
       dispatch(login(data)).catch((err) => console.error(err));
-
     } catch (error) {
       setError('password', { type: 'manual', message: `${error}` });
     }
@@ -70,10 +68,16 @@ function AuthorizationPage(): JSX.Element {
           <Button className="py-2 mt-4" type="submit">
             Войти
           </Button>
-          <Link className="py-2 mt-4" type="button" to="/signin">
-            Зарегистрироваться
-          </Link>
         </div>
+          <div>
+            {' '}
+            <p>
+              У вас нет аккаунта?{' '}
+              <Link className="py-2 mt-4 underline decoration-sky-600 hover:decoration-blue-400" type="button" to="/signin">
+                Зарегистрироваться
+              </Link>
+            </p>
+          </div>
       </form>
     </div>
   );
