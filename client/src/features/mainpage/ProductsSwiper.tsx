@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -19,7 +20,7 @@ import type { RootState } from '../../redux/store';
 export default function ProductsSwiper(): JSX.Element {
   const loading = useSelector((store: RootState) => store.products.loading);
   const products = useSelector((store: RootState) => store.products.products);
-  const sneakers = products.filter((product) => product.category_id === 2).slice(1, 8);
+  const sneakers = products.filter((product) => product.category_id === 2).slice(3, 10);
 
   const content = (
     <div className="swiper-container pb-12">
@@ -60,7 +61,7 @@ export default function ProductsSwiper(): JSX.Element {
                     />
                   </CardBody>
                   <CardFooter className="w-100% text-xs text-nowrap p-1 gap-1 justify-between sm:text-small sm:p-3">
-                    <b>shoes</b>
+                    <b>{prod.name.length > 6 ? prod.name.substring(0, 20) + '...' : prod.name}</b>
                     <p className="text-default-900">{`${prod.price} ₽`}</p>
                   </CardFooter>
                 </Card>

@@ -16,8 +16,7 @@ function FormUpdateProduct({ product }: TypeProps): JSX.Element {
 
   const productUpdate = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(updateProduct({ id: product.id, name, description, price })).catch(err => console.log(err)
-    )
+    dispatch(updateProduct({ id: product.id, name, description, price })).catch(err => console.log(err))
   };
 
   return (
