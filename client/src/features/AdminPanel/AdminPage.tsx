@@ -12,22 +12,21 @@ function AdminPage(): JSX.Element {
   const user = useSelector((state: RootState) => state.auth.user);
 
   return (
-    <div className="container mx-auto flex justify-center min-w 1/3">
+    <div >
       {user && user.isAdmin ? (
-        <div>
-          <h2 style={{ fontSize: '500%', fontWeight: 'bold'}}>АДМИН</h2>
+        <div className='container flex flex-col mx-auto '>     
+          <h2 className='mx-auto flex justify-center py-8' style={{ fontSize: '200%', fontWeight: 'bold'}}>панель администрирования:</h2>
           <AddProduct />
           
 
-          <div className="container mx-auto flex justify-center min-w 1/3">
-            <a style={{fontSize: '200%',color: 'green', fontWeight: ' Bold '}} href="/OrderTable">ЗАКАЗЫ</a>
+          <div className=" mx-auto flex justify-center py-8">
+          <Button onClick={()=>navigate('/OrderTable')}> ЗАКАЗЫ</Button>
+        
           </div>
-          <div className="container mx-auto flex justify-center min-w 1/3">
+          <div className="container mx-auto flex justify-center">
             {' '}
-            <div className="buttons-container">
-            <button className="button-arounder" type="button" onClick={() => navigate(-1)}>
-              Назад
-            </button>
+            <div className="mx-auto flex justify-center ">
+       
             </div>
           </div>
 
