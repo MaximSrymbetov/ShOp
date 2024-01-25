@@ -23,17 +23,15 @@ export const addProducts = createAsyncThunk('add/products', (formData: FormData)
 const productSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {
-    stopLoading: (state) => {
-      state.loading = false;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(allproducts.fulfilled, (state, action) => {
+        state.loading = false;
         state.products = action.payload;
       })
       .addCase(allproducts.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       })
       .addCase(allproducts.pending, (state) => {
@@ -41,14 +39,12 @@ const productSlice = createSlice({
       })
 
       .addCase(addProducts.fulfilled, (state, action) => {
-        state.products.push(action.payload.product);
+        state.products.push(action.payload);
       })
       .addCase(addProducts.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
 });
-
-export const { stopLoading } = productSlice.actions;
 
 export default productSlice.reducer;

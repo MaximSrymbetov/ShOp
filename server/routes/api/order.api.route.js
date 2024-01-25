@@ -22,6 +22,7 @@ const {
 //   }
 // });
 
+// изменение заказа
 router.put('/update/:id', async (req, res) => {
   const { id } = req.params;
   const { status, total } = req.body;
@@ -49,6 +50,7 @@ router.put('/update/:id', async (req, res) => {
   }
 });
 
+// получение ВСЕХ заказов
 router.get('/', async (req, res) => {
   try {
     const orders = await Order.findAll({
@@ -68,6 +70,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// добавление продукта в корзину
 router.get('/:productid/add', async (req, res) => {
   const prod_id = req.params.productid;
   const user_id = res.locals.user.id;
@@ -79,14 +82,64 @@ router.get('/:productid/add', async (req, res) => {
     if (!order) {
       order = await Order.create({ user_id, delivery_status: false });
     }
-    const order_item = await Order_item.create({
-      product_id: Number(prod_id),
-      order_id: Number(order.id),
-      quantity: Number(1),
+    let order_item;
+    order_item = await Order_item.findOne({
+      where: { product_id: Number(prod_id), order_id: Number(order.id) },
     });
-    console.log(order_item, '------------------');
-    if (order_item) {
-      return res.status(200).json({ message: 'success', order_item });
+    if (!order_item) {
+      order_item = await Order_item.create({
+        product_id: Number(prod_id),
+        order_id: Number(order.id),
+        quantity: Number(1),
+      });
+    }
+
+    const orderDB = await Order.findOne({
+      where: { user_id, status: 'created' },
+      include: [
+        {
+          model: Order_item,
+          include: { model: Product, include: { model: Image } },
+        },
+        { model: Order_info },
+        { model: User },
+      ],
+    });
+    return res.status(200).json({ message: 'success', order: orderDB });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error.message });
+  }
+});
+
+// удаление продукта из корзины
+router.delete('/:productid/delete', async (req, res) => {
+  const prod_id = req.params.productid;
+  const user_id = res.locals.user.id;
+  try {
+    const order = await Order.findOne({
+      where: { user_id, status: 'created' },
+    });
+    const result = await Order_item.destroy({
+      where: { product_id: Number(prod_id), order_id: Number(order.id) },
+    });
+    if (result > 0) {
+      const orderDB = await Order.findOne({
+        where: { user_id, status: 'created' },
+        include: [
+          {
+            model: Order_item,
+            include: { model: Product, include: { model: Image } },
+          },
+          { model: Order_info },
+          { model: User },
+        ],
+      });
+      return res
+        .status(200)
+        .json({ message: 'success', order: orderDB, product_id: prod_id });
+    } else {
+      return res.status(500).json({ message: error.message });
     }
   } catch (error) {
     console.error(error);

@@ -10,7 +10,7 @@ import Allroducts from '../features/Products/ProductsList';
 import { useAppDispatch } from '../redux/store';
 import { allproducts, stopLoading } from '../features/Products/productSlice';
 import AdminPage from '../features/AdminPanel/AdminPage';
-import { allorders } from '../features/AdminPanel/orderSlice';
+import { allorders, stopLoadingOrders } from '../features/AdminPanel/orderSlice';
 import Cart from '../features/cart/Cart';
 import ProductInfo from '../features/Products/ProductInfo';
 import OneOrderInfo from '../features/AdminPanel/OneOrderInfo';
@@ -26,16 +26,11 @@ import Footer from '../features/footer/Footer';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-  
+
   useEffect(() => {
     void dispatch(allproducts());
     void dispatch(allorders());
     dispatch(checkUser()).catch((err) => console.error(err));
-
-    setTimeout(() => {
-      dispatch(stopLoading());
-    }, 2500);
-
     return () => {};
   }, [dispatch]);
 
