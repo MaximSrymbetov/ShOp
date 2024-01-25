@@ -134,14 +134,14 @@ module.exports = {
         },
         {
           product_id: 49,
-          order_id: 7,
+          order_id: 6,
           quantity: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           product_id: 28,
-          order_id: 7,
+          order_id: 6,
           quantity: 1,
           createdAt: new Date(),
           updatedAt: new Date(),

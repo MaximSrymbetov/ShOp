@@ -7,7 +7,6 @@ import { addProducts } from '../Products/productSlice';
 import './Add.css';
 
 function AddProduct(): JSX.Element {
-  // void dispatch(addProducts(formData));
   const [isOpen, setIsOpen] = useState(false);
   const formRef = useRef(null);
   const categoryidInput = useRef<HTMLSelectElement>(null);
@@ -82,6 +81,7 @@ function AddProduct(): JSX.Element {
                 Женщина
               </SelectItem>
             </Select>
+
             <Input
               className="py-2"
               name="name"
