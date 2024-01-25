@@ -13,3 +13,4 @@ export type Product = {
   price: string;
   Images: Image[];
 };
+export type ProductId = Product['id'];
