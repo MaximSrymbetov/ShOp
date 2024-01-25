@@ -19,49 +19,50 @@ function ProductInfo(): JSX.Element {
 
   const products = useSelector((store: RootState) => store.products.products);
   const product = products.find((produc) => produc.id === Number(idProduct));
-
+  const productPrice = Number(product?.price);
   return (
-    <div className="boxitem">
-      <Swiper
-        loop
-        spaceBetween={10}
-        navigation
-        thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
-      >
-        {product &&
-          product.Images.map((image) => (
-            <SwiperSlide className="swiperbox">
-              <img src={image.src} alt="img" />
-            </SwiperSlide>
-          ))}
-      </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        loop
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode
-        watchSlidesProgress
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
-      >
-        {product &&
-          product.Images.map((image) => (
-            <SwiperSlide>
-              <img src={image.src} alt="img" />
-            </SwiperSlide>
-          ))}
-      </Swiper>
+    <div>
+      <h1>{product?.name}</h1>
+      <div>
+        <p>{product?.description}</p>
+      </div>
+      <p>{`${productPrice} ₽`}</p>
+      <div className="boxitem">
+        <Swiper
+          loop
+          spaceBetween={10}
+          navigation
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="mySwiper2"
+        >
+          {product &&
+            product.Images.map((image) => (
+              <SwiperSlide className="swiperbox">
+                <img src={image.src} alt="img" />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          loop
+          spaceBetween={10}
+          slidesPerView={4}
+          freeMode
+          watchSlidesProgress
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="mySwiper"
+        >
+          {product &&
+            product.Images.map((image) => (
+              <SwiperSlide>
+                <img src={image.src} alt="img" />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </div>
     </div>
   );
 }
 
 export default ProductInfo;
-// {product &&
-//   product.Images.map((image) => (
-//     <SwiperSlide>
-//       <img src={image.src} alt="img" />
-//     </SwiperSlide>
-//   ))}
