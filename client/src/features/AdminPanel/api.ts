@@ -34,8 +34,16 @@ export const fetchUpdateOrder = async (
 
 export const fetchAddOrderItem = async (
   idProduct: string,
-): Promise<{ message: string; order_item: OrderItem }> => {
+): Promise<{ message: string; order: Order }> => {
   const res = await fetch(`/api/order/${idProduct}/add`);
-  console.log(await res.json());
+  console.log(123);
+
+  return res.json();
+};
+
+export const fetchDeleteOrderItem = async (
+  idProduct: string,
+): Promise<{ message: string; order: Order; product_id: number }> => {
+  const res = await fetch(`/api/order/${idProduct}/delete`, { method: 'delete' });
   return res.json();
 };

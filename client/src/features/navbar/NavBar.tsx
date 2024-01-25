@@ -6,7 +6,7 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
+  // Link,
   Input,
   DropdownItem,
   DropdownTrigger,
@@ -17,7 +17,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from '@nextui-org/react';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import SearchIcon from './icons/SearchIcon';
 import Logo from './icons/Logo';
@@ -59,22 +59,22 @@ export default function NavBar(): JSX.Element {
 
           <NavbarContent className="hidden sm:flex gap-3">
             <NavbarItem>
-              <Link color="foreground" href="/">
+              <Link color="foreground" to="/">
                 Главная
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link color="foreground" href="/products">
+              <Link color="foreground" to="/products">
                 Каталог
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link color="foreground" href="/category">
+              <Link color="foreground" to="/category">
                 Категории
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link color="foreground" href="/cart">
+              <Link color="foreground" to="/cart">
                 Корзина
               </Link>
             </NavbarItem>
@@ -143,8 +143,7 @@ export default function NavBar(): JSX.Element {
                   index === 2 ? 'primary' : index === menuItems.length - 1 ? 'danger' : 'foreground'
                 }
                 className="w-full"
-                href="/"
-                size="lg"
+                to="/"
               >
                 {item}
               </Link>

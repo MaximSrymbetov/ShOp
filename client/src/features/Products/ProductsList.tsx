@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 // import { Checkbox, CheckboxGroup } from '@nextui-org/react';
+import { Spinner } from '@nextui-org/react';
 import type { RootState } from '../../redux/store';
 
 import ProductItem from './ProductItem';
@@ -9,9 +10,11 @@ import ProductItem from './ProductItem';
 import './styles/ProductsList.css';
 
 function Allroducts(): JSX.Element {
+  const loading = useSelector((store: RootState) => store.products.loading);
   const products = useSelector((store: RootState) => store.products.products);
+  const [info, setInfo] = useState('');
   const [value, setValue] = useState('');
-  
+
   // const [info, setInfo] = useState('');
   // useEffect(() => {
   //   setValue(info);
@@ -19,7 +22,7 @@ function Allroducts(): JSX.Element {
 
   const searchProducts = products.filter((product) => product.name.toLowerCase().includes(value));
 
-  return (
+  const content = (
     <div>
       {/* <CheckboxGroup label="Filter" value={info} onValueChange={setInfo}>
         <Checkbox value="buenos-aires">Buenos Aires</Checkbox>
@@ -48,9 +51,9 @@ function Allroducts(): JSX.Element {
       </div>
     </div>
   );
+  return (
+    <div>{loading ? <Spinner className="container mx-auto my-10" /> : <div>{content}</div>}</div>
+  );
 }
 
 export default Allroducts;
-
-
-
