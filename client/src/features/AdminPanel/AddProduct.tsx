@@ -48,12 +48,22 @@ function AddProduct(): JSX.Element {
 
   return (
     <>
-
-      <Button className=" mx-auto flex justify-center w-1/3" onClick={()=>setIsOpen((prev) => !prev)}>Добавить новый товар</Button>
+      <Button
+        className=" mx-auto flex justify-center w-1/3"
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        Добавить новый товар
+      </Button>
       {isOpen && (
         <div className="container mx-auto flex justify-center w-2/3">
           <form onSubmit={productAdd} ref={formRef}>
-            <Select className='py-2' name="categoryid" placeholder="Категория" required ref={categoryidInput}>
+            <Select
+              className="py-1"
+              name="categoryid"
+              placeholder="Категория"
+              required
+              ref={categoryidInput}
+            >
               <SelectItem key={1} value="1">
                 Одежда
               </SelectItem>
@@ -64,7 +74,7 @@ function AddProduct(): JSX.Element {
                 Акссесуары
               </SelectItem>
             </Select>
-            <Select name="genderid" placeholder="Пол" required ref={genderidInput}>
+            <Select className="py-1" name="genderid" placeholder="Пол" required ref={genderidInput}>
               <SelectItem key={1} value="1">
                 Мужчина
               </SelectItem>
@@ -72,7 +82,15 @@ function AddProduct(): JSX.Element {
                 Женщина
               </SelectItem>
             </Select>
-            <Input name="name" placeholder="Название" type="Name" required ref={nameInput} />
+
+            <Input
+              className="py-2"
+              name="name"
+              placeholder="Название"
+              type="Name"
+              required
+              ref={nameInput}
+            />
             <Input
               name="description"
               placeholder="Описание"
@@ -80,8 +98,15 @@ function AddProduct(): JSX.Element {
               required
               ref={descriptionInput}
             />
-            <Input name="price" placeholder="Цена" type="Name" required ref={priceInput} />
-            <Input name="src" type="file" required multiple ref={srcInput} />
+            <Input
+              className="py-1"
+              name="price"
+              placeholder="Цена"
+              type="Name"
+              required
+              ref={priceInput}
+            />
+            <Input className="py-1" name="src" type="file" required multiple ref={srcInput} />
             <div className="buttons-container">
               <Button type="submit" className="button-arounder">
                 ДОБАВИТЬ
