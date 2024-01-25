@@ -200,7 +200,7 @@ module.exports = {
         },
         {
           product_id: 7,
-          src: '/img/Air Jordan 1 high zoom air cmft.jpeg',
+          src: '/img/Air Jordan 1 high zoom air cmft.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -369,7 +369,7 @@ module.exports = {
         },
         {
           product_id: 14,
-          src: '/img/New Balance 2002r.1.jpeg',
+          src: '/img/New Balance 2002r.1.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },

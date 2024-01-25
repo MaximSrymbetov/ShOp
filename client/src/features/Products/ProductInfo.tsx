@@ -26,6 +26,7 @@ function ProductInfo(): JSX.Element {
 
   const products = useSelector((store: RootState) => store.products.products);
   const product = products.find((produc) => produc.id === Number(idProduct));
+  const productPrice = Number(product?.price);
 
   const onSubmit = (): void => {
     try {
@@ -37,6 +38,11 @@ function ProductInfo(): JSX.Element {
 
   return (
     <div>
+       <h1>{product?.name}</h1>
+      <div>
+        <p>{product?.description}</p>
+      </div>
+      <p>{`${productPrice} ₽`}</p>
       <div className="boxitem">
         <Swiper
           loop
@@ -71,7 +77,6 @@ function ProductInfo(): JSX.Element {
             ))}
         </Swiper>
       </div>
-
       <div>
         <div>
           <Button type="button" onClick={handleSubmit(onSubmit)}>
@@ -84,9 +89,3 @@ function ProductInfo(): JSX.Element {
 }
 
 export default ProductInfo;
-// {product &&
-//   product.Images.map((image) => (
-//     <SwiperSlide>
-//       <img src={image.src} alt="img" />
-//     </SwiperSlide>
-//   ))}

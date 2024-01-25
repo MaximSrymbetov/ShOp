@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import type { Product } from './types/type';
