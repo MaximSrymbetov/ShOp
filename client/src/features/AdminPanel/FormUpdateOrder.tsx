@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from 'react';
-import {Select, SelectItem} from "@nextui-org/react";
+import { Select, SelectItem } from '@nextui-org/react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -12,7 +12,6 @@ import './Add.css';
 import { updateOrder } from './orderSlice';
 
 import type { Order } from './types/type';
-
 
 function FormUpdateOrder(): JSX.Element {
   const { id } = useParams();
@@ -29,11 +28,7 @@ function FormUpdateOrder(): JSX.Element {
     defaultValues: { status: order?.status, total: order?.total },
   });
 
-  // const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-  //   e.preventDefault();
-  //   dispatch(updateOrder({ ...order, status, total }));s
-  //   navigate(-1);
-  // };
+
   const onSubmit = (data: { total: string | undefined; status: string | undefined }): void => {
     dispatch(updateOrder({ ...order, total: data.total, status: data.status })).catch((err) =>
       console.error(err),
@@ -42,41 +37,45 @@ function FormUpdateOrder(): JSX.Element {
   };
   console.log(order?.Order_info);
 
-  
-  
-
-
-
   return (
-    <div className='container mx-auto flex justify-center min-w 1/3'>
-    <form onSubmit={handleSubmit(onSubmit)} className='iii'>
-      
-      <select defaultValue={order?.status} {...register('status')}>
-        <option className="checkbox"  value="created" >
-          Создан 
-        </option>
-        <option className="checkbox" value="confirmed">
-          Ожидает оплаты
-        </option>
-        <option className="checkbox" value="payed">
-          Оплачен
-        </option>
-        <option className="checkbox" value="delivery">
-          Доставка
-        </option>
-        <option className="checkbox" value="closed">
-          Закрыт
-        </option>
-      </select>
-      <div className="text-field">
-      <label className="text-field__label">Сумма</label>
-      <input type="text" className='text-field__input' defaultValue={order?.total} required {...register('total')} />
-      </div>
-      <button type="submit">Изменить</button>
+    <div className="container mx-auto flex justify-center min-w 1/3">
+      <form onSubmit={handleSubmit(onSubmit)} className="iii">
+        <label className="text-field__label">ВЫБЕРИТЕ СТАТУС:</label>
+        <select defaultValue={order?.status} {...register('status')}>
+          <option className="checkbox" value="created">
+            Создан
+          </option>
+          <option className="checkbox" value="confirmed">
+            Ожидает оплаты
+          </option>
+          <option className="checkbox" value="payed">
+            Оплачен
+          </option>
+          <option className="checkbox" value="delivery">
+            Доставка
+          </option>
+          <option className="checkbox" value="closed">
+            Закрыт
+          </option>
+        </select>
+        <div className="container mx-auto flex justify-center min-w 1/3">
+          <label className="text-field__label">СУММА:</label>{' '}
+        </div>
+        <input
+          type="text"
+          className="text-field__input"
+          defaultValue={order?.total}
+          required
+          {...register('total')}
+        />
 
-      <p>{order?.Order_info.address}</p>
-      <p>{order?.Order_info.phone}</p>
-    </form>
+        <button className="button-arounder" type="submit">
+          Изменить
+        </button>
+
+        <h2 style={{ color: 'red', fontWeight: 'Ultra Bold ' }}>{order?.Order_info.address}</h2>
+        <p>{order?.Order_info.phone}</p>
+      </form>
     </div>
   );
 }
