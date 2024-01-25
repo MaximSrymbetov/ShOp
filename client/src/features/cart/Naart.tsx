@@ -5,7 +5,6 @@ import type { RootState } from '../../redux/store';
 
 export default function Cart(): JSX.Element {
   const products = useSelector((store: RootState) => store.products.products);
-  console.log(products);
 
   return (
     <div className="container mx-auto flex justify-center flex-col gap-5 md:flex-row md:gap-12">

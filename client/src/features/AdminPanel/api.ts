@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import axios from 'axios';
-import type { Order } from './types/type';
+import type { Order, OrderItem } from './types/type';
 
 export const FetchOrderall = async (): Promise<Order[]> => {
   const { data }: { data: { message: string; orders: Order[] } } = await axios('/api/order');
@@ -30,4 +30,12 @@ export const fetchUpdateOrder = async (
   );
   console.log(data, 'fetch from db');
   return data;
+};
+
+export const fetchAddOrderItem = async (
+  idProduct: string,
+): Promise<{ message: string; order_item: OrderItem }> => {
+  const res = await fetch(`/api/order/${idProduct}/add`);
+  console.log(await res.json());
+  return res.json();
 };

@@ -1,7 +1,11 @@
+/* eslint-disable no-restricted-syntax */
 import React, { useRef } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { addProducts } from '../Products/productSlice';
+
 import './Add.css'
+
+
 
 function AddProduct(): JSX.Element {
   const categoryidInput = useRef<HTMLInputElement>(null);
@@ -14,12 +18,17 @@ function AddProduct(): JSX.Element {
 
   const productAdd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+
     const categoryid = categoryidInput.current?.value;
     const genderid = genderidInput.current?.value;
     const name = nameInput.current?.value;
     const description = descriptionInput.current?.value;
     const price = priceInput.current?.value;
     const src = srcInput.current?.files;
+
+    if (!categoryid || !genderid || !name || !description || !price || !src) {
+      return;
+    }
 
     const formData = new FormData();
 
@@ -33,7 +42,6 @@ function AddProduct(): JSX.Element {
       formData.append('src', src[i]);
     }
     void dispatch(addProducts(formData));
-    console.log(formData, '!!!!!!!!!!!!!!!!!!');
 
     for (const pair of formData.entries()) {
       console.log(pair[0], pair[1]);

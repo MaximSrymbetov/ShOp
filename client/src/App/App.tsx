@@ -24,6 +24,7 @@ import OrderTable from '../features/AdminPanel/OrderTable';
 import { checkUser } from '../features/Auth/types/authSlice';
 import Footer from '../features/footer/Footer';
 
+
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   

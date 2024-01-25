@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -33,6 +34,7 @@ function AuthorizationPage(): JSX.Element {
       reset();
       navigate('/');
     }
+
   }, [dbError]);
 
   const onSubmit = (data: Authorization): void => {
