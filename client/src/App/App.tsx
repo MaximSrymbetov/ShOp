@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import ErrorPage from '../features/ErrorPage/ErrorPage';
 import NavBar from '../features/navbar/NavBar';
@@ -37,35 +36,33 @@ function App(): JSX.Element {
   }, [dispatch]);
 
   return (
-    <>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<NavBar />}>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/login" element={<AuthorizationPage />} />
-            <Route path="/signin" element={<RegistrationPage />} />
-            <Route path="/OneOrderInfo/:idOrder" element={<OneOrderInfo />} />
-            <Route path="/order/:id/update" element={<FormUpdateOrder />} />
-            <Route path="/products" element={<Allroducts />} />
-            <Route path="/product/:idProduct" element={<ProductInfo />} />
-            <Route path="/orderTable" element={<OrderTable />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/men" element={<ProductsMan />} />
-            <Route path="/women" element={<ProductsWoman />} />
-            <Route path="/category/accessories" element={<ProductsAccessories />} />
-            <Route path="/category/clothes" element={<ProductsClothes />} />
-            <Route path="/category/shoes" element={<ProductsShoes />} />
-            <Route path="/size/nike" element={<SizeЕable />} />
-            <Route path="/order" element={<OrderPayment />} />
-            {/* <Route path="/user/profile" element={<Profile />} />
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<NavBar />}>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/login" element={<AuthorizationPage />} />
+          <Route path="/signin" element={<RegistrationPage />} />
+          <Route path="/OneOrderInfo/:idOrder" element={<OneOrderInfo />} />
+          <Route path="/order/:id/update" element={<FormUpdateOrder />} />
+          <Route path="/products" element={<Allroducts />} />
+          <Route path="/product/:idProduct" element={<ProductInfo />} />
+          <Route path="/orderTable" element={<OrderTable />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/men" element={<ProductsMan />} />
+          <Route path="/women" element={<ProductsWoman />} />
+          <Route path="/category/accessories" element={<ProductsAccessories />} />
+          <Route path="/category/clothes" element={<ProductsClothes />} />
+          <Route path="/category/shoes" element={<ProductsShoes />} />
+          <Route path="/size/nike" element={<SizeЕable />} />
+          <Route path="/order" element={<OrderPayment />} />
+          {/* <Route path="/user/profile" element={<Profile />} />
           <Route path="/user/orders" element={<Orders />} /> */}
-          </Route>
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </div>
+        </Route>
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 
