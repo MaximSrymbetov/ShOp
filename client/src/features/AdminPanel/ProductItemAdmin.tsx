@@ -3,6 +3,8 @@ import { useAppDispatch } from '../../redux/store';
 import type { Product, ProductId } from '../Products/types/type';
 import { deleteProduct } from '../Products/productSlice';
 import FormUpdateProduct from './Udete';
+import { Button } from '@nextui-org/react';
+
 
 type ProductItemProps = {
   product: Product;
@@ -26,14 +28,14 @@ function ProductItemAdmin({ product }: ProductItemProps): JSX.Element {
           <tr>
             <td style={{ textAlign: 'left' }}>{product.name}</td>
             <td style={{ textAlign: 'right' }}>
-              <button
-                style={{ backgroundColor: 'red', fontSize: '18px' }}
+              <Button
+                style={{ color:'white', backgroundColor: 'red', fontSize: '15px' }}
                 className="button-arounder"
                 type="button"
                 onClick={() => onHandleDeleteProduct(product.id)}
               >
                 УДАЛИТЬ
-              </button>
+              </Button>
              
             </td>
           </tr>
