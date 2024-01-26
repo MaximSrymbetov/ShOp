@@ -12,7 +12,7 @@ export default function Greeting(): JSX.Element {
         <source src={comvideo} type="video/mp4" />
       </video>
 
-      <div className="hidden container-text text-white backdrop-blur-3xl rounded-3xl p-3 lg:block">
+      <div className="hidden container-text text-white backdrop-blur-3xl rounded-3xl p-3 sm:block 2xl:hidden">
         <h2 className="text-6xl">меняй стиль.</h2>
         <h2 className="text-6xl text-left">сегодня</h2>
         <div className="container pt-3">

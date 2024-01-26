@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { updateProduct } from '../Products/productSlice';
 import { useAppDispatch } from '../../redux/store';
 import type { Product } from '../Products/types/type';
+import { Button } from '@nextui-org/react';
 
 type TypeProps = {
   product: Product;
@@ -29,9 +30,10 @@ function FormUpdateProduct({ product }: TypeProps): JSX.Element {
         onChange={(e) => setDescription(e.target.value)}
       />
       <input name="price" type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
-      <button className="save" type="submit">
+      <Button className="save" type="submit" style={{ fontSize: '14px'}}>
         меняем
-      </button>
+      </Button>
+ 
     </form>
   );
 }

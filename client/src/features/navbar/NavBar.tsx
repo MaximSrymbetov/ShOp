@@ -73,15 +73,20 @@ export default function NavBar(): JSX.Element {
                 Категории
               </Link>
             </NavbarItem> */}
-            <NavbarItem>
+            {/* <NavbarItem>
               <Link color="foreground" to="/cart">
                 Корзина
               </Link>
-            </NavbarItem>
+            </NavbarItem> */}
           </NavbarContent>
         </NavbarContent>
         <NavbarContent as="div" className="items-center" justify="end">
-          <Input
+          <NavbarItem>
+            <Link color="foreground" to="/cart">
+              Корзина
+            </Link>
+          </NavbarItem>
+          {/* <Input
             classNames={{
               base: 'max-w-full sm:max-w-[10rem] h-10',
               mainWrapper: 'h-full',
@@ -95,7 +100,7 @@ export default function NavBar(): JSX.Element {
             type="search"
             value={searchValue}
             onChange={(e)=> setSearchValue(e.target.value)}
-          />
+          /> */}
           {user ? (
             <Dropdown placement="bottom-end">
               <DropdownTrigger>
@@ -113,12 +118,12 @@ export default function NavBar(): JSX.Element {
                   <p className="font-semibold">Вошел как</p>
                   <p className="font-semibold">{user.email}</p>
                 </DropdownItem>
-                <DropdownItem key="settings" href="/user/profile">
+                {/* <DropdownItem key="settings" href="/user/profile">
                   Профиль
-                </DropdownItem>
-                <DropdownItem key="order" href="/user/orders">
+                </DropdownItem> */}
+                {/* <DropdownItem key="order" href="/user/orders">
                   Мои заказы
-                </DropdownItem>
+                </DropdownItem> */}
                 <DropdownItem key="logout" color="danger" onClick={handleLogout}>
                   Выйти
                 </DropdownItem>
