@@ -2,7 +2,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import type { Product } from './types/type';
-// import { image } from '@nextui-org/react';
 
 type ProductItemProps = {
   product: Product;

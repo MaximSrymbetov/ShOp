@@ -290,7 +290,7 @@ function ProductInfo(): JSX.Element {
                       />
                       <span id="size-choice-3-label">39</span>
 
-                      <span>d</span>
+                      <span></span>
                     </label>
 
                     <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
@@ -332,7 +332,7 @@ function ProductInfo(): JSX.Element {
                         className="sr-only"
                         aria-labelledby="size-choice-6-label"
                       />
-                      <span id="size-choice-6-label">2XL</span>
+                      <span id="size-choice-6-label">44</span>
 
                       <span
                         className="pointer-events-none absolute -inset-px rounded-md"
@@ -348,7 +348,7 @@ function ProductInfo(): JSX.Element {
                         className="sr-only"
                         aria-labelledby="size-choice-7-label"
                       />
-                      <span id="size-choice-7-label">3XL</span>
+                      <span id="size-choice-7-label">44.5</span>
 
                       <span
                         className="pointer-events-none absolute -inset-px rounded-md"

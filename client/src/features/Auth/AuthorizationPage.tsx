@@ -69,15 +69,18 @@ function AuthorizationPage(): JSX.Element {
             Войти
           </Button>
         </div>
-          <div>
-            {' '}
-            <p>
-              У вас нет аккаунта?{' '}
-              <Link className="py-2 mt-4 underline decoration-sky-600 hover:decoration-blue-400" type="button" to="/signin">
-                Зарегистрироваться
-              </Link>
-            </p>
-          </div>
+        <div>
+          <p>
+            У вас нет аккаунта?{' '}
+            <Link
+              className="py-2 mt-4 underline decoration-sky-600 hover:decoration-blue-400"
+              type="button"
+              to="/signin"
+            >
+              Зарегистрироваться
+            </Link>
+          </p>
+        </div>
       </form>
     </div>
   );
