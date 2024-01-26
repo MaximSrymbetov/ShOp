@@ -10,12 +10,11 @@ import ProductsListAdmin from './ProductsListAdmin';
 
 function AdminPage(): JSX.Element {
   const navigate = useNavigate();
-  const loading = useSelector((state: RootState) => state.auth.loading);
+  const loading = useSelector((state: RootState) => state.products.loading);
   const user = useSelector((state: RootState) => state.auth.user);
 
-
   const content = (
-    <div >
+    <div>
       {user && user.isAdmin ? (
         <div className="container flex flex-col mx-auto ">
           <h2
@@ -26,7 +25,7 @@ function AdminPage(): JSX.Element {
           </h2>
           <AddProduct />
           <div className=" mx-auto flex justify-center py-8">
-          <Button onClick={()=>navigate('/OrderTable')}> ЗАКАЗЫ</Button>
+            <Button onClick={() => navigate('/OrderTable')}> ЗАКАЗЫ</Button>
           </div>
           {/* {newP.name} */}
           <ProductsListAdmin />

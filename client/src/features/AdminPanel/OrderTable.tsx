@@ -10,12 +10,13 @@ import {
   User,
   Chip,
   Tooltip,
+  Button,
 } from '@nextui-org/react';
 import type { Key } from 'react';
 import { useSelector } from 'react-redux';
 // import EditIcon from './icons/EditIcon';
 // import DeleteIcon from './icons/DeleteIcon';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import EyeIcon from './icons/Eyelcon';
 import type { RootState } from '../../redux/store';
 import type { Order } from './types/type';
@@ -43,6 +44,7 @@ const statuses = {
 };
 
 export default function OrderTable(): JSX.Element {
+  const navigate = useNavigate();
   const orders = useSelector((store: RootState) => store.orders.orders).filter(
     (ord) => ord.status !== 'created',
   );
@@ -109,21 +111,26 @@ export default function OrderTable(): JSX.Element {
 
   return (
     //  const sortOrders=orders.sort((a,b)=>b.id-a.id)
-    <Table aria-label="Example table with custom cells">
-      <TableHeader columns={columns}>
-        {(column) => (
-          <TableColumn key={column.uid} align={column.uid === 'actions' ? 'center' : 'start'}>
-            {column.name}
-          </TableColumn>
-        )}
-      </TableHeader>
-      <TableBody items={sortOrders}>
-        {(item) => (
-          <TableRow key={item.id}>
-            {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+    <>
+      <Button className="my-5 ml-6" onClick={() => navigate(-1)}>
+        Назад
+      </Button>
+      <Table aria-label="Example table with custom cells">
+        <TableHeader columns={columns}>
+          {(column) => (
+            <TableColumn key={column.uid} align={column.uid === 'actions' ? 'center' : 'start'}>
+              {column.name}
+            </TableColumn>
+          )}
+        </TableHeader>
+        <TableBody items={sortOrders}>
+          {(item) => (
+            <TableRow key={item.id}>
+              {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </>
   );
 }
