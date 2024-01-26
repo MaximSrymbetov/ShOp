@@ -24,6 +24,7 @@ import OrderTable from '../features/AdminPanel/OrderTable';
 import { checkUser } from '../features/Auth/types/authSlice';
 import Footer from '../features/footer/Footer';
 import SizeЕable from '../features/Size/SizeЕable';
+import OrderPayment from '../features/payment/OrderPayment';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -56,6 +57,7 @@ function App(): JSX.Element {
             <Route path="/category/clothes" element={<ProductsClothes />} />
             <Route path="/category/shoes" element={<ProductsShoes />} />
             <Route path="/size/nike" element={<SizeЕable />} />
+            <Route path="/order" element={<OrderPayment />} />
             {/* <Route path="/user/profile" element={<Profile />} />
           <Route path="/user/orders" element={<Orders />} /> */}
           </Route>

@@ -146,8 +146,11 @@ export default function Cart(): JSX.Element {
                                 className="block"
                                 onClick={() =>
                                   orderSum && orderSum > 0
-                                    ? navigate('/order/pay')
-                                    : setSumErr('Сначала добавьте заказы в корзину!')
+                                    ? navigate('/order')
+                                    : // navigate(
+                                      //     `/order/${orders && orders.find((order) => order.user_id === user?.id)?.id}/pay`,
+                                      //   )
+                                      setSumErr('Сначала добавьте заказы в корзину!')
                                 }
                               >
                                 <div className="flex justify-between">

@@ -33,7 +33,7 @@ export default function ProductsSwiper(): JSX.Element {
         }}
         navigation
         modules={[Pagination, Navigation]}
-        className="w-screen height-full pt-5 sm:w-4/5 "
+        className="w-screen height-full pt-5 "
         freeMode
         loop
         preventClicks
