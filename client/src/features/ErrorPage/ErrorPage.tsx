@@ -17,20 +17,9 @@ const textAnimation = {
 };
 
 export default function ErrorPage(): JSX.Element {
-  const [counter, setCounter] = useState(0);
+  const [counter] = useState(404);
 
-  const handleClick = (): void => {
-    if (counter === 0) {
-      // Сброс счетчика, если он равен 0
-      const increment = setInterval(() => {
-        setCounter((prevCounter) => prevCounter + 1);
 
-        if (counter >= 404) {
-          clearInterval(increment); // Остановить счетчик, когда он достигнет значения 404
-        }
-      }, 10);
-    }
-  };
 
   return (
     <div className="container mx-auto flex justify-center min-w 1/3">
@@ -41,7 +30,7 @@ export default function ErrorPage(): JSX.Element {
             custom={2}
             variants={textAnimation}
             className="textoverlay "
-            onClick={handleClick}
+
           >
             {counter}
           </motion.h1>

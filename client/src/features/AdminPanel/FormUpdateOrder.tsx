@@ -12,6 +12,7 @@ import './Add.css';
 import { updateOrder } from './orderSlice';
 
 import type { Order } from './types/type';
+import { Button } from '@nextui-org/react';
 
 function FormUpdateOrder(): JSX.Element {
   const { id } = useParams();
@@ -43,7 +44,7 @@ function FormUpdateOrder(): JSX.Element {
 
   return (
     <div
-      className="container mx-auto flex justify-center min-w 1/3"
+      className="container mx-auto flex flex-col justify-center min-w-full "
       style={{ backgroundColor: '#eee' }}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="iii">
@@ -66,7 +67,10 @@ function FormUpdateOrder(): JSX.Element {
           </option>
         </select>
 
-        <div className="container mx-auto flex justify-center min-w 1/3">
+  
+
+
+        <div className="container mx-auto flex justify-center  ">
           <p className="text-field__label">СУММА:</p>
         </div>
         <input
@@ -76,11 +80,13 @@ function FormUpdateOrder(): JSX.Element {
           required
           {...register('total')}
         />
-        <button className="button-arounder" type="submit">
+        <div className="container mx-auto flex justify-center py-4 ">
+        <Button className="button-arounder" type="submit">
           Изменить
-        </button>
-        <p>Информация о заказе :</p>
-        <table style={{ border: '2px solid black', padding: '10px' }}>
+        </Button>
+        </div>
+      
+        {/* <table style={{ border: '2px solid black', padding: '10px' }}>
           <tbody>
             <tr>
               <th style={{ color: 'red', fontWeight: 'bold', padding: '10px' }}>ИМЯ КЛИЕНТА:</th>
@@ -131,109 +137,55 @@ function FormUpdateOrder(): JSX.Element {
               </td>
             </tr>
           </tbody>
-        </table>
-        <div className="container mx-auto py-12 px-4">
+        </table> */}
+       
+      </form> 
+      <div className="container mx-auto py-2 px-4 w-2/3">
           <div className="bg-white mx-auto p-6 rounded-xl">
             <div>
-              <div className="px-4 lg:px-0">
-                <h1 className="text-base font-semibold leading-7 text-gray-900">tournament.name</h1>
-                <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-                  tournament.description
-                </p>
+              <div className="container mx-auto flex justify-center min-w 1/3 ">
+                <h1 className="py-1 text-base font-semibold leading-7 text-gray-900">Заказчик:</h1>
               </div>
+              <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+                Подробная информация о клиенте
+              </p>
+
               <div className="mt-6 border-t border-gray-100">
                 <dl className="divide-y divide-gray-100">
                   <div className="px-4 py-3 lg:grid lg:grid-cols-3 lg:gap-4 lg:px-0">
-                    <dt className="text-sm font-medium leading-6 text-gray-900">Статус:</dt>
+                    <dt className="text-sm font-medium leading-6 text-gray-900">ИМЯ КЛИЕНТА:</dt>
                     <dd className="mt-1 text-sm leading-6 text-gray-700 lg:col-span-2 lg:mt-0">
-                      tournament.status
+                      {order?.User.name}
                     </dd>
                   </div>
                   <div className="px-4 py-3 lg:grid lg:grid-cols-3 lg:gap-4 lg:px-0">
-                    <dt className="text-sm font-medium leading-6 text-gray-900">
-                      Количество участников:
-                    </dt>
+                    <dt className="text-sm font-medium leading-6 text-gray-900">ПОЧТА:</dt>
                     <dd className="mt-1 text-sm leading-6 text-gray-700 lg:col-span-2 lg:mt-0">
-                      8
+                      {order?.User.email}
                     </dd>
                   </div>
                   <div className="px-4 py-3 lg:grid lg:grid-cols-3 lg:gap-4 lg:px-0">
-                    <dt className="text-sm font-medium leading-6 text-gray-900">Формат:</dt>
+                    <dt className="text-sm font-medium leading-6 text-gray-900">АДРЕС:</dt>
                     <dd className="mt-1 text-sm leading-6 text-gray-700 lg:col-span-2 lg:mt-0">
-                      2x2
+                      {order?.Order_info && order?.Order_info.address}
                     </dd>
                   </div>
                   <div className="px-4 py-3 lg:grid lg:grid-cols-3 lg:gap-4 lg:px-0">
-                    <dt className="text-sm font-medium leading-6 text-gray-900">Организатор:</dt>
+                    <dt className="text-sm font-medium leading-6 text-gray-900">ТЕЛЕФОН:</dt>
                     <dd className="mt-1 text-sm leading-6 text-gray-700 lg:col-span-2 lg:mt-0">
-                      Юрий
+                      {order?.Order_info && order?.Order_info.phone}
                     </dd>
                   </div>
-                  <div className="px-4 py-3 lg:grid lg:grid-cols-3 lg:gap-4 lg:px-0">
-                    <dt className="text-sm font-medium leading-6 text-gray-900">Приз:</dt>
-                    <dd className="mt-1 text-sm leading-6 text-gray-700 lg:col-span-2 lg:mt-0">
-                      Значок Elbrus Bootcamp
-                    </dd>
-                  </div>
-
-                  {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">Attachments</dt>
-                  <dd className="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                    <ul
-                      role="list"
-                      className="divide-y divide-gray-100 rounded-md border border-gray-200"
-                    >
-                      <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                        <div className="flex w-0 flex-1 items-center">
-                          <PaperClipIcon
-                            className="h-5 w-5 flex-shrink-0 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <div className="ml-4 flex min-w-0 flex-1 gap-2">
-                            <span className="truncate font-medium">
-                              resume_back_end_developer.pdf
-                            </span>
-                            <span className="flex-shrink-0 text-gray-400">2.4mb</span>
-                          </div>
-                        </div>
-                        <div className="ml-4 flex-shrink-0">
-                          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                            Download
-                          </a>
-                        </div>
-                      </li>
-                      <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                        <div className="flex w-0 flex-1 items-center">
-                          <PaperClipIcon
-                            className="h-5 w-5 flex-shrink-0 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <div className="ml-4 flex min-w-0 flex-1 gap-2">
-                            <span className="truncate font-medium">
-                              coverletter_back_end_developer.pdf
-                            </span>
-                            <span className="flex-shrink-0 text-gray-400">4.5mb</span>
-                          </div>
-                        </div>
-                        <div className="ml-4 flex-shrink-0">
-                          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                            Download
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                  </dd>
-                </div> */}
+              
                 </dl>
               </div>
             </div>
           </div>
         </div>
-      </form>
       <div className="buttons-container">
-        <button className="button-arounder" type="button" onClick={() => navigate(-1)}>
+        <Button className="button-arounder" type="button" onClick={() => navigate(-1)}>
           Назад
-        </button>
+        </Button>
       </div>
     </div>
   );
