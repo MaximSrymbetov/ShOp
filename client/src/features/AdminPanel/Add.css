@@ -1,7 +1,5 @@
 /* установим отступ 1rem от нижнего края элемента */
-.text-field {
 
-}
 /* стили для label */
 .text-field__label {
   display: block;

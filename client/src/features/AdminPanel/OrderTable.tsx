@@ -35,10 +35,19 @@ const columns = [
   { name: 'ИЗМEНЕНИЯ', uid: 'actions' },
 ];
 
+const statuses = {
+  confirmed: 'Ожидает оплаты',
+  payed: 'Оплачен',
+  delivery: 'На доставке',
+  closed: 'Закрыт',
+};
+
 export default function OrderTable(): JSX.Element {
-  const orders = useSelector((store: RootState) => store.orders.orders);
-  const arr1=[...orders]
-  const sortOrders=arr1.sort((a,b)=>b.id-a.id)
+  const orders = useSelector((store: RootState) => store.orders.orders).filter(
+    (ord) => ord.status !== 'created',
+  );
+  const arr1 = [...orders];
+  const sortOrders = arr1.sort((a, b) => b.id - a.id);
 
   // const sortOrders=orders.map((el)=>el)
   // const users=orders.map((order)=>order.User)
@@ -66,7 +75,7 @@ export default function OrderTable(): JSX.Element {
             size="sm"
             variant="flat"
           >
-            {order.status}
+            {order && statuses[order.status]}
           </Chip>
         );
       case 'actions':
@@ -99,8 +108,7 @@ export default function OrderTable(): JSX.Element {
   }, []);
 
   return (
-    
-      //  const sortOrders=orders.sort((a,b)=>b.id-a.id)
+    //  const sortOrders=orders.sort((a,b)=>b.id-a.id)
     <Table aria-label="Example table with custom cells">
       <TableHeader columns={columns}>
         {(column) => (
@@ -117,7 +125,5 @@ export default function OrderTable(): JSX.Element {
         )}
       </TableBody>
     </Table>
-    
   );
-  
 }

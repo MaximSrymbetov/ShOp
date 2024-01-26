@@ -6,12 +6,14 @@ type StateAuth = {
   user: User | undefined;
   error: string | undefined;
   message: string | undefined;
+  loading: boolean;
 };
 
 const initialState: StateAuth = {
   user: undefined,
   error: undefined,
   message: undefined,
+  loading: false,
 };
 
 export const login = createAsyncThunk('auth/login', (obj: Authorization) => api.FetchLogin(obj));
@@ -52,9 +54,14 @@ const authSlice = createSlice({
       .addCase(checkUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.message = action.payload.message;
+        state.loading = false;
       })
       .addCase(checkUser.rejected, (state, action) => {
         state.error = action.error.message;
+        state.loading = false;
+      })
+      .addCase(checkUser.pending, (state) => {
+        state.loading = true;
       });
   },
 });

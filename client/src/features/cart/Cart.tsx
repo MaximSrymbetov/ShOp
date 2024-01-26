@@ -18,26 +18,23 @@ export default function Cart(): JSX.Element {
   const orders = useSelector((store: RootState) => store.orders.orders);
   const user = useSelector((store: RootState) => store.auth.user);
 
-
   const userItems = orders.find(
     (order) => order.user_id === user?.id && order.status === 'created',
   )?.Order_items;
 
-  
   const orderSum = userItems?.reduce((acc, item) => acc + +item.Product.price, 0);
 
   const handleDelete = (id: string): void => {
- 
     if (id) {
       dispatch(deleteOrderItem(id)).catch((err) => console.error(err));
     }
   };
 
   const content = (
-    <div>
+    <div style={{ backgroundColor: '#eee' }}>
       {user ? (
-        <div>
-          <section className="h-100 h-custom" style={{ backgroundColor: '#eee' }}>
+        <div className="pb-12">
+          <section className="h-100 h-custom">
             <div className="container py-5 h-100">
               <div className="justify-center items-center h-100">
                 <div>
@@ -171,7 +168,7 @@ export default function Cart(): JSX.Element {
           </section>
         </div>
       ) : (
-        <div className="container mx-auto flex flex-col gap-4 my-24 w-4/5 sm:w-1/3">
+        <div className="container mx-auto pb-28 flex flex-col gap-4 my-24 w-4/5 sm:w-1/3">
           <div>
             <b>Вы не авторизированы.</b>
             <p>Зарегистрируйтесь или войдите, чтобы продолжить пользоваться корзиной</p>
