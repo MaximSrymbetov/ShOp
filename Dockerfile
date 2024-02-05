@@ -5,7 +5,7 @@ FROM node:20.11.0
 WORKDIR /app
 
 # Устанавливаем переменные окружения
-ENV DATABASE_URL=postgresql://postgres:24Ref@mailggg@db.lcdtuijoqywxyrnzhssx.supabase.co:5432/postgres
+ENV DATABASE_URL=postgres://postgres.lcdtuijoqywxyrnzhssx:24Ref@mailggg@aws-0-eu-central-1.pooler.supabase.com:5432/postgres
 ENV ACCESS_TOKEN_SECRET=secretA
 ENV REFRESH_TOKEN_SECRET=secretR
 
